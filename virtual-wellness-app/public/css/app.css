@@ -7,6 +7,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+  --primary: #bdf0b2;
+  --secondary: #b2f0da;
+  --extra: #dcf0b2;
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -2191,7 +2194,7 @@ progress {
   color: #212529;
   background-color: #f8fafc;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 0px solid #ced4da;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -2212,9 +2215,8 @@ progress {
 .form-control:focus {
   color: #212529;
   background-color: #f8fafc;
-  border-color: #86b7fe;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.6em;
@@ -2988,13 +2990,11 @@ textarea.form-control-lg {
 }
 
 .btn {
-  display: inline-block;
+  display: block;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  text-align: center;
   text-decoration: none;
-  vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -3014,6 +3014,7 @@ textarea.form-control-lg {
 }
 .btn:hover {
   color: #212529;
+  
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
@@ -3026,32 +3027,32 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #d7334e;
+  border-color: #d7334e;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+  background-color: #1d3557;
+  border-color: #1d3557;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
-  box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+  background-color: #1d3557;
+  border-color: #1d3557;
+  box-shadow: 0 0 0 0.25rem #1d3557;
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #0a58ca;
-  border-color: #0a53be;
+  background-color: #1d3557;
+  border-color: #1d3557;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #1d3557;
+  border-color: #1d3557;
 }
 
 .btn-secondary {
@@ -4031,6 +4032,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  background-color: #6f70a8;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -4051,6 +4053,7 @@ textarea.form-control-lg {
   font-size: 1.125rem;
   text-decoration: none;
   white-space: nowrap;
+  color: #fcfcf8;
 }
 .navbar-nav {
   display: flex;
@@ -4070,6 +4073,7 @@ textarea.form-control-lg {
 .navbar-text {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: #fcfcf8;
 }
 
 .navbar-collapse {
@@ -4509,9 +4513,9 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #fcfcf8;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 0px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -4539,16 +4543,20 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
+  align-content: center;
   padding: 1rem 1rem;
 }
 
 .card-title {
   margin-bottom: 0.5rem;
+  
 }
 
 .card-subtitle {
   margin-top: -0.25rem;
   margin-bottom: 0;
+  color: #d7334e;
+  font-weight: 900px;
 }
 
 .card-text:last-child {
@@ -4562,8 +4570,11 @@ textarea.form-control-lg {
 .card-header {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #fcfcf8;
+  text-align: center;
+  color: #1d3557;
+  font-size: 40px;
+  font-weight: 900;
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -7488,6 +7499,7 @@ textarea.form-control-lg {
 .py-4 {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
+  background-color: #afd4ff;
 }
 
 .py-5 {
