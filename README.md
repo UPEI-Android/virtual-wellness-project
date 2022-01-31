@@ -1,1 +1,1 @@
-Placeholder for CS4820 - group project
+Hosting and production fork for Heroku
