@@ -2192,9 +2192,10 @@ progress {
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  background-color: #f8fafc;
+  background-color:transparent;
   background-clip: padding-box;
   border: 0px solid #ced4da;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -4545,6 +4546,7 @@ textarea.form-control-lg {
   flex: 1 1 auto;
   align-content: center;
   padding: 1rem 1rem;
+  justify-content: center !important;
 }
 
 .card-title {
