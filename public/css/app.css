@@ -3936,6 +3936,24 @@ textarea.form-control-lg {
   margin-bottom: 0;
   list-style: none;
 }
+.sidebar{
+  height: 100%;
+  width: 150px;
+  position: sticky;
+  left: 0;
+  top: 0;
+  padding-top: 40px;
+  background-color: #6f70a8;
+}
+
+.sidebar-nav-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
 
 .nav-link {
   display: block;
