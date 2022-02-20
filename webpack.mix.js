@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require("path");
 
 /*
  |--------------------------------------------------------------------------
@@ -14,3 +15,13 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .react()
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            //adding react and react-dom may not be necessary for you but it did fix some issues in my setup.
+            'react' : path.resolve('node_modules/react'),
+            'react-dom' : path.resolve('node_modules/react-dom'),
+        },
+    },
+});

@@ -12,5 +12,17 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
-require('./components/Header');
+
+import React from 'react'
+import ReactRenderer from './ReactRenderer'
+
+import Header from './components/Header'
+
+const components = [
+    {
+        name: "Header",
+        component: <Header />,
+    },
+]
+
+new ReactRenderer(components).renderAll()
