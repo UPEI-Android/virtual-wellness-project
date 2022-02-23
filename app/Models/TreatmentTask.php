@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Treatment extends Model
+class TreatmentTask extends Model
 {
     use HasFactory;
-
-    protected $guarded = [];
 
     public function care_node() {
 
@@ -17,12 +15,11 @@ class Treatment extends Model
 
     }
 
-    public function daily_schedule() {
+    public function recurring_pattern() {
 
-        return $this->hasOne(DailySchedule::class);
+        return $this->hasMany(RecurringType::class);
 
     }
-
 
 
 }

@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DailySchedule extends Model
+class RecurringType extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    public function recurring_pattern() {
 
-    public function treatment() {
-
-        return $this->belongsTo(Treatment::class);
+        return $this->hasMany(RecurringType::class);
 
     }
+
 }
