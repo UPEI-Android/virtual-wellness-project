@@ -21,7 +21,13 @@
 </head>
 <body class="py-4">
     <div id="app">
-        <div id="sidebarnav"></div>
+        @guest
+            <!--dont show sidenav-->
+        @else
+            <!--show side nav-->
+            <div id="sidebarnav"></div>
+        @endguest
+        
 
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
