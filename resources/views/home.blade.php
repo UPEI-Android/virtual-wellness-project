@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!--<div class="container">
     <div id="sidebarnav"></div>
 </div>
+-->
 
 <div class="container">
     <div class="row justify-content-center">

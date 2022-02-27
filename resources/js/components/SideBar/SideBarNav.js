@@ -6,7 +6,6 @@ export default class SideBarNav extends Component {
     render(){
         return (
             <div className="sidebar">
-                <h1>VWA</h1>
                 <ul class="nav flex-column">
                     <NavItem title = "option 1" />
                     <NavItem title = "option 2" />

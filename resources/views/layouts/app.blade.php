@@ -21,6 +21,8 @@
 </head>
 <body class="py-4">
     <div id="app">
+        <div id="sidebarnav"></div>
+
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" style="color: #fcfcf8;" href="{{ url('/home') }}">
@@ -73,6 +75,7 @@
                 </div>
             </div>
         </nav>
+        
 
         <main class="py-4">
             @yield('content')

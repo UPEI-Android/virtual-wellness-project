@@ -3935,8 +3935,13 @@ textarea.form-control-lg {
   position: absolute;
   left: 0;
   top: 0;
-  padding-top: 40px;
-  background-color: #6f70a8;
+  padding-top: 80px;
+  background-color: #6f70a888;
+
+}
+
+.sidebar-nav-item{
+  top: 40px
 }
 
 .nav {
@@ -4066,7 +4071,6 @@ textarea.form-control-lg {
   text-decoration: none;
   white-space: nowrap;
   color: #fcfcf8;
-  align-content: center;
 }
 .navbar-nav {
   display: flex;
