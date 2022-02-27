@@ -5,9 +5,14 @@ import NavItem from './NavItem';
 export default class SideBarNav extends Component {
     render(){
         return (
-            <div className="sidebar navbar-expand-md offcanvus">
-                <NavItem />
-                <NavItem />
+            <div className="sidebar">
+                <h1>VWA</h1>
+                <ul class="nav flex-column">
+                    <NavItem title = "option 1" />
+                    <NavItem title = "option 2" />
+                    <NavItem title = "option 3" />
+                    <NavItem title = "option 4" />
+                </ul>
             </div>
         );
     }   
