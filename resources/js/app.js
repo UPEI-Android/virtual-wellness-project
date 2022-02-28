@@ -13,3 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./components/SideBar/SideBarNav');
+require('./components/SideBar/NavItem');
+

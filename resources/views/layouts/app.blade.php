@@ -21,6 +21,14 @@
 </head>
 <body class="py-4">
     <div id="app">
+        @guest
+            <!--dont show sidenav-->
+        @else
+            <!--show side nav-->
+            <div id="sidebarnav"></div>
+        @endguest
+        
+
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" style="color: #fcfcf8;" href="{{ url('/home') }}">
@@ -73,6 +81,7 @@
                 </div>
             </div>
         </nav>
+        
 
         <main class="py-4">
             @yield('content')
