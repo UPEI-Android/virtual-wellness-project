@@ -2192,9 +2192,10 @@ progress {
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  background-color: #f8fafc;
+  background-color:transparent;
   background-clip: padding-box;
   border: 0px solid #ced4da;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -3928,18 +3929,32 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
 }
 
+.sidebar{
+  height: 100%;
+  width: 150px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 80px;
+  background-color: #6f70a888;
+
+}
+
+
 .nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  list-style-type: none;
 }
+
 
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #0d6efd;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3949,7 +3964,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #0a58ca;
+  color: #f3d2f3;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -4049,7 +4064,6 @@ textarea.form-control-lg {
 .navbar-brand {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
-  margin-right: 1rem;
   font-size: 1.125rem;
   text-decoration: none;
   white-space: nowrap;
@@ -4545,6 +4559,7 @@ textarea.form-control-lg {
   flex: 1 1 auto;
   align-content: center;
   padding: 1rem 1rem;
+  justify-content: center !important;
 }
 
 .card-title {

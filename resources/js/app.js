@@ -12,6 +12,10 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+require('./components/Example');
+require('./components/SideBar/SideBarNav');
+require('./components/SideBar/NavItem');
+
 import 'bootstrap/dist/css/bootstrap.min.css';  //this doesn't do anything, testing how exactly to get css to work
 import React from 'react'
 import ReactRenderer from './ReactRenderer'

@@ -20,7 +20,13 @@
 </head>
 <body class="py-4">
     <div id="app">
-        <Header></Header>
+        @guest
+            <!--dont show sidenav-->
+        @else
+            <!--show side nav-->
+            <div id="sidebarnav"></div>
+        @endguest
+                <Header></Header>
 
         <main class="py-4">
             @yield('content')
