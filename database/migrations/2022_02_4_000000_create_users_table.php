@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('user_type'); //Thinking something like 1=admin 2=technician/careprovider 3=normal user
             $table->DATE('birthday');
             $table->datetime('last_login_at')->nullable();
             $table->string('last_login_ip')->nullable();
