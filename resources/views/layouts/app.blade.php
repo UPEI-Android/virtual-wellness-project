@@ -21,8 +21,7 @@
 <body class="py-4">
     <div id="app">
 
-        <div id="sidebarnav" name="Virtual Wellness App"></div>
-
+        <div id="header" data-title="Virtual Wellness App"></div>
 
         @guest
             <!--dont show sidenav-->
@@ -30,9 +29,7 @@
             <!--show side nav-->
             <div id="sidebarnav"></div>
         @endguest
-
-
-    
+        
         <main class="py-4">
             @yield('content')
         </main>
