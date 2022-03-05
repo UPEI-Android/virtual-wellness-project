@@ -14,6 +14,8 @@ const path = require("path");
 
 mix.js('resources/js/app.js', 'public/js')
     .react()
+    .sass('resources/sass/app.scss', 'public/css')
+    .styles('resources/css/app.css', 'public/css/app.css');
    
 mix.webpackConfig({
     resolve: {
@@ -24,6 +26,3 @@ mix.webpackConfig({
         },
     },
 });
-
- .sass('resources/sass/app.scss', 'public/css');
- .styles('resources/css/app.css', 'public/css/app.css');
