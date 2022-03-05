@@ -4,7 +4,7 @@ pipeline {
 		stage("build"){
 			steps{
 				sh 'php --version'
-				sh 'composer update --ignore-platform-reqs'
+				sh 'composer global require laravel/installer'
                 sh 'composer install'
                 sh 'composer --version'
                 sh 'cp .env.example .env'
