@@ -5251,12 +5251,111 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/ReactRenderer.js":
+/*!***************************************!*\
+  !*** ./resources/js/ReactRenderer.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ReactRenderer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
+
+var ReactRenderer = /*#__PURE__*/function () {
+  function ReactRenderer(components) {
+    _classCallCheck(this, ReactRenderer);
+
+    this.components = components;
+  }
+
+  _createClass(ReactRenderer, [{
+    key: "renderAll",
+    value: function renderAll() {
+      for (var componentIndex = 0; componentIndex < this.components.length; componentIndex++) {
+        // Use this to render React components in divs using the id. Ex, <div id="MySimpleComponent"></div>
+        // let container = document.getElementById(this.components[componentIndex].name);
+        // Use this to render React components using the name as the tag. Ex, <MySimpleComponent></MySimpleComponent>
+        var containers = document.getElementsByTagName(this.components[componentIndex].name);
+
+        if (containers && containers.length > 0) {
+          for (var i = containers.length - 1; i >= 0; i--) {
+            var props = this.getPropsFromAttributes(containers[i]);
+            var element = this.components[componentIndex].component;
+
+            if (props !== null) {
+              element = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(element, props);
+            }
+
+            react_dom__WEBPACK_IMPORTED_MODULE_1__.render(element, containers[i]);
+          }
+        }
+      }
+    } // Turns the dom element's attributes into an object to use as props.
+
+  }, {
+    key: "getPropsFromAttributes",
+    value: function getPropsFromAttributes(container) {
+      var props = {};
+
+      if (container.attributes.length > 0) {
+        for (var attributeIndex = 0; attributeIndex < container.attributes.length; attributeIndex++) {
+          var attribute = container.attributes[attributeIndex];
+
+          if (this.hasJsonStructure(attribute.value)) {
+            props[attribute.name] = JSON.parse(attribute.value);
+          } else {
+            props[attribute.name] = attribute.value;
+          }
+        }
+
+        return props;
+      }
+
+      return null;
+    }
+  }, {
+    key: "hasJsonStructure",
+    value: function hasJsonStructure(str) {
+      if (typeof str !== 'string') return false;
+
+      try {
+        var result = JSON.parse(str);
+        var type = Object.prototype.toString.call(result);
+        return type === '[object Object]' || type === '[object Array]';
+      } catch (err) {
+        return false;
+      }
+    }
+  }]);
+
+  return ReactRenderer;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReactRenderer */ "./resources/js/ReactRenderer.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -5275,6 +5374,11 @@ __webpack_require__(/*! ./components/Example */ "./resources/js/components/Examp
 __webpack_require__(/*! ./components/SideBar/SideBarNav */ "./resources/js/components/SideBar/SideBarNav.js");
 
 __webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/components/SideBar/NavItem.js");
+
+__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Header'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+
+new _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__["default"](components).renderAll();
 
 /***/ }),
 
