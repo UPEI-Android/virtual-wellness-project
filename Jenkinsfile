@@ -4,6 +4,7 @@ pipeline {
 		stage("build"){
 			steps{
 				sh 'php --version'
+				sh 'composer update --ignore-platform-reqs'
                 sh 'composer install'
                 sh 'composer --version'
                 sh 'cp .env.example .env'
