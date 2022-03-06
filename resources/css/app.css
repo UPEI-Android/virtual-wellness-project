@@ -558,19 +558,39 @@ progress {
   }
 }
 
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
 }
 
-.list-stacked {
-  padding-left: 0;
-  list-style: inside;
+.treatment-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
 }
-.list-stacked-item {
-  display: block;
+
+.treatment-input-group {
+  margin-left: 8px;
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 8px;
+  padding: 6px 8px;
+  font-size: 18px;
 }
-.list-stacked-item:not(:last-child) {
+
+.treatment-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 18px;
+  margin-right: 24px;
+  padding-left: 18px;
+}
+
+.treatment-item:not(:last-child) {
   margin-right: 0.5rem;
 }
 

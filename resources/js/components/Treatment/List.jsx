@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 
 export default function List() {
   const [count, setCount] = useState(0);
@@ -11,6 +10,7 @@ export default function List() {
     id: 1,
     title: 'Your Task Example',
     isComplete: false,
+    isEditing: false,
     },
     
   ]);
@@ -41,6 +41,26 @@ export default function List() {
 
   function handleInput(event){
     setTodoInput(event.target.value);
+  }
+
+  function completeTodo(id){
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id){
+        todo.isComplete = !todo.isComplete
+      }
+      return todo;
+    })
+    setTodos(updatedTodos);
+  }
+
+  function markAsEditing(id){
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id){
+        todo.isEditing = !todo.isComplete
+      }
+      return todo;
+    })
+    setTodos(updatedTodos);
   }
 
     return (
@@ -92,29 +112,39 @@ export default function List() {
 
                         <ul
                           role="list"
-                          className="list-stacked"
-                          aria-labelledby="list-heading"
+                          className="list-unstyled"
                         >
                           { todos.map((todo, index) => (
-                            <li key={todo.id} className="list-stacked-item">
-                              <div className="treatment-group-item">
-                                <div className="treatment-item">
-                                  <input type="checkbox" />
-                                    <label className={'todo-label ${todo.isComplete ? 'line-through' : ''}'}>
+                            <li key={todo.id} className="treatment-item-container">
+                              <div className ="treatment-item">
+                                  <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.isComplete ? true : false}/>
+                                    
+                                    { !todo.isEditing ? (
+                                    <span className="treatment-item" >
                                       {todo.title}
-                                    </label>
+                                    </span>
+
+                                    ) :
+
+                                    <input
+                                    type="text"
+                                    value={todoInput}
+                                    className="treatment-input-group"
+                                    placeholder={todo.title}
+                                    autoFocus
+                                  />
+                                    }
                                 </div>
-                                <div className="btn-group">
-                                  <button type="button" className="btn">
+                                <div className="btn-group" style={{"display" : "block"}}>
+                                  <button type="button" className="btn" onClick={() => markAsEditing(todo.id)} style={{"display" : "inline"}}>
                                     Edit
                                   </button>
-                                  <button type="button" className="btn btn__danger" onClick={() => deleteTodo(todo.id)}>
+                                  <button type="button" className="btn btn__danger" onClick={() => deleteTodo(todo.id)} style={{"display" : "inline"}}>
                                     Delete
                                   </button>
                                 </div>
-                              </div>
                             </li>
-                          ))}
+                          )) }
                         </ul>
                       </div>
                     </div>
