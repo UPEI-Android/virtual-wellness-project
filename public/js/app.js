@@ -5251,10 +5251,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/ReactRenderer.js":
-/*!***************************************!*\
-  !*** ./resources/js/ReactRenderer.js ***!
-  \***************************************/
+/***/ "./resources/js/ReactRenderer.jsx":
+/*!****************************************!*\
+  !*** ./resources/js/ReactRenderer.jsx ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5347,21 +5347,21 @@ var ReactRenderer = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/app.jsx":
+/*!******************************!*\
+  !*** ./resources/js/app.jsx ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReactRenderer */ "./resources/js/ReactRenderer.js");
+/* harmony import */ var _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReactRenderer */ "./resources/js/ReactRenderer.jsx");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
  * building robust, powerful web applications using React + Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.jsx");
 /**
  * Next, we will create a fresh React component instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -5369,23 +5369,23 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
+__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.jsx");
 
-__webpack_require__(/*! ./components/SideBar/SideBarNav */ "./resources/js/components/SideBar/SideBarNav.js");
+__webpack_require__(/*! ./components/SideBar/SideBarNav */ "./resources/js/components/SideBar/SideBarNav.jsx");
 
-__webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/components/SideBar/NavItem.js");
+__webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/components/SideBar/NavItem.jsx");
 
-__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Header'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(/*! ./components/Treatment/List */ "./resources/js/components/Treatment/List.jsx");
 
 
 new _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__["default"](components).renderAll();
 
 /***/ }),
 
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
+/***/ "./resources/js/bootstrap.jsx":
+/*!************************************!*\
+  !*** ./resources/js/bootstrap.jsx ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
@@ -5418,10 +5418,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
-  \********************************************/
+/***/ "./resources/js/components/Example.jsx":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Example.jsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5467,10 +5467,10 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/SideBar/NavItem.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/SideBar/NavItem.js ***!
-  \****************************************************/
+/***/ "./resources/js/components/SideBar/NavItem.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/SideBar/NavItem.jsx ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5527,7 +5527,7 @@ var NavItem = /*#__PURE__*/function (_Component) {
           "class": "nav-item",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
             "class": "nav-link",
-            href: "#",
+            href: this.props.link,
             children: this.props.title
           })
         })
@@ -5546,10 +5546,10 @@ if (document.getElementById('nav-item')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/SideBar/SideBarNav.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/SideBar/SideBarNav.js ***!
-  \*******************************************************/
+/***/ "./resources/js/components/SideBar/SideBarNav.jsx":
+/*!********************************************************!*\
+  !*** ./resources/js/components/SideBar/SideBarNav.jsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5559,7 +5559,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _NavItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavItem */ "./resources/js/components/SideBar/NavItem.js");
+/* harmony import */ var _NavItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavItem */ "./resources/js/components/SideBar/NavItem.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
@@ -5608,13 +5608,17 @@ var SideBarNav = /*#__PURE__*/function (_Component) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
           "class": "nav flex-column",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            title: "option 1"
+            title: "Treatments",
+            link: "/treatments"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            title: "option 2"
+            title: "option 2",
+            link: "#"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            title: "option 3"
+            title: "option 3",
+            link: "#"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            title: "option 4"
+            title: "option 4",
+            link: "#"
           })]
         })
       });
@@ -5629,6 +5633,16 @@ var SideBarNav = /*#__PURE__*/function (_Component) {
 if (document.getElementById('sidebarnav')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(SideBarNav, {}), document.getElementById('sidebarnav'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/List.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Treatment/List.jsx ***!
+  \****************************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/resources/js/components/Treatment/List.jsx: Unexpected token, expected \"}\" (103:87)\n\n\u001b[0m \u001b[90m 101 |\u001b[39m                                 \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"treatment-item\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 102 |\u001b[39m                                   \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m\"checkbox\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 103 |\u001b[39m                                     \u001b[33m<\u001b[39m\u001b[33mlabel\u001b[39m className\u001b[33m=\u001b[39m{\u001b[32m'todo-label ${todo.isComplete ? '\u001b[39mline\u001b[33m-\u001b[39mthrough\u001b[32m' : '\u001b[39m\u001b[32m'}'\u001b[39m}\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 104 |\u001b[39m                                       {todo\u001b[33m.\u001b[39mtitle}\u001b[0m\n\u001b[0m \u001b[90m 105 |\u001b[39m                                     \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mlabel\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 106 |\u001b[39m                                 \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n    at Object._raise (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:506:17)\n    at Object.raiseWithData (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:499:17)\n    at Object.raise (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:460:17)\n    at Object.unexpected (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:3699:16)\n    at Object.expect (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:3683:28)\n    at Object.jsxParseExpressionContainer (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:7539:10)\n    at Object.jsxParseAttributeValue (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:7496:21)\n    at Object.jsxParseAttribute (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:7557:38)\n    at Object.jsxParseOpeningElementAfterName (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:7577:28)\n    at Object.jsxParseOpeningElementAt (/Users/elizabethtoop/Desktop/2022 Everythang/Second Semester 2022/CS4820/virtual-wellness-project/node_modules/@babel/parser/lib/index.js:7570:17)");
 
 /***/ }),
 
@@ -59330,7 +59344,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.jsx")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

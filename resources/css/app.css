@@ -563,6 +563,17 @@ progress {
   list-style: none;
 }
 
+.list-stacked {
+  padding-left: 0;
+  list-style: inside;
+}
+.list-stacked-item {
+  display: block;
+}
+.list-stacked-item:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
 .list-inline {
   padding-left: 0;
   list-style: none;
@@ -2188,7 +2199,7 @@ progress {
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;
+  padding: 1rem 0 1rem 0;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -11313,10 +11324,4 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-
-.navbarbgcolour {
-    background-color: #008080;
-  }
 }
-
-

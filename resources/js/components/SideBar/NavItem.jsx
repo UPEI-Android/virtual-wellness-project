@@ -6,7 +6,7 @@ export default class NavItem extends Component {
         return (
                 <div className="sidebar-nav-item">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{ this.props.title }</a>
+                        <a class="nav-link" href={this.props.link}>{ this.props.title }</a>
                     </li>
                 </div>
         );
