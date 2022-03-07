@@ -100,7 +100,7 @@ return [
     |
     */
 
-    'store' => env('SESSION_STORE', redis),
+    'store' => env('SESSION_STORE', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
