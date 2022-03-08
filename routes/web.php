@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
     return view('/welcome');
 });
@@ -23,6 +22,10 @@ Route::get('/login', function () {
     return view('/auth/login');
 });
 Auth::routes();
+
+//creates user
+Route::post('/register', [App\http\Controllers\RegisterController::class, 'create']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
 
