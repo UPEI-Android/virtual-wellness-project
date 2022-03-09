@@ -24,9 +24,8 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
-
 //creates user
-//Route::post('/register', [RegisterController::class,'create']);
+#Route::post('/register', [RegisterController::class,'create']);
 Route::get('/register', function () {
     return view('/register');
 });
@@ -37,5 +36,17 @@ Route::post('/register', [RegisterController::class, 'create']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
+#this part is added
+Route::get('/treatments', function () {
+    return view('/patientViews/indexOfTreatments');
+});
+Auth::routes();
+#until here
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
+
+#Route::get('/treatments', [App\Http\Controllers\TreatmentController::class,'index']);
+#Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
+#Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
 
 
