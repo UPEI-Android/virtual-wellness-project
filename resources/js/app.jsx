@@ -16,6 +16,7 @@ require('./components/Example');
 require('./components/SideBar/SideBarNav');
 require('./components/SideBar/NavItem');
 require('./components/Treatment/List');
+require('./components/pages/Users/UserProfile');
 
 import ReactRenderer from './ReactRenderer'
 

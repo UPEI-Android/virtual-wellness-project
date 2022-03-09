@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,29 +24,11 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
-//creates user
-#Route::post('/register', [RegisterController::class,'create']);
-Route::get('/register', function () {
-    return view('/register');
-});
-Auth::routes();
-Route::post('/register', [RegisterController::class, 'create']);
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
-//redirects to login if not authenticated
-
-#this part is added
-Route::get('/treatments', function () {
-    return view('/patientViews/indexOfTreatments');
-});
-Auth::routes();
-#until here
+Route::get('/userprofile/{id}', [UserController::class,'show']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
 
-#Route::get('/treatments', [App\Http\Controllers\TreatmentController::class,'index']);
-#Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
-#Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
-
+Route::get('/treatments', [TreatmentController::class,'index']);
+Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
+Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
 
