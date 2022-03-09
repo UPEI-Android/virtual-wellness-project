@@ -31,6 +31,8 @@ Route::get('/register', function () {
     return view('/register');
 });
 Auth::routes();
+Route::post('/register', [RegisterController::class, 'create']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
