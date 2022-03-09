@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
     return view('/welcome');
 });
@@ -24,6 +24,17 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
+//creates user
+#Route::post('/register', [RegisterController::class,'create']);
+Route::get('/register', function () {
+    return view('/register');
+});
+Auth::routes();
+Route::post('/register', [RegisterController::class, 'create']);
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
+//redirects to login if not authenticated
 
 #this part is added
 Route::get('/treatments', function () {
@@ -37,4 +48,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 #Route::get('/treatments', [App\Http\Controllers\TreatmentController::class,'index']);
 #Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
 #Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
+
 
