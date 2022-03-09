@@ -15,7 +15,7 @@ require('./bootstrap');
 require('./components/Example');
 require('./components/SideBar/SideBarNav');
 require('./components/SideBar/NavItem');
-require('./components/Header');
+require('./components/Treatment/List');
 
 import ReactRenderer from './ReactRenderer'
 
