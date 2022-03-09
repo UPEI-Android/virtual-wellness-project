@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
     return view('/welcome');
 });
@@ -24,7 +24,18 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
+
+//creates user
+//Route::post('/register', [RegisterController::class,'create']);
+Route::get('/register', function () {
+    return view('/register');
+});
+Auth::routes();
+Route::post('/register', [RegisterController::class, 'create']);
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
+//redirects to login if not authenticated
 
 
 
