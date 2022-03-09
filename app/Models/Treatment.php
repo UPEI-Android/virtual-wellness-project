@@ -9,10 +9,12 @@ class Treatment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['title', 'notes'];
 
     public function path() {
 
         return "/treatments/{$this->id}";
     }
+
+
 }

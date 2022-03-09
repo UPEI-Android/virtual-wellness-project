@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
 {
+    public function add(Request $request) {
+        return response()->json([
+            'title'=>$request->title,
+            'message' => $request->message,
+        ]);
+    }
+
     public function index() {
 
         $treatments = Treatment::all();
@@ -37,5 +44,18 @@ class TreatmentController extends Controller
 
         //redirected
         return redirect('/treatments');
+    }
+    public function update(Request $request, Treatment $Treatment)
+    {
+        $Treatment->update($request->all());
+
+        return response()->json($Treatment, 200);
+    }
+
+    public function delete(Treatment $Treatment)
+    {
+        $Treatment->delete();
+
+        return response()->json(null, 204);
     }
 }

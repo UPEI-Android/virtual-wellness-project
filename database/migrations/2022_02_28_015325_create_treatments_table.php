@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->references('id')->on('users')->onDelete('cascade');
+           // $table->foreignId('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->text('notes');
             $table->timestamps();
