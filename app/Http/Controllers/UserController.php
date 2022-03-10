@@ -44,7 +44,7 @@ class UserController extends Controller
         $users = User::create($input);
         return response()->json($users);
 
-        if(!auth("api")->user()->is_admin) {
+        /*if(!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Unauthorized'], 500);
         }
         $this->validate($request, [
@@ -61,7 +61,7 @@ class UserController extends Controller
         }
         $user->save();
         return response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-
+*/
 
     }
 
@@ -73,7 +73,24 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        return view('users.userprofile', compact('id'));
+
+        $user = User::findOrFail($id);
+
+        return view('users.userprofile', compact('user'));
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function getUser(int $id)
+    {
+        $user = User::findOrFail($id);
+
+        return $user->toJson();
     }
 
     /**

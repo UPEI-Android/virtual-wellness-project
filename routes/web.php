@@ -24,7 +24,7 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
-Route::get('/userprofile/{id}', [UserController::class,'show']);
+Route::get('/profile/{id}', [UserController::class,'show']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
 
