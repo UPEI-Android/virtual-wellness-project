@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+
 import axios from "axios";
 import ReactDOM from 'react-dom';
 
@@ -16,10 +16,10 @@ export default class UserProfile extends Component {
 
     componentDidMount() {
 
-        fetch('http://127.0.0.1:8000/api/userprofile/1/', )
-            .then(res => res.json()).then((data) => {
+        axios.get('http://127.0.0.1:8000/api/userprofile/1/', )
+            .then((data) => {
                 this.setState({
-                    user: data,
+                    user: data.data,
 
                 });
             })
@@ -29,19 +29,21 @@ export default class UserProfile extends Component {
     }
 
     render() {
-    console.log(this.state.user)
+        const data = this.state.user;
+
         return (
+
+
             <div className="student-profile py-4">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="card shadow-sm">
                                 <div className="card-header bg-transparent text-center">
-
-                                    <h3>{this.state.user.name}</h3>
+                                    <h3>{data.name}</h3>
                                 </div>
                                 <div className="card-body">
-                                    <p className="mb-0"><strong className="pr-1">Patient ID:</strong>321000001</p>
+                                    <p className="mb-0"><strong className="pr-1">Patient ID:</strong>{data.id}</p>
                                     <p className="mb-0"><strong className="pr-1">Treatment:</strong>Diabetes</p>
                                 </div>
                             </div>
@@ -54,6 +56,16 @@ export default class UserProfile extends Component {
                                 <div className="card-body pt-0">
                                     <table className="table table-bordered">
                                         <tbody>
+                                        <tr>
+                                            <th width="30%">Email</th>
+                                            <td width="2%">:</td>
+                                            <td>{data.email}</td>
+                                        </tr>
+                                        <tr>
+                                            <th width="30%">Phone</th>
+                                            <td width="2%">:</td>
+                                            <td>2020</td>
+                                        </tr>
                                         <tr>
                                             <th width="30%">Age</th>
                                             <td width="2%">:</td>
