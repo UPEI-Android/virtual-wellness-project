@@ -1,21 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import axios from "axios";
+import showUser from '../../store/actions/UserActions';
 import ReactDOM from 'react-dom';
+import store from '../../store/store';
+import {Provider} from 'react-redux';
+import {getOne} from '../../store/actions/UserActions'
 
 
-
-export default class UserProfile extends Component {
-    constructor(props) {
-        super(props)
-
+export default function UserProfile () {
+    useEffect(()=>{
+            store.dispatch(getOne());
+        }, [])
         // State
-        this.state = {
-            user: [],
-        }
-    }
+        //this.state = {
+         //   user: [],
+       // }
 
-    componentDidMount() {
 
+
+    //componentDidMount() {
+
+
+
+/*
         axios.get('http://127.0.0.1:8000/api/userprofile/1/', )
             .then((data) => {
                 this.setState({
@@ -26,13 +33,10 @@ export default class UserProfile extends Component {
             .catch((error) => {
                 console.log(error);
             })
-    }
-
-    render() {
-        const data = this.state.user;
+    }*/
 
         return (
-
+            <Provider store={store}>
 
             <div className="student-profile py-4">
                 <div className="container">
@@ -40,10 +44,10 @@ export default class UserProfile extends Component {
                         <div className="col-lg-4">
                             <div className="card shadow-sm">
                                 <div className="card-header bg-transparent text-center">
-                                    <h3>{data.name}</h3>
+                                    <h3>{}</h3>
                                 </div>
                                 <div className="card-body">
-                                    <p className="mb-0"><strong className="pr-1">Patient ID:</strong>{data.id}</p>
+                                    <p className="mb-0"><strong className="pr-1">Patient ID:</strong>{}</p>
                                     <p className="mb-0"><strong className="pr-1">Treatment:</strong>Diabetes</p>
                                 </div>
                             </div>
@@ -59,7 +63,7 @@ export default class UserProfile extends Component {
                                         <tr>
                                             <th width="30%">Email</th>
                                             <td width="2%">:</td>
-                                            <td>{data.email}</td>
+                                            <td>{}</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Phone</th>
@@ -106,9 +110,11 @@ export default class UserProfile extends Component {
                     </div>
                 </div>
             </div>
+            </Provider>
         );
-    }
+
 }
+
 
 
 
