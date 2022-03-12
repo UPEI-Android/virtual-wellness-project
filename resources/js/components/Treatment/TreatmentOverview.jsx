@@ -6,8 +6,6 @@ import TreatmentForm from './TreatmentForm';
 import TreatmentList from './TreatmentList';
 
 export default function TreatmentOverview() {
-  const [count, setCount] = useState(0);
-
   const [todos, setTodos] = useState([
     {
     id: 1,
@@ -82,6 +80,10 @@ export default function TreatmentOverview() {
     setTodos(updatedTodos);
   }
 
+  function remaining(){
+    return todos.filter(todo => !todo.isComplete).length;
+  }
+
 
     return (
       <div className="container background" style={{"padding-top":"5%"}}>
@@ -99,6 +101,7 @@ export default function TreatmentOverview() {
                     updateTodo={updateTodo}
                     cancelEdit={cancelEdit}
                     deleteTodo={deleteTodo}
+                    remaining={remaining}
                     />
                 ) : (
                   <NoTreaments />

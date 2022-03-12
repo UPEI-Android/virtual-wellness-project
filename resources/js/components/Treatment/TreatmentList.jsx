@@ -4,27 +4,17 @@ export default function TreatmentList(props) {
 
     return(
     <>
-    <div className="btn-group" style = {{"vertical-align":"middle"}}>
-        <button type="button" className="btn" aria-pressed="true">
-        <span className="visually-hidden">Show </span>
-        <span>all</span>
-        <span className="visually-hidden"> tasks</span>
+    <div className="btn-group" style = {{ "vertical-align":"middle" }}>
+        <button type="button" className="btn" aria-pressed="false">
+        <span>All</span>
         </button>
         <button type="button" className="btn" aria-pressed="false">
-        <span className="visually-hidden">Show </span>
         <span>Active</span>
-        <span className="visually-hidden"> tasks</span>
         </button>
         <button type="button" className="btn" aria-pressed="false">
-        <span className="visually-hidden">Show </span>
         <span>Completed</span>
-        <span className="visually-hidden"> tasks</span>
         </button>
     </div>
-    <h2 className="form-label">
-    3 tasks remaining
-    </h2>
-    <div className="form-control"></div>
     
     <ul
         role="list"
@@ -70,6 +60,13 @@ export default function TreatmentList(props) {
         </li>
         ))}
     </ul>
+
+    <div className="remaining-block">
+        <h5 className='btn'>
+            { props.remaining() } Items Remaining
+        </h5>
+        
+    </div>
     </>
     )
 }
