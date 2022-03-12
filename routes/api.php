@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/treatments', [TreatmentController::class,'index'])->name('treatments.index');
+Route::get('/treatments/create', [TreatmentController::class,'create']);
+Route::post('/treatments', [TreatmentController::class,'store']);
+Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
