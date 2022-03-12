@@ -571,6 +571,17 @@ progress {
   margin-top: 24px;
 }
 
+.no-treatments-container{
+  width: 300px;
+  margin: 30px auto;
+}
+
+.no-treatments-container p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
 .treatment-input-group {
   margin-left: 8px;
   width: 100%;

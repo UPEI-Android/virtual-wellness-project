@@ -5375,7 +5375,13 @@ __webpack_require__(/*! ./components/SideBar/SideBarNav */ "./resources/js/compo
 
 __webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/components/SideBar/NavItem.jsx");
 
-__webpack_require__(/*! ./components/Treatment/List */ "./resources/js/components/Treatment/List.jsx");
+__webpack_require__(/*! ./components/Treatment/TreatmentOverview */ "./resources/js/components/Treatment/TreatmentOverview.jsx");
+
+__webpack_require__(/*! ./components/Treatment/TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
+
+__webpack_require__(/*! ./components/Treatment/NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
+
+__webpack_require__(/*! ./components/Treatment/TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
 
 
 new _ReactRenderer__WEBPACK_IMPORTED_MODULE_0__["default"](components).renderAll();
@@ -5636,20 +5642,312 @@ if (document.getElementById('sidebarnav')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Treatment/List.jsx":
-/*!****************************************************!*\
-  !*** ./resources/js/components/Treatment/List.jsx ***!
-  \****************************************************/
+/***/ "./resources/js/components/Treatment/NoTreatments.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Treatment/NoTreatments.jsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ List)
+/* harmony export */   "default": () => (/* binding */ NoTreatments)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function NoTreatments() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "no-treatments-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+      width: "247",
+      height: "241",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+        "clip-path": "url(#clip0)",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M156.806 54.2H90.25a5.729 5.729 0 00-5.72 5.718v147.858l-.764.233-16.327 4.998a3.057 3.057 0 01-3.81-2.025L15.063 52.412a3.05 3.05 0 012.025-3.808l25.16-7.701 72.941-22.317 25.16-7.7a3.048 3.048 0 013.81 2.02l12.414 40.532.233.762z",
+          fill: "#F2F2F2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M171.329 53.438l-14.961-48.85A6.475 6.475 0 00153.21.761a6.477 6.477 0 00-4.939-.473L112.897 11.11 39.961 33.43 4.587 44.259a6.489 6.489 0 00-4.302 8.094L51.42 219.3a6.494 6.494 0 006.202 4.586 6.408 6.408 0 001.895-.285l24.249-7.419.763-.236v-.797l-.763.232-24.474 7.491a5.729 5.729 0 01-7.143-3.793L1.017 52.127a5.708 5.708 0 013.795-7.14L40.186 34.16l72.936-22.317 35.374-10.827a5.783 5.783 0 011.682-.252 5.728 5.728 0 015.461 4.045l14.893 48.63.237.762h.793l-.233-.763z",
+          fill: "#3F3D56"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M46.789 48.728a3.44 3.44 0 01-3.284-2.427l-4.913-16.039a3.43 3.43 0 012.278-4.285l67.1-20.534a3.438 3.438 0 014.287 2.276l4.913 16.04a3.435 3.435 0 01-2.277 4.285L47.792 48.578c-.325.1-.663.15-1.003.15z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M72.522 17.138a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.624 7.626 7.626 0 00-7.628 7.624 7.626 7.626 0 007.628 7.625z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M72.522 14.341a4.83 4.83 0 100-9.656 4.83 4.83 0 100 9.656z",
+          fill: "#fff"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M229.838 221.939H100.929a3.248 3.248 0 01-3.242-3.241V64.302a3.243 3.243 0 013.242-3.24h128.909a3.247 3.247 0 013.241 3.24v154.396a3.245 3.245 0 01-3.241 3.241z",
+          fill: "#E6E6E6"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M170.532 53.438H90.25a6.494 6.494 0 00-6.484 6.48v155.464l.763-.233V59.919A5.724 5.724 0 0190.25 54.2h80.518l-.236-.762zm69.984 0H90.25a6.494 6.494 0 00-6.484 6.48V234.52A6.489 6.489 0 0090.25 241h150.266a6.491 6.491 0 006.484-6.481v-174.6a6.494 6.494 0 00-6.484-6.48v-.001zm5.721 181.081a5.727 5.727 0 01-5.721 5.719H90.25a5.73 5.73 0 01-5.72-5.719v-174.6a5.724 5.724 0 015.72-5.719h150.266a5.726 5.726 0 015.721 5.718V234.52z",
+          fill: "#3F3D56"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M200.471 70.212h-70.175a3.437 3.437 0 01-3.433-3.432V50.007a3.432 3.432 0 013.433-3.431h70.175a3.438 3.438 0 013.432 3.43V66.78a3.436 3.436 0 01-3.432 3.431z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M165.383 47.72a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.625 7.627 7.627 0 00-7.628 7.625 7.627 7.627 0 007.628 7.624z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M165.383 44.739a4.645 4.645 0 100-9.288 4.645 4.645 0 100 9.288z",
+          fill: "#fff"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("clipPath", {
+          id: "clip0",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            fill: "#fff",
+            d: "M0 0h247v241H0z"
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      children: " Add some Treatments..."
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentForm.jsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentForm.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentForm)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function TreatmentForm(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      todoInput = _useState2[0],
+      setTodoInput = _useState2[1];
+
+  function handleInput(event) {
+    setTodoInput(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (todoInput.trim().length === 0) {
+      return;
+    }
+
+    props.addTodo(todoInput);
+    setTodoInput('');
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+    className: "form-control",
+    action: "#",
+    onSubmit: handleSubmit,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      className: "col-form-label",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "new-todo-input",
+        className: "form-label",
+        children: "Add a Task:"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      type: "text",
+      value: todoInput,
+      onChange: handleInput,
+      className: "input-group",
+      placeholder: "Enter Your Task Here"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      type: "submit",
+      className: "btn-primary",
+      children: "Add"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentList.jsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentList.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentList)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function TreatmentList(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "btn-group",
+      style: {
+        "vertical-align": "middle"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        type: "button",
+        className: "btn",
+        "aria-pressed": "true",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: "Show "
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "all"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: " tasks"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        type: "button",
+        className: "btn",
+        "aria-pressed": "false",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: "Show "
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Active"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: " tasks"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        type: "button",
+        className: "btn",
+        "aria-pressed": "false",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: "Show "
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Completed"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "visually-hidden",
+          children: " tasks"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      className: "form-label",
+      children: "3 tasks remaining"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "form-control"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+      role: "list",
+      className: "list-unstyled",
+      children: props.todos.map(function (todo, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+          className: "treatment-item-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "treatment-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "checkbox",
+              onChange: function onChange() {
+                return props.completeTodo(todo.id);
+              },
+              checked: todo.isComplete ? true : false
+            }), !todo.isEditing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+              className: "treatment-item",
+              children: todo.title
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              onBlur: function onBlur(event) {
+                return props.updateTodo(event, todo.id);
+              },
+              onKeyDown: function onKeyDown(event) {
+                if (event.key == 'Enter') {
+                  props.updateTodo(event, todo.id);
+                } else if (event.key == 'Escape') {
+                  props.cancelEdit(event, todo.id);
+                }
+              },
+              defaultValue: todo.title,
+              className: "treatment-input-group",
+              autoFocus: true
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "btn-group",
+            style: {
+              "display": "block"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn",
+              onClick: function onClick() {
+                return props.markAsEditing(todo.id);
+              },
+              style: {
+                "display": "inline"
+              },
+              children: "Edit"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn__danger",
+              onClick: function onClick() {
+                return props.deleteTodo(todo.id);
+              },
+              style: {
+                "display": "inline"
+              },
+              children: "Delete"
+            })]
+          })]
+        }, todo.id);
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentOverview.jsx":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentOverview.jsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentOverview)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
+/* harmony import */ var _TreatmentForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
+/* harmony import */ var _TreatmentList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5675,7 +5973,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function List() {
+
+
+
+function TreatmentOverview() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       count = _useState2[0],
@@ -5691,29 +5992,17 @@ function List() {
       todos = _useState4[0],
       setTodos = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(2),
       _useState6 = _slicedToArray(_useState5, 2),
-      todoInput = _useState6[0],
-      setTodoInput = _useState6[1];
+      idForTodo = _useState6[0],
+      setidForTodo = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(2),
-      _useState8 = _slicedToArray(_useState7, 2),
-      idForTodo = _useState8[0],
-      setidForTodo = _useState8[1];
-
-  function addTodo() {
-    event.preventDefault();
-
-    if (todoInput.trim().length === 0) {
-      return;
-    }
-
+  function addTodo(todo) {
     setTodos([].concat(_toConsumableArray(todos), [{
       id: idForTodo,
-      title: todoInput,
+      title: todo,
       isComplete: false
     }]));
-    setTodoInput('');
     setidForTodo(function (prevIdForTodo) {
       return prevIdForTodo + 1;
     });
@@ -5723,10 +6012,6 @@ function List() {
     setTodos(_toConsumableArray(todos).filter(function (todo) {
       return todo.id !== id;
     }));
-  }
-
-  function handleInput(event) {
-    setTodoInput(event.target.value);
   }
 
   function completeTodo(id) {
@@ -5743,7 +6028,7 @@ function List() {
   function markAsEditing(id) {
     var updatedTodos = todos.map(function (todo) {
       if (todo.id === id) {
-        todo.isEditing = !todo.isComplete;
+        todo.isEditing = true;
       }
 
       return todo;
@@ -5751,158 +6036,70 @@ function List() {
     setTodos(updatedTodos);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  function updateTodo(event, id) {
+    var updatedTodos = todos.map(function (todo) {
+      if (todo.id === id) {
+        if (event.target.value.trim().length === 0) {
+          todo.isEditing = false;
+          return todo;
+        }
+
+        todo.title = event.target.value;
+        todo.isEditing = false;
+      }
+
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+
+  function cancelEdit(event, id) {
+    var updatedTodos = todos.map(function (todo) {
+      if (todo.id === id) {
+        todo.isEditing = false;
+      }
+
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "container background",
     style: {
       "padding-top": "5%"
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "card",
           style: {
             "padding": "60px"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "card-header",
             children: "Your Treatment Tasks"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
-            className: "form-control",
-            action: "#",
-            onSubmit: addTodo,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              className: "col-form-label",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                htmlFor: "new-todo-input",
-                className: "form-label",
-                children: "Add a Task:"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text",
-              value: todoInput,
-              onChange: handleInput,
-              className: "input-group",
-              placeholder: "Enter Your Task Here"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-              type: "submit",
-              className: "btn-primary",
-              children: "Add"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "btn-group",
-            style: {
-              "vertical-align": "middle"
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-              type: "button",
-              className: "btn",
-              "aria-pressed": "true",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: "Show "
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: "all"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: " tasks"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-              type: "button",
-              className: "btn",
-              "aria-pressed": "false",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: "Show "
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: "Active"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: " tasks"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-              type: "button",
-              className: "btn",
-              "aria-pressed": "false",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: "Show "
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: "Completed"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                className: "visually-hidden",
-                children: " tasks"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "form-control",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              className: "form-label",
-              children: "3 tasks remaining"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
-              role: "list",
-              className: "list-unstyled",
-              children: todos.map(function (todo, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-                  className: "treatment-item-container",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                    className: "treatment-item",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                      type: "checkbox",
-                      onChange: function onChange() {
-                        return completeTodo(todo.id);
-                      },
-                      checked: todo.isComplete ? true : false
-                    }), !todo.isEditing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                      className: "treatment-item",
-                      children: todo.title
-                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                      type: "text",
-                      value: todoInput,
-                      className: "treatment-input-group",
-                      placeholder: todo.title,
-                      autoFocus: true
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                    className: "btn-group",
-                    style: {
-                      "display": "block"
-                    },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                      type: "button",
-                      className: "btn",
-                      onClick: function onClick() {
-                        return markAsEditing(todo.id);
-                      },
-                      style: {
-                        "display": "inline"
-                      },
-                      children: "Edit"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                      type: "button",
-                      className: "btn btn__danger",
-                      onClick: function onClick() {
-                        return deleteTodo(todo.id);
-                      },
-                      style: {
-                        "display": "inline"
-                      },
-                      children: "Delete"
-                    })]
-                  })]
-                }, todo.id);
-              })
-            })]
-          })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_TreatmentForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            addTodo: addTodo,
+            completeTodo: completeTodo
+          }), todos.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_TreatmentList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            todos: todos,
+            completeTodo: completeTodo,
+            markAsEditing: markAsEditing,
+            updateTodo: updateTodo,
+            cancelEdit: cancelEdit,
+            deleteTodo: deleteTodo
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_NoTreatments__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
         })
       })
     })
   });
 }
 
-if (document.getElementById('list')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(List, {}), document.getElementById('list'));
+if (document.getElementById('treatment-overview')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(TreatmentOverview, {}), document.getElementById('treatment-overview'));
 }
 
 /***/ }),
