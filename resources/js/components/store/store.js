@@ -4,13 +4,10 @@ import rootReducer from './reducers/RootReducer';
 import thunk from 'redux-thunk';
 
 const initialState = {};
-const middleware = [thunk];
 
 
 const store = createStore(
     rootReducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(thunk))
 );
-
 export default store;

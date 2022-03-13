@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 //import treatmentReducer from './TreatmentReducer';
-import userReducer from './UserReducer';
+import UserReducer from './UserReducer';
 const rootReducer = combineReducers({
 
     //treatment: treatmentReducer,
-    user: userReducer
+    user: UserReducer
 });
 export default rootReducer;

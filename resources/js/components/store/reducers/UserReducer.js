@@ -1,30 +1,37 @@
 
-import {SHOW_USER} from "../actionTypes/UserTypes";
+import {SHOW_USER, SHOW_USER_FAILURE, SHOW_USER_SUCCESS} from "../actionTypes/UserTypes";
 const initialState = {
-    users: {},
-    user: {
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-        is_admin: 0
-    },
-    error_message: "",
+    loading: false,
+    users: '',
+    error: "",
 
 };
-export default function (state=initialState,action){
-    const {type,payload} = action;
-
-    switch (type)
+export default function UserReducer (state=initialState,action)
+{
+    switch (action.type)
     {
         case SHOW_USER:
             return{
                 ...state,
-                users:payload,
-                loading:false
+                loading:true
             }
+        case SHOW_USER_SUCCESS:
+            return{
+                loading:false,
+                users:action.payload,
+                error:''
+            }
+        case SHOW_USER_FAILURE:
+            return{
+                loading:false,
+                users:[],
+                error: action.payload
+        }
+
         default:
             return state;
     }
+
 }
+
 
