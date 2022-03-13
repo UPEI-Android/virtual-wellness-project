@@ -5669,7 +5669,7 @@ function NoTreatments() {
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-        "clip-path": "url(#clip0)",
+        clipPath: "url(#clip0)",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
           d: "M156.806 54.2H90.25a5.729 5.729 0 00-5.72 5.718v147.858l-.764.233-16.327 4.998a3.057 3.057 0 01-3.81-2.025L15.063 52.412a3.05 3.05 0 012.025-3.808l25.16-7.701 72.941-22.317 25.16-7.7a3.048 3.048 0 013.81 2.02l12.414 40.532.233.762z",
           fill: "#F2F2F2"
