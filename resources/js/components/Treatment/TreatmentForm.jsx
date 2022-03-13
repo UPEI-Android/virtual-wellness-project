@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
 export default function TreatmentForm (props) {
     const[todoInput, setTodoInput] = useState('');
@@ -21,21 +20,16 @@ export default function TreatmentForm (props) {
 
     return(
     <form className="form-control" action="#" onSubmit={(handleSubmit)}>
-                          <h2 className="col-form-label">
-                            <label htmlFor="new-todo-input" className="form-label">
-                              Add a Task:
-                            </label>
-                          </h2>
                           
                           <input
                             type="text"
                             value={todoInput}
                             onChange={handleInput}
                             className="input-group"
-                            placeholder="Enter Your Task Here"
+                            placeholder="Enter Your Treatment Here"
                           />
                           <button type="submit" className="btn-primary">
-                           Add
+                           Create Treatment
                           </button>
      </form>
     )

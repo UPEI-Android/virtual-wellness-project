@@ -19,6 +19,7 @@ require('./components/Treatment/TreatmentOverview');
 require('./components/Treatment/TreatmentForm');
 require('./components/Treatment/NoTreatments');
 require('./components/Treatment/TreatmentList');
+require('./components/Treatment/TreatmentFilters');
 
 import ReactRenderer from './ReactRenderer'
 

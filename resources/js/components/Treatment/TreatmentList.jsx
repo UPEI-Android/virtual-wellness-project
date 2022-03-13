@@ -1,26 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
+import TreatmentFilters from './TreatmentFilters';
 
 export default function TreatmentList(props) {
 
+    const [filter, setFilter] = useState('all');
+
     return(
     <>
-    <div className="btn-group" style = {{ "vertical-align":"middle" }}>
-        <button type="button" className="btn" aria-pressed="false">
-        <span>All</span>
-        </button>
-        <button type="button" className="btn" aria-pressed="false">
-        <span>Active</span>
-        </button>
-        <button type="button" className="btn" aria-pressed="false">
-        <span>Completed</span>
-        </button>
-    </div>
+    <TreatmentFilters 
+        todosFiltered={props.todosFiltered}
+        filter={filter}
+        setFilter={setFilter}
+    />
     
     <ul
         role="list"
         className="list-unstyled"
     >
-        { props.todos.map((todo, index) => (
+        { props.todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
                 <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.isComplete ? true : false}/>
@@ -62,9 +60,9 @@ export default function TreatmentList(props) {
     </ul>
 
     <div className="remaining-block">
-        <h5 className='btn'>
+        <p className='btn'>
             { props.remaining() } Items Remaining
-        </h5>
+        </p>
         
     </div>
     </>
