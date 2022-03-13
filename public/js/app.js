@@ -5616,11 +5616,11 @@ var SideBarNav = /*#__PURE__*/function (_Component) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
           "class": "nav flex-column",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            title: "My Profile",
+            link: "/userprofile/{id}"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "Treatments",
             link: "/treatments"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            title: "option 2",
-            link: "#"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "option 3",
             link: "#"
