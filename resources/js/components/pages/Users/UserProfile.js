@@ -1,11 +1,10 @@
-import React, {Component, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import store from '../../store/store';
-import {Provider, connect, useSelector} from 'react-redux';
+import {Provider} from 'react-redux';
 import UserContainer from "./UserProfileContainer";
 
 
-export default function UserProfile (props) {
+export default function UserProfile () {
 
 
         return (

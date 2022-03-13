@@ -1,12 +1,12 @@
 
 import User from '../../../apis/User';
 import axios from "axios";
-import {SHOW_USER, SHOW_USER_FAILURE, SHOW_USER_SUCCESS} from "../actionTypes/UserTypes";
+import {SHOW_USER, SHOW_USER_FAILURE, SHOW_USER_SUCCESS,S} from "../actionTypes/UserTypes";
 /**
  * set user defaults
  */
 
-export const getOne = () => {
+export const getUser = () => {
     return (dispatch) => {
         dispatch(fetchUsersRequest)
         axios.get('/api/userprofile/1/')

@@ -1,12 +1,12 @@
 import React, { useEffect} from 'react';
 import store from '../../store/store'
 import {connect} from 'react-redux';
-import {getOne} from '../../store/actions/UserActions'
+import {getUser} from '../../store/actions/UserActions'
 
 
-function UserProfileContainer({ userData, getOne}){
+function UserProfileContainer({ userData, getUser}){
     useEffect(()=>{
-        getOne()
+        getUser()
     },[])
 
    const state = store.getState()
@@ -99,7 +99,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getOne: () => dispatch(getOne())
+        getUser: () => dispatch(getUser())
     }
 }
 
