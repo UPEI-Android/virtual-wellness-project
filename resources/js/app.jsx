@@ -16,7 +16,7 @@ require('./components/Example');
 
 require('./components/SideBar/SideBarNav');
 require('./components/SideBar/NavItem');
-
+require('./components/pages/Users/UserProfile');
 require('./components/Treatment/TreatmentOverview');
 require('./components/Treatment/TreatmentForm');
 require('./components/Treatment/NoTreatments');
@@ -25,6 +25,3 @@ require('./components/Treatment/TreatmentFilters');
 require('./components/Treatment/Treatment');
 require('./components/Treatment/CreateTreatment');
 
-import ReactRenderer from './ReactRenderer'
-
-new ReactRenderer(components).renderAll()
