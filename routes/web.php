@@ -36,12 +36,22 @@ Route::post('/register', [RegisterController::class, 'create']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
-#this part is added
+
 Route::get('/treatments', function () {
-    return view('/patientViews/indexOfTreatments');
+    return view('/treatmentViews/indexOfTreatments');
 });
 Auth::routes();
-#until here
+
+Route::get('/treatment', function () {
+    return view('/treatmentViews/showTreatment');
+});
+Auth::routes();
+
+Route::get('/createTreatment', function () {
+    return view('/treatmentViews/createTreatment');
+});
+Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
 
