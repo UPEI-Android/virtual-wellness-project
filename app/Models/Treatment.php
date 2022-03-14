@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SelfReferenceTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Treatment extends Model
 {
-    use HasFactory;
+    use HasFactory, SelfReferenceTrait;
 
     protected $guarded = [];
 
