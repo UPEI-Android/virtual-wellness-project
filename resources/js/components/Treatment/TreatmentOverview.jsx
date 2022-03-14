@@ -96,7 +96,7 @@ export default function TreatmentOverview(props) {
   }
 
     return (
-      <div className="container background" style={{"padding-top":"5%"}}>
+      <div className="container background" style={{"padding-top":"2%"}}>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="align-right"><a href="/createTreatment" className="btn-primary create-treatment-button">CreateTreatment</a></div>

@@ -6275,7 +6275,7 @@ function TreatmentOverview(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "container background",
     style: {
-      "padding-top": "5%"
+      "padding-top": "2%"
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "row justify-content-center",
