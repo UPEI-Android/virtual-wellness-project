@@ -8,89 +8,40 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-
 class TreatmentTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
 
-
     /**
-     * @test void
+     * A basic feature test example.
+     *
+     * @return void
      */
-    public function a_user_can_create_a_treatment() {
+    public function test_index_api()
+    {
 
-        $this->actingAs(User::factory()->create());
+        $response = $this->getJson(route('treatments.index'));
 
-        $attributes = [
-            'title' => $this->faker->title,
-            'notes' => $this->faker->sentence,
-        ];
+        $response->assertStatus(200);
+    }
 
-        $this->post('/treatments', $attributes)->assertRedirect('/treatments');
+    public function test_database() {
 
-        $this->assertDatabaseHas('treatments', $attributes);
+        $this->withoutExceptionHandling();
 
-        $this->get('/treatments')->assertSee($attributes['title']);
+        $user = User::factory()->create();
+
+        Treatment::factory()->create(['patient_id' => $user->id, 'title' => 'Exercise']);
+
+        $response = $this->getJson(route('treatments.index'));
+
+        $this->assertEquals(1, count($response->json()));
+
+        $this->assertEquals('Exercise', $response->json()[0]['title']);
 
     }
 
-    /**
-     * @test
-     */
-    public function a_user_can_view_a_treatment() {
 
-        $treatment = Treatment::factory()->create();
 
-        $this->get($treatment->path())
-             ->assertSee($treatment->title)
-             ->assertSee($treatment->notes);
-
-    }
-
-    /**
-     * @test
-     */
-    public function a_treatment_requires_a_title() {
-
-        $this->actingAs(User::factory()->create());
-
-        $attributes = Treatment::factory()->raw(['title' => '']);
-
-        $this->post('/treatments', $attributes)->assertSessionHasErrors('title');
-    }
-
-    /**
-     * @test
-     */
-    public function a_treatment_requires_a_note() {
-
-        $this->actingAs(User::factory()->create());
-
-        $attributes = Treatment::factory()->raw(['notes' => '']);
-
-        $this->post('/treatments', $attributes)->assertSessionHasErrors('notes');
-    }
-
-    /**
-     * TODO: Replace this test with the one below this test
-     * @test
-     */
-    public function only_authenticated_users_can_create_treatments() {
-
-        $attributes = Treatment::factory()->raw();
-
-        $this->post('/treatments', $attributes)->assertRedirect('login');
-    }
-
-    /**
-     * TODO: Give admin or care rights only
-     * @test
-     */
-    public function only_admin_can_create_treatments() {
-
-        $attributes = Treatment::factory()->raw();
-
-        $this->post('/treatments', $attributes)->assertRedirect('login');
-    }
 
 }
