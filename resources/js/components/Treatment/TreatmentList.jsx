@@ -22,12 +22,11 @@ export default function TreatmentList(props) {
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
                 <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.isComplete ? true : false}/>
-                
-                { !todo.isEditing ? (
-                <span className="treatment-item" >
-                    {todo.title}
-                </span>
 
+                {/* if the todo item is not in editing mode, display the title*/}
+
+                { !todo.isEditing ? (
+                    <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                 ) : (
 
                 <input

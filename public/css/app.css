@@ -6828,7 +6828,7 @@ textarea.form-control-lg {
   display: table !important;
 }
 
-.d-table-row {
+.d-table-c {
   display: table-row !important;
 }
 
@@ -11434,4 +11434,20 @@ textarea.form-control-lg {
 }
 .filter-button-tr-active {
   border: 1px solid lightgray;
+}
+.align-right {
+  justify-content: right;
+  align-items: flex-end;
+  text-align:right;
+  padding-bottom: 20px;
+}
+.create-treatment-button {
+  text-align: center;
+  text-decoration:none;
+  width: 150px;
+  padding: 10 10 10 10;
+}
+.treatment-list-item {
+  text-decoration: none;
+  color: #212529;
 }

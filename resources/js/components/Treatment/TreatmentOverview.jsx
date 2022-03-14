@@ -2,8 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NoTreaments from './NoTreatments';
-import TreatmentForm from './TreatmentForm';
 import TreatmentList from './TreatmentList';
+import TreatmentForm from './TreatmentForm';
 
 export default function TreatmentOverview(props) {
   const [todos, setTodos] = useState([
@@ -99,10 +99,13 @@ export default function TreatmentOverview(props) {
       <div className="container background" style={{"padding-top":"5%"}}>
         <div className="row justify-content-center">
           <div className="col-md-8">
+            <div className="align-right"><a href="/createTreatment" className="btn-primary create-treatment-button">CreateTreatment</a></div>
             <div className="card" style={{"padding": "60px"}}>
               <div className="card-header">Your Treatments</div>
+                {/*
                 <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
-
+                */
+                }
                 { todos.length > 0 ? (
                   <TreatmentList 
                     todos={todos}
@@ -121,7 +124,12 @@ export default function TreatmentOverview(props) {
               </div>
             </div>
           </div>
+          {
+          /*
           <p > { props.test } </p>
+          */
+          }
+
         </div>
         
     );
