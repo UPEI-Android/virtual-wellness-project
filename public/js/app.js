@@ -5978,8 +5978,26 @@ function TreatmentForm(props) {
               type: "text",
               value: todoInput,
               onChange: handleInput,
-              className: "input-group",
-              placeholder: "Enter Your Treatment Here"
+              className: "create-treatment-input",
+              placeholder: "Title"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              value: todoInput,
+              onChange: handleInput,
+              className: "create-treatment-input",
+              placeholder: "example text"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              value: todoInput,
+              onChange: handleInput,
+              className: "create-treatment-input",
+              placeholder: "example text"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              value: todoInput,
+              onChange: handleInput,
+              className: "create-treatment-input",
+              placeholder: "example text"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               type: "submit",
               className: "btn-primary",

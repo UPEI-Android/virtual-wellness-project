@@ -37,8 +37,29 @@ export default function TreatmentForm (props) {
                                                     type="text"
                                                     value={todoInput}
                                                     onChange={handleInput}
-                                                    className="input-group"
-                                                    placeholder="Enter Your Treatment Here"
+                                                    className="create-treatment-input"
+                                                    placeholder="Title"
+                                                  />
+                                                  <input
+                                                    type="text"
+                                                    value={todoInput}
+                                                    onChange={handleInput}
+                                                    className="create-treatment-input"
+                                                    placeholder="example text"
+                                                  />
+                                                  <input
+                                                    type="text"
+                                                    value={todoInput}
+                                                    onChange={handleInput}
+                                                    className="create-treatment-input"
+                                                    placeholder="example text"
+                                                  />
+                                                  <input
+                                                    type="text"
+                                                    value={todoInput}
+                                                    onChange={handleInput}
+                                                    className="create-treatment-input"
+                                                    placeholder="example text"
                                                   />
                                                   <button type="submit" className="btn-primary">
                                                   Create Treatment

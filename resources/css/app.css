@@ -564,47 +564,6 @@ progress {
   list-style: none;
 }
 
-.treatment-item-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 24px;
-}
-
-.no-treatments-container{
-  width: 300px;
-  margin: 30px auto;
-}
-
-.no-treatments-container p {
-  margin-top: 20px;
-  text-align: center;
-}
-
-
-.treatment-input-group {
-  margin-left: 8px;
-  width: 100%;
-  border: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 8px;
-  padding: 6px 8px;
-  font-size: 18px;
-}
-
-.treatment-item {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  font-size: 18px;
-  margin-right: 24px;
-  padding-left: 18px;
-}
-
-.treatment-item:not(:last-child) {
-  margin-right: 0.5rem;
-}
-
 .list-inline {
   padding-left: 0;
   list-style: none;
@@ -2230,7 +2189,7 @@ progress {
 .form-control {
   display: block;
   width: 100%;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 1rem 1rem 1rem;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -11450,4 +11409,59 @@ textarea.form-control-lg {
 .treatment-list-item {
   text-decoration: none;
   color: #212529;
+}
+.treatment-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.no-treatments-container{
+  width: 300px;
+  margin: 30px auto;
+}
+
+.no-treatments-container p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.treatment-input-group {
+  margin-left: 8px;
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 8px;
+  padding: 6px 8px;
+  font-size: 18px;
+}
+
+.create-treatment-input {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
+  padding: 6px 8px;
+  font-size: 18px;
+}
+
+.create-treatment-input-label{
+  width: 100%;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.treatment-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 18px;
+  margin-right: 24px;
+  padding-left: 18px;
+}
+
+.treatment-item:not(:last-child) {
+  margin-right: 0.5rem;
 }
