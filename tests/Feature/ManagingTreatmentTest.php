@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-
+//DEPRECATED ONLY FOR WEB ROUTES : DON'T RUN YET
 class ManagingTreatmentTest extends TestCase
 {
     use WithFaker, RefreshDatabase;

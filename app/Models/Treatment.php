@@ -22,8 +22,4 @@ class Treatment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function treatments() {
-
-        return $this->hasMany(Treatment::class, 'patient_id');
-    }
 }
