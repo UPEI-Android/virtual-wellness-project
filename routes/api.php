@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RulesController;
 use App\Http\Controllers\TreatmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/userprofile/{id}', [\App\Http\Controllers\UserController::class,'getUser']) ->name('user.getUser');;
-Route::get('/treatments', [TreatmentController::class,'index'])->name('treatments.index');
-Route::get('/treatments/create', [TreatmentController::class,'create']);
-Route::post('/treatments', [TreatmentController::class,'store']);
-Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
+
+Route::apiResource('treatments', TreatmentController::class);
+
+Route::apiResource('treatments.rules', RulesController::class)
+    ->except('show')
+    ->shallow();

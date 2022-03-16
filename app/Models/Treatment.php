@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SelfReferenceTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Treatment extends Model
 {
-    use HasFactory;
+    use HasFactory, SelfReferenceTrait;
 
     protected $guarded = [];
 
@@ -21,8 +22,4 @@ class Treatment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function treatments() {
-
-        return $this->hasMany(Treatment::class, 'patient_id');
-    }
 }
