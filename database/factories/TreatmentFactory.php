@@ -23,7 +23,8 @@ class TreatmentFactory extends Factory
             'patient_id' => function() {
 
                 return User::factory()->create()->id;
-            }
+            },
+            'start_date' => $this->faker->date,
         ];
     }
 }

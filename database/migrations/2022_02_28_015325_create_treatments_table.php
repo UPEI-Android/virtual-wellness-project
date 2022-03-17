@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
-            $table->text('notes');
+            $table->text('notes')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
 
         });
