@@ -27,7 +27,7 @@ function UserProfileContainer({ userData, getOne}){
                         </div>
                         <div className="card-body">
                             <p className="mb-0"><strong className="pr-1">Patient ID:</strong> {userData.users.id}</p>
-                            <p className="mb-0"><strong className="pr-1">Treatment:</strong>Diabetes</p>
+                            <p className="mb-0"><strong className="pr-1">Treatment:</strong> Diabetes</p>
                         </div>
                     </div>
                 </div>
@@ -47,17 +47,17 @@ function UserProfileContainer({ userData, getOne}){
                                 <tr>
                                     <th width="30%">Phone</th>
                                     <td width="2%">:</td>
-                                    <td>2020</td>
+                                    <td>902-867-5309</td>
                                 </tr>
                                 <tr>
                                     <th width="30%">Age</th>
                                     <td width="2%">:</td>
-                                    <td>125</td>
+                                    <td>28</td>
                                 </tr>
                                 <tr>
                                     <th width="30%">Year Joined</th>
                                     <td width="2%">:</td>
-                                    <td>2020</td>
+                                    <td>2022</td>
                                 </tr>
                                 <tr>
                                     <th width="30%">Gender</th>
@@ -65,9 +65,14 @@ function UserProfileContainer({ userData, getOne}){
                                     <td>Male</td>
                                 </tr>
                                 <tr>
-                                    <th width="30%">Blood Type</th>
+                                    <th width="30%">Date of Last Appointment</th>
                                     <td width="2%">:</td>
-                                    <td>B+</td>
+                                    <td>February 15 2022</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Date Last Adverse Effect</th>
+                                    <td width="2%">:</td>
+                                    <td>February 21 2022</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -76,7 +81,7 @@ function UserProfileContainer({ userData, getOne}){
 
                     <div className="card shadow-sm">
                         <div className="card-header bg-transparent border-0">
-                            <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Other Information</h3>
+                            <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Other Notes</h3>
                         </div>
                         <div className="card-body pt-0">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
