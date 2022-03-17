@@ -27,11 +27,6 @@ Auth::routes();
 Route::get('/profile/{id}', [UserController::class,'show']);
 
 //creates user
-#Route::post('/register', [RegisterController::class,'create']);
-Route::get('/register', function () {
-    return view('/register');
-});
-Auth::routes();
 Route::post('/register', [RegisterController::class, 'store']);
 
 
