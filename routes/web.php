@@ -23,6 +23,7 @@ Route::get('/login', function () {
     return view('/auth/login');
 });
 Auth::routes();
+
 Route::get('/profile/{id}', [UserController::class,'show']);
 
 //creates user
@@ -31,7 +32,7 @@ Route::get('/register', function () {
     return view('/register');
 });
 Auth::routes();
-Route::post('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
