@@ -27,7 +27,7 @@ Auth::routes();
 Route::get('/profile/{id}', [UserController::class,'show']);
 
 //creates user
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [UserController::class, 'store']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
