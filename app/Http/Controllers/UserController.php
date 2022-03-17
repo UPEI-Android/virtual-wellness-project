@@ -61,7 +61,7 @@ class UserController extends Controller
             $user->is_admin = 1;
         }
         $user->save();
-        return response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
+        return $user; //response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
         
     }
 
