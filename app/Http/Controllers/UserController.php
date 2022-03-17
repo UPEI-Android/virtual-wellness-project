@@ -40,9 +40,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->all();
-        $users = User::create($input);
-        return response()->json($users);
+        //$input = $request->all();
+        //$users = User::create($input);
+        //return response()->json($users);
 
         //if(!auth("api")->user()->is_admin) {
           //  return response()->json(['message' => 'Unauthorized'], 500);
