@@ -28,43 +28,43 @@ export default function TreatmentForm (props) {
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">New Treatment</div>
                          
-                            <form className="form-control" action="#" >
+                            <form className="form-control"action="#" >
                             {/* THis is what it was but we are not handling submit until front and back end connected
                             <form className="form-control" action="#" onSubmit={(handleSubmit)}>*/}
-                            
-                                                  
-                                                  <input
-                                                    type="text"
-                                                    value={todoInput}
-                                                    onChange={handleInput}
-                                                    className="create-treatment-input"
-                                                    placeholder="Title"
-                                                  />
-                                                  <input
-                                                    type="text"
-                                                    value={todoInput}
-                                                    onChange={handleInput}
-                                                    className="create-treatment-input"
-                                                    placeholder="example text"
-                                                  />
-                                                  <input
-                                                    type="text"
-                                                    value={todoInput}
-                                                    onChange={handleInput}
-                                                    className="create-treatment-input"
-                                                    placeholder="example text"
-                                                  />
-                                                  <input
-                                                    type="text"
-                                                    value={todoInput}
-                                                    onChange={handleInput}
-                                                    className="create-treatment-input"
-                                                    placeholder="example text"
-                                                  />
-                                                  <button type="submit" className="btn-primary">
-                                                  Create Treatment
-                                                  </button>
+                              <div className="form-group">
+                              <label className="form-input-label">Title</label>
+                                  <input
+                                    type="text"
+                                    defaultValue={todoInput}
+                                    className="form-input-block"
+                                    placeholder="Enter Treatment Title Here..."
+                                  />
+                              </div>
+                              <div className="form-group">
+                                <label className="form-input-label">Description:</label>
+                                <textarea
+                                  type="text"
+                                  defaultValue={todoInput}
+                                  rows="4"
+                                  cols="80"
+                                  className="form-input-block"
+                                  placeholder="Enter Treatment Description Here..."
+                                />
+                              </div>
+                              <div className="form-group">
+
+
+                              </div>
+
+                              <div>
+                              <label className="col-form-label-lg">Recurring?</label>
+                              <input type="checkbox" style={{"margin-left":"10px"}}/>
+                              </div>
                             </form>
+                            <button type="submit" className="btn-primary" >
+                                Create Treatment
+                            </button>
+                            
 
                             {
                                 /*
