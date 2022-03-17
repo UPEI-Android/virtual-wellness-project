@@ -87,11 +87,6 @@
     </main>
 </div>
 
-
-
-
-
-
 <div id="userProf"></div>
 
 </body>

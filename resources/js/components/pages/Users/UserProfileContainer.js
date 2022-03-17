@@ -9,7 +9,6 @@ function UserProfileContainer({ userData, getUser}){
         getUser()
     },[])
 
-   const state = store.getState()
     return userData.loading?(
         <h2>Loading</h2>
     ): userData.error? (
@@ -102,6 +101,4 @@ const mapDispatchToProps = dispatch =>{
         getUser: () => dispatch(getUser())
     }
 }
-
-
 export default connect(mapStateToProps,mapDispatchToProps)(UserProfileContainer)

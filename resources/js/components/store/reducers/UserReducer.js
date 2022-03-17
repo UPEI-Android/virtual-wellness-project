@@ -1,5 +1,12 @@
 
-import {SHOW_USER, SHOW_USER_FAILURE, SHOW_USER_SUCCESS} from "../actionTypes/UserTypes";
+import {SHOW_USER,
+    SHOW_USER_FAILURE,
+    SHOW_USER_SUCCESS,
+    EDIT_USERS,
+    EDIT_USERS_SUCCESS,
+    EDIT_USERS_FAILURE,
+} from "../actionTypes/UserTypes";
+
 const initialState = {
     loading: false,
     users: '',
@@ -27,6 +34,24 @@ export default function UserReducer (state=initialState,action)
                 users:[],
                 error: action.payload
         }
+
+        case EDIT_USERS:
+            return{
+                ...state,
+                loading:true
+            }
+        case EDIT_USERS_SUCCESS:
+            return{
+                loading:false,
+                users:[],
+                error:''
+            }
+        case EDIT_USERS_FAILURE:
+            return{
+                loading:false,
+                users:[],
+                error: action.payload
+            }
 
         default:
             return state;
