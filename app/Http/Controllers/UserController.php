@@ -131,14 +131,14 @@ class UserController extends Controller
 
             return response()->json([
                 'status'=> 200,
-                'message'=>'Student Updated Successfully',
+                'message'=>'User Updated Successfully',
             ]);
         }
         else
         {
             return response()->json([
                 'status'=> 404,
-                'message' => 'No Student ID Found',
+                'message' => 'No User ID Found',
             ]);
         }
     }
