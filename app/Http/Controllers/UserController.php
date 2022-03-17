@@ -40,14 +40,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->all();
-        $users = User::create($input);
-        return response()->json($users);
+        //$input = $request->all();
+        //$users = User::create($input);
+        //return response()->json($users);
 
         //if(!auth("api")->user()->is_admin) {
           //  return response()->json(['message' => 'Unauthorized'], 500);
         //}
-        /*
+        
         $this->validate($request, [
             'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -62,7 +62,7 @@ class UserController extends Controller
         }
         $user->save();
         return response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-        */
+        
     }
 
     /**
