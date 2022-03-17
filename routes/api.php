@@ -20,8 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register', [\App\Http\App\Http\Controllers\UserController::class,'store']);
-
 Route::get('/userprofile/{id}', [\App\Http\Controllers\UserController::class,'getUser']) ->name('user.getUser');;
 
 Route::apiResource('treatments', TreatmentController::class);

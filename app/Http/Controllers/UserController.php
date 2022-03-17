@@ -35,7 +35,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return JsonResponse
+     * @return //JsonResponse
      */
     public function store(Request $request)
     {
@@ -60,8 +60,8 @@ class UserController extends Controller
         if($request->has('is_admin') && $request->is_admin == 1) {
             $user->is_admin = 1;
         }
-        $user->save();
-        return $user; //response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
+        //$user->save();
+        return $user; //$response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
         
     }
 
@@ -109,7 +109,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return JsonResponse
+     * @return \App\Models\User
      */
     public function update(Request $request, int $id): JsonResponse
     {
