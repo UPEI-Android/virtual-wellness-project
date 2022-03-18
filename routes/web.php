@@ -34,7 +34,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
-/*
+
 Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
@@ -52,4 +52,4 @@ Route::get('/createTreatment', function () {
 Auth::routes();
 
 Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
-*/
+

@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->apiResource('profile', UserController::class);
+//Route::middleware('auth:sanctum')->apiResource('profile', UserController::class);
 
 Route::middleware('auth:sanctum')->apiResource('treatments', TreatmentController::class);
 
