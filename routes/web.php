@@ -20,28 +20,34 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/login', function () {
+    
     return view('/auth/login');
 });
 Auth::routes();
 
-Route::post('/register', [\App\Http\App\Http\Controllers\RegisterController::class,'create']);
+Route::post('/login');
+Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
+Route::post('/register', 
+[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth:sanctum');
 //redirects to login if not authenticated
 
-Route::get('/treatments', function () {
+Route::middlware('auth:sanctum')->get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
 Auth::routes();
 
-Route::get('/treatment', function () {
+Route::middleware('auth:sanctum')->get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
 });
 Auth::routes();
 
-Route::get('/createTreatment', function () {
+Route::middleware('auth:sanctum')->get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 Auth::routes();
 
-Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
+Route::middleware('auth:sanctum')->get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
