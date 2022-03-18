@@ -26,28 +26,27 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::post('/login');
-Auth::routes();
 
 Route::post('/register', 
 [\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth:sanctum');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
-Route::middlware('auth:sanctum')->get('/treatments', function () {
+Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
 Auth::routes();
 
-Route::middleware('auth:sanctum')->get('/treatment', function () {
+Route::get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
 });
 Auth::routes();
 
-Route::middleware('auth:sanctum')->get('/createTreatment', function () {
+Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 Auth::routes();
 
-Route::middleware('auth:sanctum')->get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
