@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RecurringType extends Model
+class Rule extends Model
 {
     use HasFactory;
 
-    public function recurring_pattern() {
+    protected $guarded = [];
 
-        return $this->hasMany(RecurringType::class);
-
-    }
-
+    protected $casts = [
+        'day_of_week' => 'array'
+    ];
 }
