@@ -44,4 +44,4 @@ Route::get('/createTreatment', function () {
 });
 Auth::routes();
 
-Route::get('/profile/{id}', [App\Http\App\Controllers\UserController::class, 'show']);
+Route::get('/profile/{id}', [App\Http\App\Controllers\Auth\UserController::class, 'show']);
