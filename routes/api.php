@@ -20,22 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::middleware('auth:sanctum')->get('/profile/{id}', [\App\Http\Controllers\UserController::class,'getUser']) ->name('user.getUser');;
-
-Route::middleware('auth:sanctum')->get('/treatments', function () {
-    return view('/treatmentViews/indexOfTreatments');
-});
-
-Route::middleware('auth:sanctum')->get('/treatment', function () {
-    return view('/treatmentViews/showTreatment');
-});
-
-Route::middleware('auth:sanctum')->get('/createTreatment', function () {
-    return view('/treatmentViews/createTreatment');
-});
-
 Route::middleware('auth:sanctum')->apiResource('treatments', TreatmentController::class);
 
 Route::middleware('auth:sanctum')->apiResource('treatments.rules', RulesController::class)
