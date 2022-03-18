@@ -11437,22 +11437,6 @@ textarea.form-control-lg {
   font-size: 18px;
 }
 
-.create-treatment-input {
-  display: block;
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.3rem;
-  padding: 6px 8px;
-  font-size: 18px;
-}
-
-.create-treatment-input-label{
-  width: 100%;
-  border: none;
-  padding: 15px;
-  font-size: 18px;
-}
-
 .treatment-item {
   display: flex;
   align-items: center;
@@ -11464,4 +11448,41 @@ textarea.form-control-lg {
 
 .treatment-item:not(:last-child) {
   margin-right: 0.5rem;
+}
+.individual-treatment-form-text {
+  margin-top: 0.25rem;
+  font-size: 1.2em;
+  color: #6c757d;
+}
+
+.individual-treatment-form-control {
+  display: block;
+  width: 100%;
+  padding: 1rem 1rem 1rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  background-color:transparent;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-group{
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+  position: relative;
+}
+.form-input-label {
+  font-size: 1.2rem;
+  display: block;
+}
+.form-input-block{
+  width: 100%;
+  display: block;
+  font-size: 1.2rem;
 }
