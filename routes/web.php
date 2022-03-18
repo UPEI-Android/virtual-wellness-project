@@ -24,6 +24,8 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
+Route::post('/register', [\App\Http\App\Http\Controllers\RegisterController::class,'create']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
@@ -41,3 +43,5 @@ Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 Auth::routes();
+
+Route::get('/profile/{id}', [App\Http\App\Controllers\UserController::class, 'show']);
