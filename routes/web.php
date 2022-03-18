@@ -34,13 +34,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
 
-
+/*
 Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
 Auth::routes();
 
-/*
+
 Route::get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
 });
