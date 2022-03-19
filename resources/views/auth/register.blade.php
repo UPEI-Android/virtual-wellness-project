@@ -14,9 +14,22 @@
                         <div class="row mb-3 justify-content-center" >
 
                             <div class="col-md-6">
-                                <input placeholder= "Name" id="name" type="text" class="form-control @error('name') is-invalid @enderror auth" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input placeholder= "First Name" id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror auth" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-                                @error('name')
+                                @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 justify-content-center" >
+
+                            <div class="col-md-6">
+                                <input placeholder= "Last Name" id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror auth" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+
+                                @error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
