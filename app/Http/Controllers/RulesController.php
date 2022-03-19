@@ -12,15 +12,15 @@ class RulesController extends Controller
     //
     public function index(Treatment $treatment) {
 
-        $rules = Rule::where(['treatment_id' => $treatment->id])->get();
-        return response($rules);
+        $rule = $treatment->rule()->get();
+        return response($rule);
 
     }
 
     public function store(Request $request, Treatment $treatment) {
 
-        $request['treatment_id'] = $treatment->id;
-        $rule = Rule::create($request->all());
+        $rule = $treatment->rule()->create($request->all());
+
         return $rule;
 
     }

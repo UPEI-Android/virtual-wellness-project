@@ -15,7 +15,7 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(  'treatment_id');
+            $table->foreignId(  'treatment_id')->references('id')->on('treatments')->onDelete('cascade');
             $table->string('freq'); // RRULE:freq
             $table->integer('interval')->nullable(); //RRULE:interval
             $table->integer('max_num_of_occurrences')->nullable(); //RRULE:COUNT
