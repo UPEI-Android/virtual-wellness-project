@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rule extends Model
 {
@@ -14,4 +15,12 @@ class Rule extends Model
     protected $casts = [
         'day_of_week' => 'array'
     ];
+
+    public function treatment(): BelongsTo
+    {
+
+
+        return $this->belongsTo(Treatment::class);
+
+    }
 }

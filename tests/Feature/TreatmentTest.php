@@ -83,7 +83,7 @@ class TreatmentTest extends TestCase
 
         $this->postJson(route('treatments.store'))
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['title', 'start_date', 'patient_id']);
+            ->assertJsonValidationErrors(['title', 'start_date']);
 
     }
 
@@ -129,7 +129,7 @@ class TreatmentTest extends TestCase
 
         $this->patchJson(route('treatments.update', $this->treatment->id))
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['title', 'start_date', 'patient_id']);
+            ->assertJsonValidationErrors(['title', 'start_date']);
 
     }
 

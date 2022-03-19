@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 //use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
+//THIS TEST IS DEPRECATED ; WAS ONLY WORKING WITH WEB ROUTES
+// THIS NEEDS TO BE UPDATED LATER WHEN AUTH IS IMPLEMENTED
 class UserTest extends TestCase
 {
 

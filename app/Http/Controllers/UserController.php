@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
 
-        $this->middleware("auth:api");
+        //$this->middleware("auth:api");
     }
 
     /**
