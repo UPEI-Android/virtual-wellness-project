@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use phpDocumentor\Reflection\Types\Void_;
 
 class UserController extends Controller
@@ -45,9 +46,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->all();
-        $users = User::create($input);
-        return response()->json($users);
+        return User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'birthday' => $request['birthday'],
+            'phone'=> $request['phone'],
+            'initial_weight'=>$request['initial_weight']
+
+        ]);
 
         /*if(!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Unauthorized'], 500);
@@ -99,6 +106,16 @@ class UserController extends Controller
     }
 
     /**
+     * @param $then
+     * @return false|string
+     */
+    public function getAge($then) {
+        $then = date('Ymd', strtotime($then));
+        $diff = date('Ymd') - $then;
+        return substr($diff, 0, -4);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -127,6 +144,7 @@ class UserController extends Controller
             $user->treatment = $request->input('treatment');
             $user->email = $request->input('email');
             $user->phone = $request->input('phone');
+            $user->current_weight = $request->input('current_weight');
             $user->update();
 
             return response()->json([
@@ -170,7 +188,4 @@ class UserController extends Controller
     }
 
 
-    public function updateProfile(Request $request)
-    {
-    }
 }
