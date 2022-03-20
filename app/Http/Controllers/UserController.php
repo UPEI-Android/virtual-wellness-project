@@ -126,6 +126,14 @@ class UserController extends Controller
         //
     }
 
+    //strictly used for debugging keeping it here for future use
+    function write_to_console($data) {
+        $console = $data;
+        if (is_array($console))
+            $console = implode(',', $console);
+
+        echo "<script>console.log('Console: " . $console . "' );</script>";
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -137,14 +145,26 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
+
         if($user)
         {
+            if($request->state['name'] ==null ){
+                $this->write_to_console($request->state['name']);
+            }
+            else{
+                $user->name =  $request->state['name'];
+            }
+            if($request->state['email'] == null){
+                $this->write_to_console($request->state['email']);
+            }
+            else{
+                $user->email =  $request->state['email'];
+            }
 
-            $user->name = $request->input('name');
-            $user->treatment = $request->input('treatment');
-            $user->email = $request->input('email');
-            $user->phone = $request->input('phone');
-            $user->current_weight = $request->input('current_weight');
+            $user->treatment_group = $request->state['treatment_group'];
+            $user->phone = $request->state['phone'];
+            $user->current_weight = $request->state['current_weight'];
+            $user->birthday = $request->state['birthday'];
             $user->update();
 
             return response()->json([

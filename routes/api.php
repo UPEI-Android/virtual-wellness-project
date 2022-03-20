@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/userprofile/{id}', [UserController::class,'getUser']) ->name('user.getUser');
-Route::post('/userprofile/',[UserController::class,'update'])->name('user.update');
+Route::put('/userprofile/{id}',[UserController::class,'update'])->name('user.update');
 Route::get('/treatments', [TreatmentController::class,'index'])->name('treatments.index');
 Route::get('/treatments/create', [TreatmentController::class,'create']);
 Route::post('/treatments', [TreatmentController::class,'store']);

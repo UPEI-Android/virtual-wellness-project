@@ -1,10 +1,11 @@
 
-import {SHOW_USER,
+import {
+    SHOW_USER,
     SHOW_USER_FAILURE,
     SHOW_USER_SUCCESS,
     EDIT_USERS,
     EDIT_USERS_SUCCESS,
-    EDIT_USERS_FAILURE,
+    EDIT_USERS_FAILURE, DELETE_USERS_FAILURE, DELETE_USERS_SUCCESS, DELETE_USERS,
 } from "../actionTypes/UserTypes";
 
 const initialState = {
@@ -36,6 +37,7 @@ export default function UserReducer (state=initialState,action)
         }
 
         case EDIT_USERS:
+
             return{
                 ...state,
                 loading:true
@@ -43,7 +45,7 @@ export default function UserReducer (state=initialState,action)
         case EDIT_USERS_SUCCESS:
             return{
                 loading:false,
-                users:[],
+                users:action.payload,
                 error:''
             }
         case EDIT_USERS_FAILURE:
@@ -51,6 +53,25 @@ export default function UserReducer (state=initialState,action)
                 loading:false,
                 users:[],
                 error: action.payload
+            }
+        case DELETE_USERS:
+
+            return{
+                ...state,
+                loading:true
+            }
+
+        case DELETE_USERS_SUCCESS:
+            return {
+                loading: false,
+                users: action.payload,
+                error: ''
+            }
+        case DELETE_USERS_FAILURE:
+            return{
+                loading:false,
+                users:[],
+                error:action.payload
             }
 
         default:

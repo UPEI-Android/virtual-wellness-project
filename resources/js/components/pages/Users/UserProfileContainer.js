@@ -1,13 +1,22 @@
 import React, { useEffect} from 'react';
 import store from '../../store/store'
 import {connect} from 'react-redux';
-import {getUser} from '../../store/actions/UserActions'
+import {getUser,saveUserData} from '../../store/actions/UserActions'
+import axios from "axios";
 
+function handleSubmit()
+{
+//doesn't truly function yet. used to fake a submit for spoofed redux action call
+    saveUserData();
+    console.log(store.getState().user.users);
+}
 
-function UserProfileContainer({ userData, getUser}){
+function UserProfileContainer({ userData, getUser, saveUserData}){
     useEffect(()=>{
+        saveUserData()
         getUser()
     },[])
+
 
     return userData.loading?(
         <h2>Loading</h2>
@@ -21,6 +30,7 @@ function UserProfileContainer({ userData, getUser}){
             <div className="row">
                 <div className="col-lg-4">
                     <div className="card shadow-sm">
+                        <input type="submit" className="btn" onClick={handleSubmit} value="Submit"/>
                         <div className="card-header bg-transparent text-center">
                             <h3>{userData.users.name}</h3>
                         </div>
@@ -98,7 +108,9 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getUser: () => dispatch(getUser())
+        getUser: () => dispatch(getUser()),
+        saveUserData: () => dispatch(saveUserData(store.getState().user.users))
+
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(UserProfileContainer)
