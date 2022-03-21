@@ -53,6 +53,12 @@ Route::get('/createTreatment', function () {
 });
 Auth::routes();
 
+Route::get('send-mail',function(){
+
+    \Mail::to('jqu2@upei.ca')->send(new \App\Mail\MyTestMail());
+    dd("Email is Sent.");
+});
+
   //commenting this out due to merge conflicts (seeing if jared's routes work)
 /**
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
