@@ -19,8 +19,15 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
+    
     return view('/auth/login');
 });
+Auth::routes();
+
+Route::post('/login');
+
+Route::post('/register', 
+[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
@@ -34,6 +41,7 @@ Route::get('/treatments', function () {
 //Route::get('/userprofile/{id}', [UserController::class,'show']);
 
 
+
 Route::get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
 });
@@ -41,3 +49,10 @@ Route::get('/treatment', function () {
 Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
+<<<<<<< HEAD
+=======
+Auth::routes();
+
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
+
+>>>>>>> 4e8c070bf80b860fbf93d943099d62fc22874493
