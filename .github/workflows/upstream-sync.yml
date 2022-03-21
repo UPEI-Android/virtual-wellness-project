@@ -1,2 +1,0 @@
-- name: Upstream Sync
-  uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
