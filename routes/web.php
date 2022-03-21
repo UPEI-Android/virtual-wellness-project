@@ -20,19 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/login', function () {
+    
     return view('/auth/login');
 });
 Auth::routes();
-Route::get('/profile/{id}', [UserController::class,'show']);
 
-//creates user
-#Route::post('/register', [RegisterController::class,'create']);
-Route::get('/register', function () {
-    return view('/register');
-});
+Route::post('/login');
+
+Route::post('/register', 
+[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
-Route::post('/register', [RegisterController::class, 'create']);
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 //redirects to login if not authenticated
@@ -42,6 +39,7 @@ Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
 Auth::routes();
+
 
 Route::get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
@@ -53,11 +51,5 @@ Route::get('/createTreatment', function () {
 });
 Auth::routes();
 
-  //commenting this out due to merge conflicts (seeing if jared's routes work)
-/**
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
+Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
 
-Route::get('/treatments', [TreatmentController::class,'index']);
-Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
-Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
-**/

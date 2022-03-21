@@ -35,18 +35,19 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return JsonResponse
+     * @return //JsonResponse
      */
     public function store(Request $request)
     {
 
-        $input = $request->all();
-        $users = User::create($input);
-        return response()->json($users);
+        //$input = $request->all();
+        //$users = User::create($input);
+        //return response()->json($users);
 
-        /*if(!auth("api")->user()->is_admin) {
-            return response()->json(['message' => 'Unauthorized'], 500);
-        }
+        //if(!auth("api")->user()->is_admin) {
+          //  return response()->json(['message' => 'Unauthorized'], 500);
+        //}
+        
         $this->validate($request, [
             'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -59,10 +60,9 @@ class UserController extends Controller
         if($request->has('is_admin') && $request->is_admin == 1) {
             $user->is_admin = 1;
         }
-        $user->save();
-        return response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-*/
-
+        //$user->save();
+        return $user; //$response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
+        
     }
 
     /**
@@ -109,7 +109,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return JsonResponse
+     * @return \App\Models\User
      */
     public function update(Request $request, int $id): JsonResponse
     {
