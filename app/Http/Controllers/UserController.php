@@ -136,7 +136,7 @@ class UserController extends Controller
     }
     /**
      * Update the specified resource in storage.
-     *
+     *a full state must be passed in, otherwise null values will overwrite stored values
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return JsonResponse
