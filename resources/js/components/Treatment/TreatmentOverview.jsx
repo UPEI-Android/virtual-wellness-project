@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import useFetch from '../../hooks/useFetch';
 import NoTreaments from './NoTreatments';
 import TreatmentList from './TreatmentList';
 import TreatmentForm from './TreatmentForm';
 
 export default function TreatmentOverview(props) {
+
+  const{data: treatments, isLoading} = useFetch('http://127.0.0.1:8000/api/treatments')
+
   const [todos, setTodos] = useState([
     {
     id: 1,
@@ -15,6 +19,7 @@ export default function TreatmentOverview(props) {
     },
     
   ]);
+
   const[idForTodo, setidForTodo] = useState(2);
 
   function addTodo(todo){
@@ -83,6 +88,7 @@ export default function TreatmentOverview(props) {
   function remaining(){
     return todos.filter(todo => !todo.isComplete).length;
   }
+
   function todosFiltered(filter){
     if (filter === 'all') {
       return todos;
@@ -106,7 +112,17 @@ export default function TreatmentOverview(props) {
                 <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
                 */
                 }
+                <ul>
+                {treatments.map(treatment => (
+                  <li key={treatment.id}>
+                    {treatment.title}
+                  </li>
+                ))}
+                </ul>
+                {/*
                 { todos.length > 0 ? (
+
+                  
                   <TreatmentList 
                     todos={todos}
                     completeTodo={completeTodo}
@@ -117,9 +133,12 @@ export default function TreatmentOverview(props) {
                     remaining={remaining}
                     todosFiltered={todosFiltered}
                     />
+                    
                 ) : (
                   <NoTreaments />
                 ) }
+                */
+              }
                 
               </div>
             </div>
