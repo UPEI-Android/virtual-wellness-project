@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="treatment"></div>
+    <div id="edituserpro"></div>
 
 
 @endsection

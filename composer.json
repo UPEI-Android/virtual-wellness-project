@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "predis/predis": "^1.1",
-        "rlanvin/php-rrule": "^2.3"
+        "rlanvin/php-rrule": "^2.3",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

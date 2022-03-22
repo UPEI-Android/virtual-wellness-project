@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use phpDocumentor\Reflection\Types\Void_;
 
 class UserController extends Controller
-//all of the commented out code is non-functional currently, no worries about deleting
+
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = User::all();
+        return response()->json([
+            'status'=> 200,
+            'users'=>$users,
+        ]);
 
     }
 
@@ -40,13 +46,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        //$input = $request->all();
-        //$users = User::create($input);
-        //return response()->json($users);
+        return User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'birthday' => $request['birthday'],
+            'phone'=> $request['phone'],
+            'initial_weight'=>$request['initial_weight']
 
-        //if(!auth("api")->user()->is_admin) {
-          //  return response()->json(['message' => 'Unauthorized'], 500);
-        //}
+        ]);
+
+        /*if(!auth("api")->user()->is_admin) {
+            return response()->json(['message' => 'Unauthorized'], 500);
+        }
         
         $this->validate($request, [
             'name' => 'required|unique:users',
@@ -62,7 +74,7 @@ class UserController extends Controller
         }
         //$user->save();
         return $user; //$response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-        
+        */
     }
 
     /**
@@ -94,6 +106,16 @@ class UserController extends Controller
     }
 
     /**
+     * @param $then
+     * @return false|string
+     */
+    public function getAge($then) {
+        $then = date('Ymd', strtotime($then));
+        $diff = date('Ymd') - $then;
+        return substr($diff, 0, -4);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -104,9 +126,17 @@ class UserController extends Controller
         //
     }
 
+    //strictly used for debugging keeping it here for future use
+    function write_to_console($data) {
+        $console = $data;
+        if (is_array($console))
+            $console = implode(',', $console);
+
+        echo "<script>console.log('Console: " . $console . "' );</script>";
+    }
     /**
      * Update the specified resource in storage.
-     *
+     *a full state must be passed in, otherwise null values will overwrite stored values
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \App\Models\User
@@ -114,54 +144,68 @@ class UserController extends Controller
     public function update(Request $request, int $id): JsonResponse
     {
 
-        if(!auth("api")->user()->is_admin) {
-            return response()->json(['message' => 'Unauthorized'], 500);
-        }
-        $user = User::findOrFail($id);
-        $this->validate($request, [
-            'name' => 'required|unique:users,name,'.$user->id,
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => ($request->password!=''?'min:6':''),
-        ]);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if($request->has('password') && !empty($request->password)) {
-            $user->password = bcrypt($request->password);
-        }
-        if($request->has('is_admin') && $request->is_admin == 1) {
-            $user->is_admin = 1;
-        } else {
-            $user->is_admin = 0;
-        }
-        $user->save();
-        return response()->json(['data' => $user, 'message' => 'Updated successfully'], 200);
+        $user = User::find($id);
 
+        if($user)
+        {
+            if($request->state['name'] ==null ){
+                $this->write_to_console($request->state['name']);
+            }
+            else{
+                $user->name =  $request->state['name'];
+            }
+            if($request->state['email'] == null){
+                $this->write_to_console($request->state['email']);
+            }
+            else{
+                $user->email =  $request->state['email'];
+            }
+
+            $user->treatment_group = $request->state['treatment_group'];
+            $user->phone = $request->state['phone'];
+            $user->current_weight = $request->state['current_weight'];
+            $user->birthday = $request->state['birthday'];
+            $user->update();
+
+            return response()->json([
+                'status'=> 200,
+                'message'=>'User Updated Successfully',
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'status'=> 404,
+                'message' => 'No User ID Found',
+            ]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        if($user)
+        {
+            $user->delete();
+            return response()->json([
+                'status'=> 200,
+                'message'=>'Student Deleted Successfully',
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'status'=> 404,
+                'message' => 'No Student ID Found',
+            ]);
+        }
     }
 
-    public function updateProfile(Request $request)
-    {
-        /*$user = auth("api")->user();
-        $this->validate($request, [
-            'name' => 'required|unique:users,name,'.$user->id,
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => ($request->password!=''?'min:6':''),
-        ]);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if($request->has('password') && !empty($request->password)) {
-            $user->password = bcrypt($request->password);
-        }
-        $user->save();
-        return response()->json(['data' => $user, 'message' => 'Profile updated successfully'], 200);*/
-    }
+
 }

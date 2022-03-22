@@ -2,6 +2,7 @@
 
 @section('content')
 
-    <div id="treatment-form"></div>
+    <div id="list"></div>
+
 
 @endsection

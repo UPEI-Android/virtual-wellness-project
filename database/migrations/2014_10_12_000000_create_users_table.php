@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('last_login_ip')->nullable();
             $table->foreignId('treatment_group')->nullable();
             $table->foreignId('account_creator_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->integer('initial_weight')->nullable();
+            $table->integer('current_weight')->nullable();
             $table->timestamps();
         });
     }
