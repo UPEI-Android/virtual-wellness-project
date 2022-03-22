@@ -55,8 +55,13 @@ Auth::routes();
 
 Route::get('send-mail',function(){
 
-    \Mail::to('jqu2@upei.ca')->send(new \App\Mail\MyTestMail());
-    dd("Email is Sent.");
+    $user = DB::select('select email from users');
+    for ($x = 0; $x <= sizeof($user); $x++) {
+        $email = $user[$x]->email;
+        Mail::to($email)->queue(new \App\Mail\MyTestMail());
+        echo("Email is Sent to ".$user[0]->email);
+    }
+
 });
 
   //commenting this out due to merge conflicts (seeing if jared's routes work)
