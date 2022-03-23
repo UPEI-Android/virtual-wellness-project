@@ -83,11 +83,8 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(int $id)
+    public function show()
     {
-
-        $user = User::findOrFail($id);
-
         $userid = Auth()->id();
 
         return view('users.userprofile', compact('userid'));
