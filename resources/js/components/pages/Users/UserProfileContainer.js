@@ -4,16 +4,16 @@ import {Provider} from 'react-redux';
 import UserProfile from "./UserProfile";
 
 
-export default function UserProfileContainer() {
+export default function UserProfileContainer(props) {
 
 
     return (
         <Provider store={store}>
-            <UserProfile/>
-
+            <UserProfile userid={props.userid}/>
         </Provider>
     );
 }
 if (document.getElementById('userProf')) {
-    ReactDOM.render(<UserProfileContainer />, document.getElementById('userProf'));
+    let userid = document.getElementById('userProf').getAttribute('userid');
+    ReactDOM.render(<UserProfileContainer userid={userid}/>, document.getElementById('userProf'));
 }

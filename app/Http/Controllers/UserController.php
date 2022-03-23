@@ -59,7 +59,7 @@ class UserController extends Controller
         /*if(!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Unauthorized'], 500);
         }
-        
+
         $this->validate($request, [
             'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -88,7 +88,9 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('users.userprofile', compact('user'));
+        $userid = Auth()->id();
+
+        return view('users.userprofile', compact('userid'));
     }
 
 

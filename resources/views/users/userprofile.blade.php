@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <div id="userProf"></div>
+<div id="userProf" userId="{{$userid}}"></div>
 
 @endsection
