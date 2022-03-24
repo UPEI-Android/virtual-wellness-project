@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
+import useFetch from '../../hooks/useFetch';
 
 export default function TreatmentList(props) {
 
