@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->boolean('is_completed')->default(false);
             $table->integer('parent_id')->nullable();
             $table->timestamps();
 
