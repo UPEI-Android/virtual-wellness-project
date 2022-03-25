@@ -23,8 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->get('/userprofile/{id}', [\App\Http\Controllers\UserController::class,'getUser']) ->name('user.getUser');
 Route::put('/userprofile/{id}',[UserController::class,'update'])->name('user.update');
-Route::middleware('auth:sanctum')->apiResource('treatments', TreatmentController::class);
 
-Route::middleware('auth:sanctum')->apiResource('treatments.rules', RulesController::class)
-    ->except('show')
-    ->shallow();
+
+Route::middleware('auth:sanctum')->group(function() {
+
+    Route::apiResource('treatments', TreatmentController::class);
+
+    Route::apiResource('treatments.rules', RulesController::class)
+        ->except('show')
+        ->shallow();
+});
