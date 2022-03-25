@@ -1,12 +1,18 @@
 
-import User from '../../../apis/User';
 import axios from "axios";
-import {SHOW_USER, SHOW_USER_FAILURE, SHOW_USER_SUCCESS} from "../actionTypes/UserTypes";
+import {
+    SHOW_USER,
+    SHOW_USER_FAILURE,
+    SHOW_USER_SUCCESS,
+    EDIT_USERS,
+    EDIT_USERS_SUCCESS,
+    EDIT_USERS_FAILURE, DELETE_USERS, DELETE_USERS_SUCCESS, DELETE_USERS_FAILURE,
+} from "../actionTypes/UserTypes";
 /**
  * set user defaults
  */
-
-export const getOne = () => {
+//GETTING ONE USER
+export const getUser = () => {
     return (dispatch) => {
         dispatch(fetchUsersRequest)
         axios.get('/api/userprofile/1/')
@@ -21,24 +27,6 @@ export const getOne = () => {
     }
 
 }
-    // try {
-    //     const res = await axios.get('/api/userprofile/1/');
-    //     dispatch({
-    //         type:SHOW_USER,
-    //         payload:res.data
-    //
-    //     })
-    // }catch(error){
-    //     dispatch({
-    //         type:SHOW_USER_FAILURE,
-    //         payload:{
-    //             msg:error.response.statusText,
-    //             status:error.response.status
-    //         }
-    //     })
-    //
-    // }
-
 export const fetchUsersRequest = () => {
     return{
         type:SHOW_USER
@@ -54,6 +42,86 @@ const fetchUserSuccess = users => {
 const fetchUserFailure = error => {
     return {
         type:SHOW_USER_FAILURE,
+        payload:error
+    }
+}
+
+//saving data from user profile
+
+export const saveUserData = state => {
+
+  /*  state = {
+        "name":"jared",
+        "current_weight":"65",
+        "phone":"9028675309"
+    }*/
+    return (dispatch) => {
+        dispatch(saveUserRequest)
+        //state variable must be properly formatted json object containing user
+        axios.put('/api/userprofile/1/', { state
+        })
+            .then(response =>{
+                dispatch(saveUserSuccess(response))
+            })
+            .catch(error =>{
+                const errorMsg = error.message
+                dispatch(saveUserFailure(errorMsg))
+            })
+    }
+}
+const saveUserRequest = () => {
+        return{
+            type:EDIT_USERS
+        }
+
+}
+const saveUserSuccess = response => {
+    return{
+
+        type:EDIT_USERS_SUCCESS,
+        payload: response
+    }
+}
+const saveUserFailure = error => {
+    return {
+        type:EDIT_USERS_FAILURE,
+        payload:error
+    }
+}
+//delete user
+export const deleteUser = () =>{
+    return (dispatch) => {
+        dispatch(deleteUserRequest)
+        axios.delete('/api/userprofile/1/')
+            .then(response =>{
+
+                dispatch(deleteUserSuccess(response))
+
+            })
+            .catch(error =>{
+                const errorMsg = error.message
+
+                dispatch(deleteUserFailure(errorMsg))
+            })
+    }
+
+}
+
+const deleteUserRequest = () => {
+    return{
+        type:DELETE_USERS
+    }
+}
+const deleteUserSuccess = response => {
+    return{
+
+        type:DELETE_USERS_SUCCESS,
+        payload: response
+    }
+}
+const deleteUserFailure = error => {
+    return {
+        type:DELETE_USERS_FAILURE,
         payload:error
     }
 }

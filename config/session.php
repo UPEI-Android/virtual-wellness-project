@@ -4,6 +4,10 @@ use Illuminate\Support\Str;
 
 return [
 
+    //Nikki: This ensures Sanctum actually works actoss all subdomains
+
+    'domain' => '.domain.com',
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver

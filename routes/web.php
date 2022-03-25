@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +21,15 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
+    
     return view('/auth/login');
 });
+Auth::routes();
+
+Route::post('/login');
+
+Route::post('/register', 
+[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
@@ -32,6 +41,7 @@ Route::get('/treatments', function () {
 });
 
 //Route::get('/userprofile/{id}', [UserController::class,'show']);
+
 
 
 Route::get('/treatment', function () {

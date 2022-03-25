@@ -26,7 +26,8 @@ class TreatmentController extends Controller
 
         //return TreatmentResource::collection($treatments);
 
-        return response(Treatment::all());
+        $treatments = auth()->user()->treatments;
+        return response($treatments);
     }
 
     /**
@@ -48,7 +49,9 @@ class TreatmentController extends Controller
     public function store(TreatmentRequest $request)
     {
         //
-        return Treatment::create($request->all());
+        return auth()->user()
+            ->treatments()
+            ->create($request->validated());
 
     }
 
