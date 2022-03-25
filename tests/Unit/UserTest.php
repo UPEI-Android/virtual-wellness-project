@@ -2,50 +2,48 @@
 
 namespace Tests\Unit;
 
+use App\Models\Treatment;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-//use PHPUnit\Framework\TestCase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
-//THIS TEST IS DEPRECATED ; WAS ONLY WORKING WITH WEB ROUTES
-// THIS NEEDS TO BE UPDATED LATER WHEN AUTH IS IMPLEMENTED
 class UserTest extends TestCase
 {
 
     use RefreshDatabase;
-    /**
-     * @test
-     */
-    public function a_default_user_is_not_an_admin() {
 
+    public function setUp():void{
+
+        parent::setUp();
         $user = User::factory()->create();
-
-        $this->assertFalse($user->isAdmin());
+        Sanctum::actingAs($user);
+        $this->treatment = $this->createTreatment([
+            'title' => 'Insulin',
+            'patient_id' => $user->id
+        ]);
 
     }
 
+    public function createTreatment($args = []) {
+
+        return Treatment::factory()->create($args);
+
+    }
     /**
+     *
+     *
      * @test
      */
-    public function an_admin_user_is_an_admin()
+    public function test_user_has_many_treatments()
     {
-        $admin = User::factory()
-            ->adminVerified('admin')
-            ->create();
-
-        $this->assertTrue($admin->isAdmin());
-    }
-
-    /**
-     * @test
-     */
-    public function a_user_has_treatments() {
-
-        $this->withoutExceptionHandling();
 
         $user = User::factory()->create();
+        Sanctum::actingAs($user);
+        $treatments = $this->createTreatment([
+            'patient_id' => $user->id
+        ]);
 
-        $this->assertInstanceOf(Collection::class, $user->treatments);
+        $this->assertInstanceOf(Treatment::class, $user->treatments->first());
     }
 }
