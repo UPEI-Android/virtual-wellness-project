@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="list"></div>
+    <div id="treatment-overview"></div>
 
 
 @endsection
