@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->group(function() {
         ->shallow();
 
 });
+
 /*
 Route::get('/treatments', [TreatmentController::class,'index']);
 Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
