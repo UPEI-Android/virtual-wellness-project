@@ -5282,15 +5282,15 @@ __webpack_require__(/*! ./components/Treatment/TreatmentOverview */ "./resources
 
 __webpack_require__(/*! ./components/Treatment/TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
 
-__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Treatment/NoTreatments'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(/*! ./components/Treatment/NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 
 __webpack_require__(/*! ./components/Treatment/TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
 
-__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Treatment/TreatmentFilters'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(/*! ./components/Treatment/TreatmentFilters */ "./resources/js/components/Treatment/TreatmentFilters.jsx");
 
 __webpack_require__(/*! ./components/Treatment/Treatment */ "./resources/js/components/Treatment/Treatment.jsx");
 
-__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Treatment/CreateTreatment'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(/*! ./components/Treatment/CreateTreatment */ "./resources/js/components/Treatment/CreateTreatment.jsx");
 
 /***/ }),
 
@@ -5546,6 +5546,76 @@ if (document.getElementById('sidebarnav')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Treatment/CreateTreatment.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Treatment/CreateTreatment.jsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CreateTreatment)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _TreatmentForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+function CreateTreatment(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "container background",
+    style: {
+      "padding-top": "5%"
+    },
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "row justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "col-md-8",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "card",
+          style: {
+            "padding": "60px"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "card-header",
+            children: "New Treatment"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TreatmentForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+        })
+      })
+    })
+  });
+}
+
+if (document.getElementById('create-treatment')) {
+  var element = document.getElementById('create-treatment');
+  var props = Object.assign({}, element.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(CreateTreatment, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/NoTreatments.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Treatment/NoTreatments.jsx ***!
+  \************************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Treatment/Treatment.jsx":
 /*!*********************************************************!*\
   !*** ./resources/js/components/Treatment/Treatment.jsx ***!
@@ -5622,6 +5692,61 @@ if (document.getElementById('treatment')) {
   var element = document.getElementById('treatment');
   var props = Object.assign({}, element.dataset);
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Treatment, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentFilters.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentFilters.jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentFilters)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function TreatmentFilters(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "btn-group",
+    style: {
+      "vertical-align": "middle"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('all');
+        props.todosFiltered('all');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'all' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "All"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('active');
+        props.todosFiltered('active');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'active' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "Active"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('completed');
+        props.todosFiltered('completed');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'completed' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "Completed"
+    })]
+  });
 }
 
 /***/ }),
@@ -5797,7 +5922,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ TreatmentList)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './TreatmentFilters'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TreatmentFilters */ "./resources/js/components/Treatment/TreatmentFilters.jsx");
 /* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./resources/js/hooks/useFetch.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -5826,7 +5951,7 @@ function TreatmentList(props) {
       setFilter = _useState2[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Object(function webpackMissingModule() { var e = new Error("Cannot find module './TreatmentFilters'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__["default"], {
       todosFiltered: props.todosFiltered,
       filter: filter,
       setFilter: setFilter
@@ -5919,7 +6044,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./resources/js/hooks/useFetch.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './NoTreatments'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
+/* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_NoTreatments__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _TreatmentList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
 /* harmony import */ var _TreatmentForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
