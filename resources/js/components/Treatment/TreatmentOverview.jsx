@@ -1,27 +1,18 @@
-import { useState } from 'react';
-import React from 'react';
+import React,{ useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import useFetch from '../../hooks/useFetch';
+import {connect} from 'react-redux';
+
 import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
 import TreatmentForm from './TreatmentForm';
+import {getTreatment} from '../store/actions/TreatmentActions'
 
-export default function TreatmentOverview(props) {
+function TreatmentOverview({treatmentsData, getTreatment}) {
 
-  const{data: treatments, isLoading} = useFetch('http://127.0.0.1:8000/api/treatments')
-
-  const [todos, setTodos] = useState([
-    {
-    id: 1,
-    title: 'Your Example Treatment',
-    isComplete: false,
-    isEditing: false,
-    },
-    
-  ]);
-
-  const[idForTodo, setidForTodo] = useState(2);
-
+  useEffect(()=>{
+    getTreatment()
+  },[])
+         
   function addTodo(todo){
 
     setTodos([... todos,
@@ -112,16 +103,17 @@ export default function TreatmentOverview(props) {
                 <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
                 */
                 }
-                <ul>
-                  {
-                    /*
-                {treatments.map(treatment => (
-                  <li key={treatment.id}>
-                    {treatment.title}
-                  </li>
-                ))}
-                */
-                }
+                
+                  {/*
+                  {treatmentList.length > 0 ? (
+                      <ul>{treatmentList}</ul>
+                  ) : (
+                    <NoTreatments />
+                  ) }
+                  */}
+                 <h2> { treatmentsData.error }</h2>
+
+                {/*
                 { todos.length > 0 ? (
                     <TreatmentList 
                       todos={todos}
@@ -136,20 +128,26 @@ export default function TreatmentOverview(props) {
                   ) : (
                     <NoTreatments />
                   ) }
-                  </ul>
+                  */}
               </div>
             </div>
           </div>
-          {
-          /*
-          <p > { props.test } </p>
-          */
-          }
-
         </div>
         
-    );
+    )
+}
+const mapStateToProps = state => {
+  return {
+      treatmentsData: state.treatments
   }
+}
+const mapDispatchToProps = dispatch =>{
+    return {
+        getTreatment: () => dispatch(getTreatment())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TreatmentOverview)
+
 
 if (document.getElementById('treatment-overview')) {
     const element = document.getElementById('treatment-overview')

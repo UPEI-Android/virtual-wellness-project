@@ -6039,16 +6039,17 @@ function TreatmentList(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TreatmentOverview)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./resources/js/hooks/useFetch.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 /* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_NoTreatments__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _TreatmentList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
 /* harmony import */ var _TreatmentForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -6059,21 +6060,14 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -6084,25 +6078,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TreatmentOverview(props) {
-  var _useFetch = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"])('http://127.0.0.1:8000/api/treatments'),
-      treatments = _useFetch.data,
-      isLoading = _useFetch.isLoading;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    id: 1,
-    title: 'Your Example Treatment',
-    isComplete: false,
-    isEditing: false
-  }]),
-      _useState2 = _slicedToArray(_useState, 2),
-      todos = _useState2[0],
-      setTodos = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(2),
-      _useState4 = _slicedToArray(_useState3, 2),
-      idForTodo = _useState4[0],
-      setidForTodo = _useState4[1];
+function TreatmentOverview(_ref) {
+  var treatmentsData = _ref.treatmentsData,
+      getTreatment = _ref.getTreatment;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getTreatment();
+  }, []);
 
   function addTodo(todo) {
     setTodos([].concat(_toConsumableArray(todos), [{
@@ -6191,41 +6172,32 @@ function TreatmentOverview(props) {
     }
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "container background",
     style: {
       "padding-top": "2%"
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "col-md-8",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "align-right",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
             href: "/createTreatment",
             className: "btn-primary create-treatment-button",
             children: "CreateTreatment"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "card",
           style: {
             "padding": "60px"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "card-header",
             children: "Your Treatments"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
-            children: todos.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TreatmentList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              todos: todos,
-              completeTodo: completeTodo,
-              markAsEditing: markAsEditing,
-              updateTodo: updateTodo,
-              cancelEdit: cancelEdit,
-              deleteTodo: deleteTodo,
-              remaining: remaining,
-              todosFiltered: todosFiltered
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_NoTreatments__WEBPACK_IMPORTED_MODULE_3___default()), {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h2", {
+            children: [" ", treatmentsData.error]
           })]
         })]
       })
@@ -6233,10 +6205,26 @@ function TreatmentOverview(props) {
   });
 }
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    treatmentsData: state.treatments
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getTreatment: function getTreatment() {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_6__.getTreatment)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(TreatmentOverview));
+
 if (document.getElementById('treatment-overview')) {
   var element = document.getElementById('treatment-overview');
   var props = Object.assign({}, element.dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(TreatmentOverview, _objectSpread({}, props)), element);
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(TreatmentOverview, _objectSpread({}, props)), element);
 }
 
 /***/ }),
@@ -6452,9 +6440,9 @@ if (document.getElementById('userprofintr')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/store/actionTypes/TREATMENTTypes.js":
+/***/ "./resources/js/components/store/actionTypes/TreatmentTypes.js":
 /*!*********************************************************************!*\
-  !*** ./resources/js/components/store/actionTypes/TREATMENTTypes.js ***!
+  !*** ./resources/js/components/store/actionTypes/TreatmentTypes.js ***!
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -6547,6 +6535,98 @@ var SHOW_USER_FAILURE = 'SHOW_USER_FAILURE';
 var HANDLE_USER_CHANGE = 'HANDLE_USER_CHANGE';
 var SET_USER_DEFAULTS = 'SET_USER_DEFAULTS';
 var RESET_USER_FIELDS = 'RESET_USER_FIELDS';
+
+/***/ }),
+
+/***/ "./resources/js/components/store/actions/TreatmentActions.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/store/actions/TreatmentActions.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getTreatment": () => (/* binding */ getTreatment),
+/* harmony export */   "fetchTreatmentsRequest": () => (/* binding */ fetchTreatmentsRequest),
+/* harmony export */   "deleteTreatment": () => (/* binding */ deleteTreatment)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actionTypes/TreatmentTypes */ "./resources/js/components/store/actionTypes/TreatmentTypes.js");
+
+
+/**
+ * set treatment defaults
+ */
+//GETTING ONE USER
+
+var getTreatment = function getTreatment() {
+  return function (dispatch) {
+    dispatch(fetchTreatmentsRequest); //not the correct route
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
+      var treatments = response.data;
+      dispatch(fetchTreatmentSuccess(treatments));
+    })["catch"](function (error) {
+      var errorMsg = error.message;
+      dispatch(fetchTreatmentFailure(errorMsg));
+    });
+  };
+};
+var fetchTreatmentsRequest = function fetchTreatmentsRequest() {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT
+  };
+};
+
+var fetchTreatmentSuccess = function fetchTreatmentSuccess(treatments) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT_SUCCESS,
+    payload: treatments
+  };
+};
+
+var fetchTreatmentFailure = function fetchTreatmentFailure(error) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT_FAILURE,
+    payload: error
+  };
+}; //delete treatment
+
+
+var deleteTreatment = function deleteTreatment() {
+  return function (dispatch) {
+    dispatch(deleteTreatmentRequest); //route is wrong
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/userprofile/1/').then(function (response) {
+      dispatch(deleteTreatmentSuccess(response));
+    })["catch"](function (error) {
+      var errorMsg = error.message;
+      dispatch(deleteTreatmentFailure(errorMsg));
+    });
+  };
+};
+
+var deleteTreatmentRequest = function deleteTreatmentRequest() {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.DELETE_TREATMENTS
+  };
+};
+
+var deleteTreatmentSuccess = function deleteTreatmentSuccess(response) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.DELETE_TREATMENTS_SUCCESS,
+    payload: response
+  };
+};
+
+var deleteTreatmentFailure = function deleteTreatmentFailure(error) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.DELETE_TREATMENTS_FAILURE,
+    payload: error
+  };
+};
 
 /***/ }),
 
@@ -6718,7 +6798,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TreatmentReducer)
 /* harmony export */ });
-/* harmony import */ var _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/TREATMENTTypes */ "./resources/js/components/store/actionTypes/TREATMENTTypes.js");
+/* harmony import */ var _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/TreatmentTypes */ "./resources/js/components/store/actionTypes/TreatmentTypes.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -6736,57 +6816,57 @@ function TreatmentReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: true
       });
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_SUCCESS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_SUCCESS:
       return {
         loading: false,
         treatments: action.payload,
         error: ''
       };
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_FAILURE:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_FAILURE:
       return {
         loading: false,
         treatments: [],
         error: action.payload
       };
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: true
       });
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_SUCCESS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_SUCCESS:
       return {
         loading: false,
         treatments: action.payload,
         error: ''
       };
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_FAILURE:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_FAILURE:
       return {
         loading: false,
         treatments: [],
         error: action.payload
       };
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: true
       });
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_SUCCESS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_SUCCESS:
       return {
         loading: false,
         treatments: action.payload,
         error: ''
       };
 
-    case _actionTypes_TREATMENTTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_FAILURE:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_FAILURE:
       return {
         loading: false,
         treatments: [],
@@ -6963,12 +7043,14 @@ function useFetch(url) {
       setIsLoading(false);
       setData(results);
     });
-    /*
-    .catch(error => {
-        setIsLoading(false);
-        setErrorMessage('There was an error.')
-    })
-    */
+    {
+      /*
+      .catch(error => {
+          setIsLoading(false);
+          setErrorMessage('There was an error.')
+      })
+      */
+    }
   }, [url]);
   return {
     data: data,

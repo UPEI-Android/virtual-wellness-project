@@ -16,7 +16,7 @@ export const getTreatment = () => {
     return (dispatch) => {
         dispatch(fetchTreatmentsRequest)
         //not the correct route
-        axios.get('/api/userprofile/1/')
+        axios.get('/api/treatments')
             .then(response =>{
                 const treatments = response.data
                 dispatch(fetchTreatmentSuccess(treatments))
