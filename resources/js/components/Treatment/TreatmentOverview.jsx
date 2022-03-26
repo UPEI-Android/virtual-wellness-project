@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import useFetch from '../../hooks/useFetch';
-import NoTreaments from './NoTreatments';
+import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
 import TreatmentForm from './TreatmentForm';
 
@@ -113,33 +113,30 @@ export default function TreatmentOverview(props) {
                 */
                 }
                 <ul>
+                  {
+                    /*
                 {treatments.map(treatment => (
                   <li key={treatment.id}>
                     {treatment.title}
                   </li>
                 ))}
-                </ul>
-                {/*
-                { todos.length > 0 ? (
-
-                  
-                  <TreatmentList 
-                    todos={todos}
-                    completeTodo={completeTodo}
-                    markAsEditing={markAsEditing}
-                    updateTodo={updateTodo}
-                    cancelEdit={cancelEdit}
-                    deleteTodo={deleteTodo}
-                    remaining={remaining}
-                    todosFiltered={todosFiltered}
-                    />
-                    
-                ) : (
-                  <NoTreaments />
-                ) }
                 */
-              }
-                
+                }
+                { todos.length > 0 ? (
+                    <TreatmentList 
+                      todos={todos}
+                      completeTodo={completeTodo}
+                      markAsEditing={markAsEditing}
+                      updateTodo={updateTodo}
+                      cancelEdit={cancelEdit}
+                      deleteTodo={deleteTodo}
+                      remaining={remaining}
+                      todosFiltered={todosFiltered}
+                      />
+                  ) : (
+                    <NoTreatments />
+                  ) }
+                  </ul>
               </div>
             </div>
           </div>

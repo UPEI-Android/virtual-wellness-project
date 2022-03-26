@@ -6216,11 +6216,16 @@ function TreatmentOverview(props) {
             className: "card-header",
             children: "Your Treatments"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
-            children: treatments.map(function (treatment) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-                children: treatment.title
-              }, treatment.id);
-            })
+            children: todos.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TreatmentList__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              todos: todos,
+              completeTodo: completeTodo,
+              markAsEditing: markAsEditing,
+              updateTodo: updateTodo,
+              cancelEdit: cancelEdit,
+              deleteTodo: deleteTodo,
+              remaining: remaining,
+              todosFiltered: todosFiltered
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_NoTreatments__WEBPACK_IMPORTED_MODULE_3___default()), {})
           })]
         })]
       })
