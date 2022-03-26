@@ -26,12 +26,6 @@ Route::get('/login', function () {
 });
 Auth::routes();
 
-Route::post('/login');
-
-Route::post('/register', 
-[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
 
 
