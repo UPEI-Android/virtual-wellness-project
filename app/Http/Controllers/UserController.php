@@ -171,6 +171,9 @@ class UserController extends Controller
             $user->phone = $request->state['phone'];
             $user->current_weight = $request->state['current_weight'];
             $user->birthday = $request->state['birthday'];
+            $user->first_name = $request->state['first_name'];
+            $user->last_name = $request->state['last_name'];
+            $user->rest_heart_rate = $request->state['rest_heart_rate'];
             $user->update();
 
             return response()->json([
