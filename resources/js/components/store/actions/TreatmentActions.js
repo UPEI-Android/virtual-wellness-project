@@ -11,7 +11,7 @@ import {
 /**
  * set treatment defaults
  */
-//GETTING ONE USER
+//getting treatments
 export const getTreatment = () => {
     return (dispatch) => {
         dispatch(fetchTreatmentsRequest)
@@ -51,7 +51,7 @@ export const deleteTreatment = () =>{
     return (dispatch) => {
         dispatch(deleteTreatmentRequest)
         //route is wrong
-        axios.delete('/api/userprofile/1/')
+        axios.delete('/api/treatments/1/')
             .then(response =>{
 
                 dispatch(deleteTreatmentSuccess(response))

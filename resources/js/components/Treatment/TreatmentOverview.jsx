@@ -111,7 +111,7 @@ function TreatmentOverview({treatmentsData, getTreatment}) {
                     <NoTreatments />
                   ) }
                   */}
-                 <h2> { treatmentsData.error }</h2>
+                 <h2> { treatmentsData}</h2>
 
                 {/*
                 { todos.length > 0 ? (

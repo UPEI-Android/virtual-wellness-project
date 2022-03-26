@@ -5278,7 +5278,7 @@ __webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/componen
 
 __webpack_require__(/*! ./components/pages/Users/UserProfile */ "./resources/js/components/pages/Users/UserProfile.jsx");
 
-__webpack_require__(/*! ./components/Treatment/TreatmentOverview */ "./resources/js/components/Treatment/TreatmentOverview.jsx");
+__webpack_require__(/*! ./components/Treatment/TreatmentOverviewContainer */ "./resources/js/components/Treatment/TreatmentOverviewContainer.jsx");
 
 __webpack_require__(/*! ./components/Treatment/TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
 
@@ -5522,7 +5522,7 @@ var SideBarNav = /*#__PURE__*/function (_Component) {
           className: "nav flex-column",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "Profile",
-            link: "/profile/2"
+            link: "/userprofile"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "Treatments",
             link: "/treatments"
@@ -6197,7 +6197,7 @@ function TreatmentOverview(_ref) {
             className: "card-header",
             children: "Your Treatments"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h2", {
-            children: [" ", treatmentsData.error]
+            children: [" ", treatmentsData]
           })]
         })]
       })
@@ -6225,6 +6225,40 @@ if (document.getElementById('treatment-overview')) {
   var element = document.getElementById('treatment-overview');
   var props = Object.assign({}, element.dataset);
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(TreatmentOverview, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentOverviewContainer.jsx":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentOverviewContainer.jsx ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentOverviewContainer)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _TreatmentOverview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TreatmentOverview */ "./resources/js/components/Treatment/TreatmentOverview.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function TreatmentOverviewContainer() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+    store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_TreatmentOverview__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  });
+}
+
+if (document.getElementById('treatment-overview-container')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TreatmentOverviewContainer, {}), document.getElementById('treatment-overview-container'));
 }
 
 /***/ }),
@@ -6599,7 +6633,7 @@ var deleteTreatment = function deleteTreatment() {
   return function (dispatch) {
     dispatch(deleteTreatmentRequest); //route is wrong
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/userprofile/1/').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/treatments/1/').then(function (response) {
       dispatch(deleteTreatmentSuccess(response));
     })["catch"](function (error) {
       var errorMsg = error.message;
