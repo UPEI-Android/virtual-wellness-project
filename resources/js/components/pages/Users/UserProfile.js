@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react';
 import store from '../../store/store'
 import {connect} from 'react-redux';
-import {getUser,saveUserData} from '../../store/actions/UserActions'
+import {getUser,saveUserData} from '../../store/actions/UserActions';
 
 import ReactDOM from "react-dom";
 
@@ -33,7 +33,10 @@ function UserProfile({ userData, getUser, saveUserData}){
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="card shadow-sm">
-                                <link type="submit" className="btn" onClick={handleSubmit} value="Edit User"/>
+                                <a href="/profileedit">Edit Profile</a>
+
+
+
                                 <div className="card-header bg-transparent text-center">
                                     <h3>{userData.users.name}</h3>
                                 </div>

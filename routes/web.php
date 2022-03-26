@@ -22,14 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/login', function () {
-    
+
     return view('/auth/login');
 });
 Auth::routes();
 
 Route::post('/login');
 
-Route::post('/register', 
+Route::post('/register',
 [\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
 
@@ -53,5 +53,6 @@ Route::get('/createTreatment', function () {
 });
 Auth::routes();
 
-Route::get('/profile/{id}', [App\Http\Controllers\UserController::class, 'show']);
+Route::get('/profile/{id}', [UserController::class, 'show']);
+Route::get('/profileedit',[UserController::class,'showEdit']);
 
