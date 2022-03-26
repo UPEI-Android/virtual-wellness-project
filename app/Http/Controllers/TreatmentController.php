@@ -26,14 +26,8 @@ class TreatmentController extends Controller
 
         //return TreatmentResource::collection($treatments);
 
-        //$treatments = auth()->user()->treatments;
-        //return response($treatments);
-
-        $treatments = User::all()->treatments;
-        return response()->json([
-            'status'=> 200,
-            'treatments'=>$treatments,
-        ]);
+        $treatments = auth()->user()->treatments;
+        return response($treatments);
     }
 
     /**
