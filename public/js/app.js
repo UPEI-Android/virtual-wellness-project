@@ -6041,13 +6041,13 @@ function TreatmentList(props) {
 
   function completeTodo(id) {
     var treatment = props.getTreatment(id);
-    console.log(treatment);
+    console.log("in completetodo " + treatment);
 
     if (treatment.id === id) {
       treatment.is_completed = !treatment.is_completed;
     }
 
-    props.saveTreatmentData(treatment);
+    saveTreatmentData(treatment);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
@@ -6262,8 +6262,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getTreatment: function getTreatment() {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getTreatment)());
+    getTreatment: function getTreatment(id) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getTreatment)(id));
     },
     getAllTreatments: function getAllTreatments() {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getAllTreatments)());
@@ -6658,8 +6658,8 @@ var getTreatment = function getTreatment(id) {
   return function (dispatch) {
     dispatch(fetchTreatmentRequest);
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments/' + id).then(function (response) {
-      console.log(data.response);
       var treatment = response.data;
+      console.log(treatment);
       dispatch(fetchTreatmentSuccess(treatment));
     })["catch"](function (error) {
       var errorMsg = error.message;

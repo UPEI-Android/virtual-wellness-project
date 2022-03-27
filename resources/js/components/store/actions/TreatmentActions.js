@@ -21,10 +21,10 @@ import {
 export const getTreatment = id => {
     return (dispatch) => {
         dispatch(fetchTreatmentRequest)
-        axios.get('/api/treatments/'+(id))
+        axios.get('/api/treatments/' + id)
             .then(response =>{
-                console.log(data.response)
                 const treatment = response.data
+                console.log(treatment)
                 dispatch(fetchTreatmentSuccess(treatment))
             })
             .catch(error =>{

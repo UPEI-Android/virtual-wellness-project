@@ -10,6 +10,7 @@ function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, save
   useEffect(()=>{
     getAllTreatments()
   },[])
+  
 
   function addTodo(todo){
 
@@ -63,7 +64,6 @@ function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, save
     });
     setTodos(updatedTodos);
   }
-  
 
     return (
       
@@ -106,7 +106,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getTreatment: () => dispatch(getTreatment()),
+        getTreatment: (id) => dispatch(getTreatment(id)),
         getAllTreatments: () => dispatch(getAllTreatments()),
         saveTreatmentData: () => dispatch(saveTreatmentData())
     }

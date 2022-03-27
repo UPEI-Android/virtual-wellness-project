@@ -12,7 +12,7 @@ export default function TreatmentList(props) {
 
     function todosFiltered(filter){
         if (filter === 'all') {
-          return props.todos;
+          return props.todos; 
         }
         else if (filter==='active'){
           return props.todos.filter(todo => !todo.is_completed);
@@ -21,15 +21,16 @@ export default function TreatmentList(props) {
           return props.todos.filter(todo => todo.is_completed);
         }
       }
-
-    function completeTodo(id){
+      function completeTodo(id){
         const treatment = props.getTreatment(id)
-        console.log(treatment)
+        console.log("in completetodo "+ treatment)
         if (treatment.id === id){
         treatment.is_completed = !treatment.is_completed
         }
-           props.saveTreatmentData(treatment)
+           saveTreatmentData(treatment)
+    
         }
+
 
     return(
     <>
