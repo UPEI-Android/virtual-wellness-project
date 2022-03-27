@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
@@ -27,6 +28,10 @@ class CreateUsersTable extends Migration
             $table->string('last_login_ip')->nullable();
             $table->foreignId('treatment_group')->nullable();
             $table->foreignId('account_creator_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->integer('initial_weight')->nullable();
+            $table->integer('current_weight')->nullable();
+            $table->integer('rest_heart_rate')->nullable();
             $table->timestamps();
         });
     }

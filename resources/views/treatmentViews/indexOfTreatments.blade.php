@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="treatment-overview" data-test= "testing"></div>
+    <div id="treatment-overview-container"></div>
 
 
 @endsection

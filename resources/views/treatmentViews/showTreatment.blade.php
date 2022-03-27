@@ -4,5 +4,4 @@
 
     <div id="treatment"></div>
 
-
 @endsection

@@ -52,14 +52,41 @@ export default function TreatmentForm (props) {
                                 />
                               </div>
                               <div className="form-group">
-
-
+                                <label className="form-input-label">Start Date:</label>
+                                <input
+                                    type="date"
+                                    className="form-input-block"
+                                  />
+                              </div>
+                              <div className="form-group">
+                                <label className="form-input-label">End Date:</label>
+                                <input
+                                    type="date"
+                                    className="form-input-block"
+                                  />
                               </div>
 
+                              <div className="form-group">
+                                <label className="form-input-label">Start Time:</label>
+                                <input
+                                    type="time"
+                                    className="form-input-block"
+                                  />
+                              </div>
+                              <div className="form-group">
+                                <label className="form-input-label">End Time:</label>
+                                <input
+                                    type="time"
+                                    className="form-input-block"
+                                  />
+                              </div>
+                              {/*
                               <div>
-                              <label className="col-form-label-lg">Recurring?</label>
-                              <input type="checkbox" style={{"margin-left":"10px"}}/>
+                                <label className="col-form-label-lg">Recurring?</label>
+                                <input type="checkbox" style={{"margin-left":"10px"}}/>
                               </div>
+                              */}
+
                             </form>
                             <button type="submit" className="btn-primary" >
                                 Create Treatment
@@ -68,6 +95,7 @@ export default function TreatmentForm (props) {
 
                             {
                                 /*
+                                this is what this looked like when we had it directly in treatmentoverview
                                 <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
                                 */
                             }

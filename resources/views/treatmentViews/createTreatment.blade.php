@@ -4,4 +4,5 @@
 
     <div id="treatment-form"></div>
 
+
 @endsection

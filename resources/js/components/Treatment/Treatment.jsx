@@ -1,27 +1,37 @@
-import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import useFetch from '../../hooks/useFetch';
 
-export default function Treatment(props) {
+export default function Treatment() {
+    const{data: treatments, isLoading} = useFetch('http://127.0.0.1:8000/api/treatments/1')
+
     return (
         <div className="container background" style={{"padding-top":"5%"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <div className="card" style={{"padding": "60px"}}>
-                        <div className="card-header">Treatment Title</div>
-                            <label className="col-form-label-lg">Treatment ID: 00000</label>
-                            <label className="form-label">Description:</label>
-                            <div className="individual-treatment-form-control" style={{"margin-bottom":"20px"}}>
-                                <p className="form-label">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                        {isLoading && <div> Loading ...</div>}
+                        {treatments && (
+                            
+                                <div className="card" style={{"padding": "60px"}}>
+                                <div className="card-header" key={treatment.id}>{ treatments.title }</div>
+                                <label className="col-form-label-lg">Treatment ID: {treatments.id}</label>
+                                <label className="form-label">Description:</label>
+                                <div className="individual-treatment-form-control" style={{"margin-bottom":"20px"}}>
+                                    <p className="form-label">{treatments.notes}</p>
+                                </div>
                             </div>
-                            {/*
+                        )}
+                        { /* 
+                
+                        
                             <div>
-                                <label className="col-form-label-lg">Recurring?</label>
-                                <input type="checkbox" style={{"margin-left":"10px"}}/>
+                            <label className="col-form-label-lg">Recurring?</label>
+                            <input type="checkbox" style={{"margin-left":"10px"}}/>
                             </div>
-                            */}
-
-                    </div>
+                            */ }
+                        { /*errorMessage && <div> {errorMessage} </div> */}
+                    
                 </div>
             </div>
         </div>

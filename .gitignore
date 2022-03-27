@@ -13,3 +13,5 @@ yarn-error.log
 /.idea
 /.vscode
 /vendor
+/public/js/app.js
+/public/css/app.css

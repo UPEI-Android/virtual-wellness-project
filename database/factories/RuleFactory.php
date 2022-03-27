@@ -97,4 +97,26 @@ class RuleFactory extends Factory
     }
 
 
+    /**
+     * Indicate that the treatment is daily.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function daily() {
+
+        return $this->state(function (array $attributes) {
+            return [
+                'treatment_id' => function() {
+
+                    return Treatment::factory()->create()->id;
+                },
+                'freq' => RRule::DAILY,
+                'interval' => 1,
+                'max_num_of_occurrences' => 5,
+            ];
+        });
+
+    }
+
+
 }

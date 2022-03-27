@@ -1,76 +1,76 @@
 
 import {
-    SHOW_USER,
-    SHOW_USER_FAILURE,
-    SHOW_USER_SUCCESS,
-    EDIT_USERS,
-    EDIT_USERS_SUCCESS,
-    EDIT_USERS_FAILURE, DELETE_USERS_FAILURE, DELETE_USERS_SUCCESS, DELETE_USERS,
-} from "../actionTypes/UserTypes";
+    SHOW_TREATMENT,
+    SHOW_TREATMENT_FAILURE,
+    SHOW_TREATMENT_SUCCESS,
+    EDIT_TREATMENTS,
+    EDIT_TREATMENTS_SUCCESS,
+    EDIT_TREATMENTS_FAILURE, DELETE_TREATMENTS_FAILURE, DELETE_TREATMENTS_SUCCESS, DELETE_TREATMENTS,
+} from "../actionTypes/TreatmentTypes";
 
 const initialState = {
     loading: false,
-    users: '',
+    treatments: [],
     error: "",
 
 };
-export default function UserReducer (state=initialState,action)
+export default function TreatmentReducer (state=initialState,action)
 {
     switch (action.type)
     {
-        case SHOW_USER:
+        case SHOW_TREATMENT:
             return{
                 ...state,
                 loading:true
             }
-        case SHOW_USER_SUCCESS:
+        case SHOW_TREATMENT_SUCCESS:
             return{
                 loading:false,
-                users:action.payload,
+                treatments:action.payload,
                 error:''
             }
-        case SHOW_USER_FAILURE:
+        case SHOW_TREATMENT_FAILURE:
             return{
                 loading:false,
-                users:[],
+                treatments:[],
                 error: action.payload
-        }
+            }
 
-        case EDIT_USERS:
+        case EDIT_TREATMENTS:
 
             return{
                 ...state,
                 loading:true
             }
-        case EDIT_USERS_SUCCESS:
+        case EDIT_TREATMENTS_SUCCESS:
             return{
                 loading:false,
-                users:action.payload,
+                treatments:action.payload,
                 error:''
             }
-        case EDIT_USERS_FAILURE:
+        case EDIT_TREATMENTS_FAILURE:
             return{
                 loading:false,
-                users:[],
+                treatments:[],
                 error: action.payload
             }
-        case DELETE_USERS:
+        case DELETE_TREATMENTS:
 
             return{
                 ...state,
                 loading:true
             }
 
-        case DELETE_USERS_SUCCESS:
+        case DELETE_TREATMENTS_SUCCESS:
             return {
                 loading: false,
-                users: action.payload,
+                treatments: action.payload,
                 error: ''
             }
-        case DELETE_USERS_FAILURE:
+        case DELETE_TREATMENTS_FAILURE:
             return{
                 loading:false,
-                users:[],
+                treatments:[],
                 error:action.payload
             }
 
@@ -79,5 +79,3 @@ export default function UserReducer (state=initialState,action)
     }
 
 }
-
-

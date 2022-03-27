@@ -6,6 +6,7 @@ use App\Models\Treatment;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class TreatmentTest extends TestCase
@@ -17,8 +18,11 @@ class TreatmentTest extends TestCase
     public function setUp():void{
 
         parent::setUp();
+        $user = User::factory()->create();
+        Sanctum::actingAs($user);
         $this->treatment = $this->createTreatment([
-            'title' => 'Insulin'
+            'title' => 'Insulin',
+            'patient_id' => $user->id
         ]);
 
     }
@@ -34,6 +38,8 @@ class TreatmentTest extends TestCase
      * @test void
      */
     public function get_all_treatments() {
+
+        $this->createTreatment();
 
         $response = $this->getJson(route('treatments.index'));
 
@@ -83,7 +89,7 @@ class TreatmentTest extends TestCase
 
         $this->postJson(route('treatments.store'))
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['title', 'start_date', 'patient_id']);
+            ->assertJsonValidationErrors(['title', 'start_date']);
 
     }
 
@@ -129,7 +135,7 @@ class TreatmentTest extends TestCase
 
         $this->patchJson(route('treatments.update', $this->treatment->id))
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['title', 'start_date', 'patient_id']);
+            ->assertJsonValidationErrors(['title', 'start_date']);
 
     }
 

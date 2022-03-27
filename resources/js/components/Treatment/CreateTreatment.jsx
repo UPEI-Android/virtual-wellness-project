@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -28,3 +29,4 @@ if (document.getElementById('create-treatment')) {
     const props = Object.assign({}, element.dataset )
     ReactDOM.render(<CreateTreatment {...props} />, element);
 }
+

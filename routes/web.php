@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,58 +19,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('/welcome');
 });
-Auth::routes();
 
 Route::get('/login', function () {
+
     return view('/auth/login');
 });
 Auth::routes();
-Route::get('/profile/{id}', [UserController::class,'show']);
 
-//creates user
-#Route::post('/register', [RegisterController::class,'create']);
-Route::get('/register', function () {
-    return view('/register');
-});
+Route::post('/login');
+
+Route::post('/register',
+[\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
-Route::post('/register', [RegisterController::class, 'create']);
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
-//redirects to login if not authenticated
 
 
+//treatment pages
 Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
-Auth::routes();
-
 Route::get('/treatment', function () {
     return view('/treatmentViews/showTreatment');
 });
-Auth::routes();
 
 Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
-Auth::routes();
 
-Route::get('send-mail',function(){
 
-    $user = DB::select('select email from users');
-    for ($x = 0; $x <= sizeof($user); $x++) {
-        $email = $user[$x]->email;
-        Mail::to($email)->queue(new \App\Mail\MyTestMail());
-        echo("Email is Sent to ".$user[0]->email);
-    }
-
-});
-
-  //commenting this out due to merge conflicts (seeing if jared's routes work)
-/**
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');//redirects to login if not authenticated
-
-Route::get('/treatments', [TreatmentController::class,'index']);
-Route::get('/treatments/{treatment}', [TreatmentController::class,'show'] );
-Route::post('/treatments', [TreatmentController::class,'store'])->middleware('auth');
-**/
