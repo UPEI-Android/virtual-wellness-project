@@ -11,10 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 class TreatmentController extends Controller
 {
     /**
-     * TODO- API works with TreatmentResource but tests don't pass
-     * So for manual API testing, use the current code
-     * but, for passing the test using the commented out return statement
-     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -23,7 +19,6 @@ class TreatmentController extends Controller
     {
         //
         //$treatments = Treatment::paginate(10);
-
         //return TreatmentResource::collection($treatments);
 
         $treatments = auth()->user()->treatments;
