@@ -45,6 +45,44 @@ const fetchTreatmentFailure = error => {
         payload:error
     }
 }
+
+//saving data from treatment
+export const saveTreatmentData = state => {
+
+      return (dispatch) => {
+          dispatch(saveTreatmentRequest)
+          //state variable must be properly formatted json object containing treatment
+          axios.put('/api/treatments', { state
+          })
+              .then(response =>{
+                  dispatch(saveTreatmentSuccess(response))
+              })
+              .catch(error =>{
+                  const errorMsg = error.message
+                  dispatch(saveTreatmentFailure(errorMsg))
+              })
+      }
+  }
+const saveTreatmentRequest = () => {
+        return{
+            type:EDIT_TREATMENTS
+        }
+
+}
+const saveTreatmentSuccess = response => {
+    return{
+
+        type:EDIT_TREATMENTS_SUCCESS,
+        payload: response
+    }
+}
+const saveTreatmentFailure = error => {
+    return {
+        type:EDIT_TREATMENTS_FAILURE,
+        payload:error
+    }
+}
+
 //delete treatment
 export const deleteTreatment = () =>{
     return (dispatch) => {
@@ -64,7 +102,6 @@ export const deleteTreatment = () =>{
     }
 
 }
-
 const deleteTreatmentRequest = () => {
     return{
         type:DELETE_TREATMENTS
@@ -83,3 +120,46 @@ const deleteTreatmentFailure = error => {
         payload:error
     }
 }
+/*
+Creating a Treatment
+ */
+export const createTreatment = (state) =>{
+    return (dispatch) => {
+        dispatch(createTreatmentRequest)
+
+        axios.post('/api/treatments/',state)
+            .then(response =>{
+
+                dispatch(createTreatmentSuccess(response))
+
+            })
+            .catch(error =>{
+                const errorMsg = error.message
+
+                dispatch(createTreatmentFailure(errorMsg))
+            })
+    }
+
+}
+
+const createTreatmentRequest = () =>{
+    return{
+        type:CREATE_TREATMENTS
+    }
+}
+
+const createTreatmentSuccess = response => {
+    return{
+
+        type:CREATE_TREATMENTS_SUCCESS,
+        payload: response
+    }
+}
+const createTreatmentFailure = error => {
+    return{
+
+        type:CREATE_TREATMENTS_FAILURE,
+        payload: error
+    }
+}
+

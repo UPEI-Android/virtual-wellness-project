@@ -5,7 +5,12 @@ import {
     SHOW_TREATMENT_SUCCESS,
     EDIT_TREATMENTS,
     EDIT_TREATMENTS_SUCCESS,
-    EDIT_TREATMENTS_FAILURE, DELETE_TREATMENTS_FAILURE, DELETE_TREATMENTS_SUCCESS, DELETE_TREATMENTS,
+    EDIT_TREATMENTS_FAILURE,
+    DELETE_TREATMENTS_FAILURE,
+    DELETE_TREATMENTS_SUCCESS,
+    DELETE_TREATMENTS,
+    CREATE_TREATMENTS,
+    CREATE_TREATMENTS_SUCCESS, CREATE_TREATMENTS_FAILURE,
 } from "../actionTypes/TreatmentTypes";
 
 const initialState = {
@@ -68,6 +73,25 @@ export default function TreatmentReducer (state=initialState,action)
                 error: ''
             }
         case DELETE_TREATMENTS_FAILURE:
+            return{
+                loading:false,
+                treatments:[],
+                error:action.payload
+            }
+        case CREATE_TREATMENTS:
+
+            return{
+                ...state,
+                loading:true
+            }
+
+        case CREATE_TREATMENTS_SUCCESS:
+            return {
+                loading: false,
+                treatments: action.payload,
+                error: ''
+            }
+        case CREATE_TREATMENTS_FAILURE:
             return{
                 loading:false,
                 treatments:[],

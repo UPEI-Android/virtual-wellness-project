@@ -3,7 +3,6 @@ import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
 
 export default function TreatmentList(props) {
-
     const [filter, setFilter] = useState('all');
 
     function remaining(){
@@ -23,14 +22,14 @@ export default function TreatmentList(props) {
       }
 
     function completeTodo(id){
-        const updatedTodos = todos.map(todo => {
+
+        const updatedTodos = props.todos.map(todo => {
             if (todo.id === id){
             todo.is_complete = !todo.is_complete
             }
             return todo;
         })
-        //this part needs to change
-        setTodos(updatedTodos);
+        props.saveTreatmentData(updatedTodos)
     }
 
     return(
@@ -48,7 +47,7 @@ export default function TreatmentList(props) {
         { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
+                <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
              
                 <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                  
@@ -74,3 +73,4 @@ export default function TreatmentList(props) {
     </>
     )
 }
+  

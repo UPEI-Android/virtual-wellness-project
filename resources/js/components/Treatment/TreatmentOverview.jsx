@@ -4,10 +4,9 @@ import {connect} from 'react-redux';
 
 import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
-import TreatmentForm from './TreatmentForm';
-import {getTreatment} from '../store/actions/TreatmentActions'
+import {getTreatment, saveTreatmentData} from '../store/actions/TreatmentActions'
 
-function TreatmentOverview({treatmentsData, getTreatment}){
+function TreatmentOverview({treatmentsData, getTreatment, saveTreatmentData}){
   useEffect(()=>{
     getTreatment()
   },[])
@@ -64,7 +63,7 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     });
     setTodos(updatedTodos);
   }
-
+  
 
     return (
       <div className="container background" style={{paddingTop:"2%"}}>
@@ -77,26 +76,20 @@ function TreatmentOverview({treatmentsData, getTreatment}){
                   {treatmentsData.treatments.length > 0 ? (
                         <TreatmentList
                           todos={treatmentsData.treatments}
+                          saveTreatmentData={saveTreatmentData}
                         />
                   ) : (
                     <NoTreatments />
                   ) }
                    
                 {/*
-                { todos.length > 0 ? (
                     <TreatmentList 
-                      todos={todos}
                       completeTodo={completeTodo}
                       markAsEditing={markAsEditing}
                       updateTodo={updateTodo}
                       cancelEdit={cancelEdit}
                       deleteTodo={deleteTodo}
-                      remaining={remaining}
-                      todosFiltered={todosFiltered}
                       />
-                  ) : (
-                    <NoTreatments />
-                  ) }
                   */}
               </div>
             </div>
@@ -111,7 +104,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getTreatment: () => dispatch(getTreatment())
+        getTreatment: () => dispatch(getTreatment()),
+        saveTreatmentData: () => dispatch(saveTreatmentData())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TreatmentOverview)
