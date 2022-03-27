@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "796227b657937062704574a3c3e02587",
+    "content-hash": "961015fb593aa938751961b422d5e1fb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1136,10 +1136,6 @@
                 "laravel",
                 "sanctum"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/sanctum/issues",
-                "source": "https://github.com/laravel/sanctum"
-            },
             "time": "2022-02-16T14:40:23+00:00"
         },
         {
@@ -5057,6 +5053,61 @@
             "time": "2022-03-02T12:42:23+00:00"
         },
         {
+            "name": "thomasjohnkane/snooze",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomasjohnkane/snooze.git",
+                "reference": "3e1e1ecd4c4d26f9847f9258a58f0d57b8f2b3fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomasjohnkane/snooze/zipball/3e1e1ecd4c4d26f9847f9258a58f0d57b8f2b3fa",
+                "reference": "3e1e1ecd4c4d26f9847f9258a58f0d57b8f2b3fa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~6.0 || ~7.0 || ~8.0 || ^9.0",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~4.0|| ~5.0 || ~6.0 || ^7.0",
+                "phpunit/phpunit": "^9.0",
+                "timacdonald/log-fake": "^1.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Thomasjohnkane\\Snooze\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Thomasjohnkane\\Snooze\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Kane",
+                    "email": "thomasjohnkane@gmail.com"
+                }
+            ],
+            "description": "Schedule future notifications and reminders in Laravel",
+            "keywords": [
+                "delayed notifications",
+                "notifications",
+                "scheduled",
+                "snooze"
+            ],
+            "time": "2022-02-14T23:48:06+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.4",
             "source": {
@@ -7656,7 +7707,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

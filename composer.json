@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
@@ -14,7 +15,7 @@
         "laravel/ui": "^3.4",
         "predis/predis": "^1.1",
         "rlanvin/php-rrule": "^2.3",
-        "ext-json": "*"
+        "thomasjohnkane/snooze": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
