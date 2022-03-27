@@ -4,21 +4,27 @@ import {
     SHOW_TREATMENT,
     SHOW_TREATMENT_FAILURE,
     SHOW_TREATMENT_SUCCESS,
-    EDIT_TREATMENTS,
-    EDIT_TREATMENTS_SUCCESS,
-    EDIT_TREATMENTS_FAILURE, DELETE_TREATMENTS, DELETE_TREATMENTS_SUCCESS, DELETE_TREATMENTS_FAILURE,
+    EDIT_TREATMENT,
+    EDIT_TREATMENT_SUCCESS,
+    EDIT_TREATMENT_FAILURE,
+    DELETE_TREATMENTS,
+    DELETE_TREATMENTS_SUCCESS,
+    DELETE_TREATMENTS_FAILURE,
+    LIST_TREATMENTS,
+    LIST_TREATMENTS_FAILURE,
+    LIST_TREATMENTS_SUCCESS
 } from "../actionTypes/TreatmentTypes";
 /**
  * set treatment defaults
  */
 //getting treatments
-export const getTreatment = () => {
+export const getTreatment = (id) => {
     return (dispatch) => {
-        dispatch(fetchTreatmentsRequest)
-        axios.get('/api/treatments')
+        dispatch(fetchTreatmentRequest)
+        axios.get('/api/treatments/'+(id))
             .then(response =>{
-                const treatments = response.data
-                dispatch(fetchTreatmentSuccess(treatments))
+                const treatment = response.data
+                dispatch(fetchTreatmentSuccess(treatment))
             })
             .catch(error =>{
                 const errorMsg = error.message
@@ -27,16 +33,16 @@ export const getTreatment = () => {
     }
 
 }
-export const fetchTreatmentsRequest = () => {
+export const fetchTreatmentRequest = () => {
     return{
         type:SHOW_TREATMENT
     }
 }
-const fetchTreatmentSuccess = treatments => {
+const fetchTreatmentSuccess = treatment => {
     return{
 
         type:SHOW_TREATMENT_SUCCESS,
-        payload: treatments
+        payload: treatment
     }
 }
 const fetchTreatmentFailure = error => {
@@ -46,13 +52,48 @@ const fetchTreatmentFailure = error => {
     }
 }
 
+export const getAllTreatments = () => {
+    return (dispatch) => {
+        dispatch(fetchTreatmentsRequest)
+        axios.get('/api/treatments')
+            .then(response =>{
+                console.log(response.data)
+                const treatments = response.data
+                dispatch(fetchTreatmentsSuccess(treatments))
+            })
+            .catch(error =>{
+                const errorMsg = error.message
+                dispatch(fetchTreatmentsFailure(errorMsg))
+            })
+    }
+
+}
+export const fetchTreatmentsRequest = () => {
+    return{
+        type:LIST_TREATMENTS
+    }
+}
+const fetchTreatmentsSuccess = treatments => {
+    return{
+
+        type:LIST_TREATMENTS_SUCCESS,
+        payload: treatments
+    }
+}
+const fetchTreatmentsFailure = error => {
+    return {
+        type:LIST_TREATMENTS_FAILURE,
+        payload:error
+    }
+}
+
 //saving data from treatment
-export const saveTreatmentData = state => {
+export const saveTreatmentData = (state, id) => {
 
       return (dispatch) => {
           dispatch(saveTreatmentRequest)
           //state variable must be properly formatted json object containing treatment
-          axios.put('/api/treatments', { state
+          axios.put('/api/treatments/' + id, { state
           })
               .then(response =>{
                   dispatch(saveTreatmentSuccess(response))
@@ -65,20 +106,20 @@ export const saveTreatmentData = state => {
   }
 const saveTreatmentRequest = () => {
         return{
-            type:EDIT_TREATMENTS
+            type:EDIT_TREATMENT
         }
 
 }
 const saveTreatmentSuccess = response => {
     return{
 
-        type:EDIT_TREATMENTS_SUCCESS,
+        type:EDIT_TREATMENT_SUCCESS,
         payload: response
     }
 }
 const saveTreatmentFailure = error => {
     return {
-        type:EDIT_TREATMENTS_FAILURE,
+        type:EDIT_TREATMENT_FAILURE,
         payload:error
     }
 }

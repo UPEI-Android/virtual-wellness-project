@@ -3,9 +3,12 @@ import {
     SHOW_TREATMENT,
     SHOW_TREATMENT_FAILURE,
     SHOW_TREATMENT_SUCCESS,
-    EDIT_TREATMENTS,
-    EDIT_TREATMENTS_SUCCESS,
-    EDIT_TREATMENTS_FAILURE,
+    LIST_TREATMENTS,
+    LIST_TREATMENTS_FAILURE,
+    LIST_TREATMENTS_SUCCESS,
+    EDIT_TREATMENT,
+    EDIT_TREATMENT_SUCCESS,
+    EDIT_TREATMENT_FAILURE,
     DELETE_TREATMENTS_FAILURE,
     DELETE_TREATMENTS_SUCCESS,
     DELETE_TREATMENTS,
@@ -16,6 +19,7 @@ import {
 const initialState = {
     loading: false,
     treatments: [],
+    treatment:"",
     error: "",
 
 };
@@ -31,32 +35,50 @@ export default function TreatmentReducer (state=initialState,action)
         case SHOW_TREATMENT_SUCCESS:
             return{
                 loading:false,
-                treatments:action.payload,
+                treatment: action.payload,
                 error:''
             }
         case SHOW_TREATMENT_FAILURE:
+            return{
+                loading:false,
+                treatment:'',
+                error: action.payload
+            }
+
+            case LIST_TREATMENTS:
+            return{
+                ...state,
+                loading:true
+            }
+        case LIST_TREATMENTS_SUCCESS:
+            return{
+                loading:false,
+                treatments:action.payload,
+                error:''
+            }
+        case LIST_TREATMENTS_FAILURE:
             return{
                 loading:false,
                 treatments:[],
                 error: action.payload
             }
 
-        case EDIT_TREATMENTS:
+        case EDIT_TREATMENT:
 
             return{
                 ...state,
                 loading:true
             }
-        case EDIT_TREATMENTS_SUCCESS:
+        case EDIT_TREATMENT_SUCCESS:
             return{
                 loading:false,
-                treatments:action.payload,
+                treatment: action.payload,
                 error:''
             }
-        case EDIT_TREATMENTS_FAILURE:
+        case EDIT_TREATMENT_FAILURE:
             return{
                 loading:false,
-                treatments:[],
+                treatment:'',
                 error: action.payload
             }
         case DELETE_TREATMENTS:

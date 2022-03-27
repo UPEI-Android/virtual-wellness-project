@@ -6157,9 +6157,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function TreatmentOverview(_ref) {
   var treatmentsData = _ref.treatmentsData,
       getTreatment = _ref.getTreatment,
+      getAllTreatments = _ref.getAllTreatments,
       saveTreatmentData = _ref.saveTreatmentData;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getTreatment();
+    getAllTreatments();
   }, []);
 
   function addTodo(todo) {
@@ -6260,8 +6261,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getTreatment: function getTreatment() {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getTreatment)());
+    getAllTreatments: function getAllTreatments() {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getAllTreatments)());
     },
     saveTreatmentData: function saveTreatmentData() {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.saveTreatmentData)());
@@ -6539,9 +6540,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CREATE_TREATMENTS": () => (/* binding */ CREATE_TREATMENTS),
 /* harmony export */   "CREATE_TREATMENTS_SUCCESS": () => (/* binding */ CREATE_TREATMENTS_SUCCESS),
 /* harmony export */   "CREATE_TREATMENTS_FAILURE": () => (/* binding */ CREATE_TREATMENTS_FAILURE),
-/* harmony export */   "EDIT_TREATMENTS": () => (/* binding */ EDIT_TREATMENTS),
-/* harmony export */   "EDIT_TREATMENTS_SUCCESS": () => (/* binding */ EDIT_TREATMENTS_SUCCESS),
-/* harmony export */   "EDIT_TREATMENTS_FAILURE": () => (/* binding */ EDIT_TREATMENTS_FAILURE),
+/* harmony export */   "EDIT_TREATMENT": () => (/* binding */ EDIT_TREATMENT),
+/* harmony export */   "EDIT_TREATMENT_SUCCESS": () => (/* binding */ EDIT_TREATMENT_SUCCESS),
+/* harmony export */   "EDIT_TREATMENT_FAILURE": () => (/* binding */ EDIT_TREATMENT_FAILURE),
 /* harmony export */   "DELETE_TREATMENTS": () => (/* binding */ DELETE_TREATMENTS),
 /* harmony export */   "DELETE_TREATMENTS_SUCCESS": () => (/* binding */ DELETE_TREATMENTS_SUCCESS),
 /* harmony export */   "DELETE_TREATMENTS_FAILURE": () => (/* binding */ DELETE_TREATMENTS_FAILURE),
@@ -6558,9 +6559,9 @@ var LIST_TREATMENTS_FAILURE = 'LIST_TREATMENTS_FAILURE';
 var CREATE_TREATMENTS = 'CREATE_TREATMENTS';
 var CREATE_TREATMENTS_SUCCESS = 'CREATE_TREATMENTS_SUCCESS';
 var CREATE_TREATMENTS_FAILURE = 'CREATE_TREATMENTS_FAILURE';
-var EDIT_TREATMENTS = 'EDIT_TREATMENTS';
-var EDIT_TREATMENTS_SUCCESS = 'EDIT_TREATMENTS_SUCCESS';
-var EDIT_TREATMENTS_FAILURE = 'EDIT_TREATMENTS_FAILURE';
+var EDIT_TREATMENT = 'EDIT_TREATMENT';
+var EDIT_TREATMENT_SUCCESS = 'EDIT_TREATMENT_SUCCESS';
+var EDIT_TREATMENT_FAILURE = 'EDIT_TREATMENT_FAILURE';
 var DELETE_TREATMENTS = 'DELETE_TREATMENTS';
 var DELETE_TREATMENTS_SUCCESS = 'DELETE_TREATMENTS_SUCCESS';
 var DELETE_TREATMENTS_FAILURE = 'DELETE_TREATMENTS_FAILURE';
@@ -6632,6 +6633,8 @@ var RESET_USER_FIELDS = 'RESET_USER_FIELDS';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getTreatment": () => (/* binding */ getTreatment),
+/* harmony export */   "fetchTreatmentRequest": () => (/* binding */ fetchTreatmentRequest),
+/* harmony export */   "getAllTreatments": () => (/* binding */ getAllTreatments),
 /* harmony export */   "fetchTreatmentsRequest": () => (/* binding */ fetchTreatmentsRequest),
 /* harmony export */   "saveTreatmentData": () => (/* binding */ saveTreatmentData),
 /* harmony export */   "deleteTreatment": () => (/* binding */ deleteTreatment),
@@ -6647,28 +6650,28 @@ __webpack_require__.r(__webpack_exports__);
  */
 //getting treatments
 
-var getTreatment = function getTreatment() {
+var getTreatment = function getTreatment(id) {
   return function (dispatch) {
-    dispatch(fetchTreatmentsRequest);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
-      var treatments = response.data;
-      dispatch(fetchTreatmentSuccess(treatments));
+    dispatch(fetchTreatmentRequest);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments/' + id).then(function (response) {
+      var treatment = response.data;
+      dispatch(fetchTreatmentSuccess(treatment));
     })["catch"](function (error) {
       var errorMsg = error.message;
       dispatch(fetchTreatmentFailure(errorMsg));
     });
   };
 };
-var fetchTreatmentsRequest = function fetchTreatmentsRequest() {
+var fetchTreatmentRequest = function fetchTreatmentRequest() {
   return {
     type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT
   };
 };
 
-var fetchTreatmentSuccess = function fetchTreatmentSuccess(treatments) {
+var fetchTreatmentSuccess = function fetchTreatmentSuccess(treatment) {
   return {
     type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT_SUCCESS,
-    payload: treatments
+    payload: treatment
   };
 };
 
@@ -6677,14 +6680,47 @@ var fetchTreatmentFailure = function fetchTreatmentFailure(error) {
     type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT_FAILURE,
     payload: error
   };
+};
+
+var getAllTreatments = function getAllTreatments() {
+  return function (dispatch) {
+    dispatch(fetchTreatmentsRequest);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
+      console.log(response.data);
+      var treatments = response.data;
+      dispatch(fetchTreatmentsSuccess(treatments));
+    })["catch"](function (error) {
+      var errorMsg = error.message;
+      dispatch(fetchTreatmentsFailure(errorMsg));
+    });
+  };
+};
+var fetchTreatmentsRequest = function fetchTreatmentsRequest() {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS
+  };
+};
+
+var fetchTreatmentsSuccess = function fetchTreatmentsSuccess(treatments) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_SUCCESS,
+    payload: treatments
+  };
+};
+
+var fetchTreatmentsFailure = function fetchTreatmentsFailure(error) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_FAILURE,
+    payload: error
+  };
 }; //saving data from treatment
 
 
-var saveTreatmentData = function saveTreatmentData(state) {
+var saveTreatmentData = function saveTreatmentData(state, id) {
   return function (dispatch) {
     dispatch(saveTreatmentRequest); //state variable must be properly formatted json object containing treatment
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/treatments', {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/treatments/' + id, {
       state: state
     }).then(function (response) {
       dispatch(saveTreatmentSuccess(response));
@@ -6697,20 +6733,20 @@ var saveTreatmentData = function saveTreatmentData(state) {
 
 var saveTreatmentRequest = function saveTreatmentRequest() {
   return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENTS
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENT
   };
 };
 
 var saveTreatmentSuccess = function saveTreatmentSuccess(response) {
   return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENTS_SUCCESS,
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENT_SUCCESS,
     payload: response
   };
 };
 
 var saveTreatmentFailure = function saveTreatmentFailure(error) {
   return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENTS_FAILURE,
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.EDIT_TREATMENT_FAILURE,
     payload: error
   };
 }; //delete treatment
@@ -6966,6 +7002,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var initialState = {
   loading: false,
   treatments: [],
+  treatment: "",
   error: ""
 };
 function TreatmentReducer() {
@@ -6981,33 +7018,52 @@ function TreatmentReducer() {
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_SUCCESS:
       return {
         loading: false,
-        treatments: action.payload,
+        treatment: action.payload,
         error: ''
       };
 
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TREATMENT_FAILURE:
       return {
         loading: false,
-        treatments: [],
+        treatment: '',
         error: action.payload
       };
 
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS:
       return _objectSpread(_objectSpread({}, state), {}, {
         loading: true
       });
 
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_SUCCESS:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_SUCCESS:
       return {
         loading: false,
         treatments: action.payload,
         error: ''
       };
 
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENTS_FAILURE:
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_FAILURE:
       return {
         loading: false,
         treatments: [],
+        error: action.payload
+      };
+
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENT:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENT_SUCCESS:
+      return {
+        loading: false,
+        treatment: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TREATMENT_FAILURE:
+      return {
+        loading: false,
+        treatment: '',
         error: action.payload
       };
 
