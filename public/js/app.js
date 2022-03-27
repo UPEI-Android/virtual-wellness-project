@@ -5997,12 +5997,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6024,12 +6018,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TreatmentList(props, _ref) {
-  var singleTreatmentData = _ref.singleTreatmentData,
-      getTreatment = _ref.getTreatment,
-      saveTreatmentData = _ref.saveTreatmentData;
+function TreatmentList(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getTreatment(id);
+    props.getTreatment(1);
   }, []);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
@@ -6058,15 +6049,15 @@ function TreatmentList(props, _ref) {
   }
 
   function completeTodo(id) {
-    console.log(id);
-    var treatment = getTreatment(id);
-    console.log("in completetodo " + treatment);
+    props.getTreatment(id);
+    var treatment = props.singleTreatmentData.treatment;
+    console.log(treatment);
 
     if (treatment.id === id) {
       treatment.is_completed = !treatment.is_completed;
     }
 
-    saveTreatmentData(treatment);
+    props.saveTreatmentData(treatment, id);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
@@ -6137,19 +6128,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     getTreatment: function getTreatment(id) {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.getTreatment)(id));
     },
-    saveTreatmentData: function saveTreatmentData() {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.saveTreatmentData)());
+    saveTreatmentData: function saveTreatmentData(state, id) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.saveTreatmentData)(state, id));
     }
   };
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(TreatmentList));
-
-if (document.getElementById('treatment-list')) {
-  var element = document.getElementById('treatment-list');
-  var props = Object.assign({}, element.dataset);
-  ReactDOM.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TreatmentList, _objectSpread({}, props)), element);
-}
 
 /***/ }),
 
@@ -6742,7 +6727,6 @@ var getTreatment = function getTreatment(id) {
     dispatch(fetchTreatmentRequest);
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments/' + id).then(function (response) {
       var treatment = response.data;
-      console.log(treatment);
       dispatch(fetchTreatmentSuccess(treatment));
     })["catch"](function (error) {
       var errorMsg = error.message;

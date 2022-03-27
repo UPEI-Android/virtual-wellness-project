@@ -4,9 +4,9 @@ import TreatmentFilters from './TreatmentFilters';
 import {connect} from 'react-redux';
 import {getTreatment,saveTreatmentData} from '../store/actions/TreatmentActions'
 
-function TreatmentList(props,{singleTreatmentData, getTreatment, saveTreatmentData}) {
+function TreatmentList(props) {
   useEffect(()=>{
-    getTreatment(id)
+    props.getTreatment(1)
   },[])
     
     const [filter, setFilter] = useState('all');
@@ -27,14 +27,13 @@ function TreatmentList(props,{singleTreatmentData, getTreatment, saveTreatmentDa
         }
       }
       function completeTodo(id){
-        console.log(id)
-        const treatment = getTreatment(id)
-        console.log("in completetodo "+ treatment)
+        props.getTreatment(id)
+        const treatment = props.singleTreatmentData.treatment
+        console.log(treatment)
         if (treatment.id === id){
         treatment.is_completed = !treatment.is_completed
         }
-           saveTreatmentData(treatment)
-    
+           props.saveTreatmentData(treatment,id)
         }
 
 
@@ -86,15 +85,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getTreatment: (id) => dispatch(getTreatment(id)),
-        saveTreatmentData: () => dispatch(saveTreatmentData())
+        saveTreatmentData: (state,id) => dispatch(saveTreatmentData(state,id))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TreatmentList)
-
-
-if (document.getElementById('treatment-list')) {
-    const element = document.getElementById('treatment-list')
-    const props = Object.assign({}, element.dataset )
-    ReactDOM.render(<TreatmentList {...props} />, element);
-}
   

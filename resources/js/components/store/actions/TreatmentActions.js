@@ -15,13 +15,12 @@ import {
  * set treatment defaults
  */
 //getting treatments
-export const getTreatment = id => {
+export const getTreatment = (id) => {
     return (dispatch) => {
         dispatch(fetchTreatmentRequest)
         axios.get('/api/treatments/' + id)
             .then(response =>{
                 const treatment = response.data
-                console.log(treatment)
                 dispatch(fetchTreatmentSuccess(treatment))
             })
             .catch(error =>{

@@ -19,7 +19,6 @@ require('./components/SideBar/NavItem');
 require('./components/pages/Users/UserProfile');
 require('./components/Treatment/TreatmentOverviewContainer');
 
-
 require('./components/Treatment/TreatmentForm');
 require('./components/Treatment/NoTreatments');
 require('./components/Treatment/TreatmentList');
