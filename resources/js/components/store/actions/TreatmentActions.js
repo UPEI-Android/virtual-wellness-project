@@ -18,11 +18,12 @@ import {
  * set treatment defaults
  */
 //getting treatments
-export const getTreatment = (id) => {
+export const getTreatment = id => {
     return (dispatch) => {
         dispatch(fetchTreatmentRequest)
         axios.get('/api/treatments/'+(id))
             .then(response =>{
+                console.log(data.response)
                 const treatment = response.data
                 dispatch(fetchTreatmentSuccess(treatment))
             })
@@ -57,7 +58,6 @@ export const getAllTreatments = () => {
         dispatch(fetchTreatmentsRequest)
         axios.get('/api/treatments')
             .then(response =>{
-                console.log(response.data)
                 const treatments = response.data
                 dispatch(fetchTreatmentsSuccess(treatments))
             })

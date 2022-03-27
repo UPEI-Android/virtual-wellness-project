@@ -6,7 +6,7 @@ import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
 import {getAllTreatments, getTreatment, saveTreatmentData} from '../store/actions/TreatmentActions'
 
-function TreatmentOverview({treatmentsData, getTreatment, getAllTreatments, saveTreatmentData}){
+function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, saveTreatmentData}){
   useEffect(()=>{
     getAllTreatments()
   },[])
@@ -77,6 +77,8 @@ function TreatmentOverview({treatmentsData, getTreatment, getAllTreatments, save
                         <TreatmentList
                           todos={treatmentsData.treatments}
                           saveTreatmentData={saveTreatmentData}
+                          getTreatment={getTreatment}
+
                         />
                   ) : (
                     <NoTreatments />
@@ -104,6 +106,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
+        getTreatment: () => dispatch(getTreatment()),
         getAllTreatments: () => dispatch(getAllTreatments()),
         saveTreatmentData: () => dispatch(saveTreatmentData())
     }

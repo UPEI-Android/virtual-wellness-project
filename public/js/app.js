@@ -6021,7 +6021,7 @@ function TreatmentList(props) {
 
   function remaining() {
     return props.todos.filter(function (todo) {
-      return !todo.is_complete;
+      return !todo.is_completed;
     }).length;
   }
 
@@ -6030,24 +6030,24 @@ function TreatmentList(props) {
       return props.todos;
     } else if (filter === 'active') {
       return props.todos.filter(function (todo) {
-        return !todo.is_complete;
+        return !todo.is_completed;
       });
     } else if (filter === 'completed') {
       return props.todos.filter(function (todo) {
-        return todo.is_complete;
+        return todo.is_completed;
       });
     }
   }
 
   function completeTodo(id) {
-    var updatedTodos = props.todos.map(function (todo) {
-      if (todo.id === id) {
-        todo.is_complete = !todo.is_complete;
-      }
+    var treatment = props.getTreatment(id);
+    console.log(treatment);
 
-      return todo;
-    });
-    props.saveTreatmentData(updatedTodos);
+    if (treatment.id === id) {
+      treatment.is_completed = !treatment.is_completed;
+    }
+
+    props.saveTreatmentData(treatment);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
@@ -6068,7 +6068,7 @@ function TreatmentList(props) {
               onChange: function onChange() {
                 return completeTodo(todo.id);
               },
-              checked: todo.is_complete ? true : false
+              checked: todo.is_completed ? true : false
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
               href: "/treatment",
               className: "treatment-item treatment-list-item",
@@ -6156,8 +6156,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function TreatmentOverview(_ref) {
   var treatmentsData = _ref.treatmentsData,
-      getTreatment = _ref.getTreatment,
       getAllTreatments = _ref.getAllTreatments,
+      getTreatment = _ref.getTreatment,
       saveTreatmentData = _ref.saveTreatmentData;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getAllTreatments();
@@ -6245,7 +6245,8 @@ function TreatmentOverview(_ref) {
             children: "Your Treatments"
           }), treatmentsData.treatments.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TreatmentList__WEBPACK_IMPORTED_MODULE_4__["default"], {
             todos: treatmentsData.treatments,
-            saveTreatmentData: saveTreatmentData
+            saveTreatmentData: saveTreatmentData,
+            getTreatment: getTreatment
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_NoTreatments__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
         })]
       })
@@ -6261,6 +6262,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    getTreatment: function getTreatment() {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getTreatment)());
+    },
     getAllTreatments: function getAllTreatments() {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getAllTreatments)());
     },
@@ -6654,6 +6658,7 @@ var getTreatment = function getTreatment(id) {
   return function (dispatch) {
     dispatch(fetchTreatmentRequest);
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments/' + id).then(function (response) {
+      console.log(data.response);
       var treatment = response.data;
       dispatch(fetchTreatmentSuccess(treatment));
     })["catch"](function (error) {
@@ -6686,7 +6691,6 @@ var getAllTreatments = function getAllTreatments() {
   return function (dispatch) {
     dispatch(fetchTreatmentsRequest);
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
-      console.log(response.data);
       var treatments = response.data;
       dispatch(fetchTreatmentsSuccess(treatments));
     })["catch"](function (error) {

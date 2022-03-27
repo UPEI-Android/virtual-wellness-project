@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
 
 export default function TreatmentList(props) {
+    
     const [filter, setFilter] = useState('all');
 
     function remaining(){
-        return props.todos.filter(todo => !todo.is_complete).length;
+        return props.todos.filter(todo => !todo.is_completed).length;
       }
 
     function todosFiltered(filter){
@@ -14,23 +15,21 @@ export default function TreatmentList(props) {
           return props.todos;
         }
         else if (filter==='active'){
-          return props.todos.filter(todo => !todo.is_complete);
+          return props.todos.filter(todo => !todo.is_completed);
         }
         else if (filter==='completed'){
-          return props.todos.filter(todo => todo.is_complete);
+          return props.todos.filter(todo => todo.is_completed);
         }
       }
 
     function completeTodo(id){
-
-        const updatedTodos = props.todos.map(todo => {
-            if (todo.id === id){
-            todo.is_complete = !todo.is_complete
-            }
-            return todo;
-        })
-        props.saveTreatmentData(updatedTodos)
-    }
+        const treatment = props.getTreatment(id)
+        console.log(treatment)
+        if (treatment.id === id){
+        treatment.is_completed = !treatment.is_completed
+        }
+           props.saveTreatmentData(treatment)
+        }
 
     return(
     <>
@@ -47,7 +46,7 @@ export default function TreatmentList(props) {
         { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
+                <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
              
                 <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                  
