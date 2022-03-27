@@ -59,7 +59,7 @@ class UserController extends Controller
         /*if(!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Unauthorized'], 500);
         }
-        
+
         $this->validate($request, [
             'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -83,12 +83,11 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(int $id)
+    public function show()
     {
+        $userid = Auth()->id();
 
-        $user = User::findOrFail($id);
-
-        return view('users.userprofile', compact('user'));
+        return view('users.userprofile', compact('userid'));
     }
 
 

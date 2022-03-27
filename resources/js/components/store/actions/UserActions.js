@@ -12,10 +12,10 @@ import {
  * set user defaults
  */
 //GETTING ONE USER
-export const getUser = () => {
+export const getUser = (userid) => {
     return (dispatch) => {
         dispatch(fetchUsersRequest)
-        axios.get('/api/userprofile/1/')
+        axios.get('/api/userprofile/'+(userid))
             .then(response =>{
                 const users = response.data
                 dispatch(fetchUserSuccess(users))
@@ -89,10 +89,10 @@ const saveUserFailure = error => {
     }
 }
 //delete user
-export const deleteUser = () =>{
+export const deleteUser = (userid) =>{
     return (dispatch) => {
         dispatch(deleteUserRequest)
-        axios.delete('/api/userprofile/1/')
+        axios.delete('/api/userprofile/'+userid)
             .then(response =>{
 
                 dispatch(deleteUserSuccess(response))
