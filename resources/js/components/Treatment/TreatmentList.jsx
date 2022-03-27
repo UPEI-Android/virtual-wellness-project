@@ -5,28 +5,39 @@ import useFetch from '../../hooks/useFetch';
 
 export default function TreatmentList(props) {
 
-    //const [filter, setFilter] = useState('all');
+    const [filter, setFilter] = useState('all');
+
+    function remaining(){
+        return props.todos.filter(todo => !todo.is_complete).length;
+      }
+
+    function todosFiltered(filter){
+        if (filter === 'all') {
+          return props.todos;
+        }
+        else if (filter==='active'){
+          return props.todos.filter(todo => !todo.is_complete);
+        }
+        else if (filter==='completed'){
+          return props.todos.filter(todo => todo.is_complete);
+        }
+      }
 
     return(
     <>
-    {/*<TreatmentFilters 
-        todosFiltered={props.todosFiltered}
+    <TreatmentFilters 
         filter={filter}
         setFilter={setFilter}
     />
-    */}
     
     <ul
         role="list"
         className="list-unstyled"
     >
-        { props.todos.map((todo, index) => (
+        { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
                 <input type="checkbox" />
-
-                {/* if the todo item is not in editing mode, display the title*/}
-
              
                 <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                  
@@ -45,7 +56,7 @@ export default function TreatmentList(props) {
 
     <div className="remaining-block">
         <p className='btn'>
-             Items Remaining
+        { remaining() } Item(s) Remaining
         </p>
         
     </div>

@@ -1,9 +1,8 @@
 import React from 'react';
 
-
 export default function TreatmentFilters(props) {
     return (
-        <div className="btn-group" style = {{ "vertical-align":"middle" }}>
+        <div className="btn-group" style = {{ verticalAlign:"middle" }}>
             <button 
                 onClick={() => {
                     props.setFilter('all')

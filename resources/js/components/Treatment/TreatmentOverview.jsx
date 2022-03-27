@@ -74,21 +74,6 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     setTodos(updatedTodos);
   }
 
-  function remaining(){
-    return todos.filter(todo => !todo.isComplete).length;
-  }
-
-  function todosFiltered(filter){
-    if (filter === 'all') {
-      return todos;
-    }
-    else if (filter==='active'){
-      return todos.filter(todo => !todo.isComplete);
-    }
-    else if (filter==='completed'){
-      return todos.filter(todo => todo.isComplete);
-    }
-  }
 
     return (
       <div className="container background" style={{paddingTop:"2%"}}>
@@ -105,7 +90,6 @@ function TreatmentOverview({treatmentsData, getTreatment}){
                   ) : (
                     <NoTreatments />
                   ) }
-                  
                    
                 {/*
                 { todos.length > 0 ? (
