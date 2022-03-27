@@ -48,4 +48,5 @@ Route::get('/createTreatment', function () {
 });
 
 Route::get('/profile/', [App\Http\Controllers\UserController::class, 'show']);
+Route::get('/profileedit',[UserController::class,'showEdit']);
 
