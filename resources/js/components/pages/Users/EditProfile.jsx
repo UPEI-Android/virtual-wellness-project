@@ -1,17 +1,15 @@
 import ReactDOM from "react-dom";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {getUser, saveUserData} from "../../store/actions/UserActions";
 import store from "../../store/store";
 import {connect} from "react-redux";
 
 
-function EditProfile({ userState, getUser, saveUserData}){
+function EditProfile({ userState, getUser, saveUserData, userid}){
     useEffect(()=> {
-        getUser()
+        getUser(userid)
     },[])
-    const [formState, setFormState] = useState(userState);
 
-    //setFormState(userState);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -25,7 +23,7 @@ function EditProfile({ userState, getUser, saveUserData}){
 
 
 
-        saveUserData(formState.users);
+        saveUserData(userState.users);
     }
 
     return userState.loading?(
@@ -115,13 +113,13 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getUser: () => dispatch(getUser()),
+        getUser: (userid) => dispatch(getUser(userid)),
        saveUserData: () => dispatch(saveUserData(store.getState().user.users))
 
     }
 }
 
 if (document.getElementById('editprofileoutput')) {
-    ReactDOM.render(<EditProfile />, document.getElementById('editprofileoutput'));
+    ReactDOM.render(<EditProfile userid = {userid}/>, document.getElementById('editprofileoutput'));
 }
 export default connect(mapStateToProps,mapDispatchToProps)(EditProfile)
