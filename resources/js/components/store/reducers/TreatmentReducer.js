@@ -6,7 +6,7 @@ import {
     EDIT_TREATMENTS,
     EDIT_TREATMENTS_SUCCESS,
     EDIT_TREATMENTS_FAILURE, DELETE_TREATMENTS_FAILURE, DELETE_TREATMENTS_SUCCESS, DELETE_TREATMENTS,
-} from "../actionTypes/TREATMENTTypes";
+} from "../actionTypes/TreatmentTypes";
 
 const initialState = {
     loading: false,

@@ -95,6 +95,7 @@ export default function TreatmentForm (props) {
 
                             {
                                 /*
+                                this is what this looked like when we had it directly in treatmentoverview
                                 <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
                                 */
                             }

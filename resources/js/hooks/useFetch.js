@@ -12,12 +12,14 @@ function useFetch(url) {
             setIsLoading(false);
             setData(results)
         })
+        {
         /*
         .catch(error => {
             setIsLoading(false);
             setErrorMessage('There was an error.')
         })
         */
+    }
     }, [url]);
 
     return {data, isLoading};

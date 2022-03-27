@@ -1,16 +1,42 @@
 import React from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
-import useFetch from '../../hooks/useFetch';
 
 export default function TreatmentList(props) {
 
     const [filter, setFilter] = useState('all');
 
+    function remaining(){
+        return props.todos.filter(todo => !todo.is_complete).length;
+      }
+
+    function todosFiltered(filter){
+        if (filter === 'all') {
+          return props.todos;
+        }
+        else if (filter==='active'){
+          return props.todos.filter(todo => !todo.is_complete);
+        }
+        else if (filter==='completed'){
+          return props.todos.filter(todo => todo.is_complete);
+        }
+      }
+
+    function completeTodo(id){
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id){
+            todo.is_complete = !todo.is_complete
+            }
+            return todo;
+        })
+        //this part needs to change
+        setTodos(updatedTodos);
+    }
+
     return(
     <>
     <TreatmentFilters 
-        todosFiltered={props.todosFiltered}
+        todosFiltered={todosFiltered}
         filter={filter}
         setFilter={setFilter}
     />
@@ -19,39 +45,19 @@ export default function TreatmentList(props) {
         role="list"
         className="list-unstyled"
     >
-        { props.todosFiltered(filter).map((todo, index) => (
+        { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.isComplete ? true : false}/>
-
-                {/* if the todo item is not in editing mode, display the title*/}
-
-                { !todo.isEditing ? (
-                    <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
-                ) : (
-
-                <input
-                type="text"
-                onBlur={(event) => props.updateTodo(event,todo.id)}
-                onKeyDown={event => {
-                    if(event.key == 'Enter'){
-                    props.updateTodo(event,todo.id)
-                    }
-                    else if(event.key =='Escape'){
-                    props.cancelEdit(event,todo.id)
-                    }
-                }}
-                defaultValue={todo.title}
-                className="treatment-input-group"
-                autoFocus
-                />
-                )}
+                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
+             
+                <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
+                 
             </div>
             <div className="btn-group" style={{"display" : "block"}}>
-                <button type="button" className="btn" onClick={() => props.markAsEditing(todo.id)} style={{"display" : "inline"}}>
+                <button type="button" className="btn" style={{"display" : "inline"}}>
                 Edit
                 </button>
-                <button type="button" className="btn btn__danger" onClick={() => props.deleteTodo(todo.id)} style={{"display" : "inline"}}>
+                <button type="button" className="btn btn__danger"  style={{"display" : "inline"}}>
                 Delete
                 </button>
             </div>
@@ -61,7 +67,7 @@ export default function TreatmentList(props) {
 
     <div className="remaining-block">
         <p className='btn'>
-            { props.remaining() } Items Remaining
+        { remaining() } Item(s) Remaining
         </p>
         
     </div>
