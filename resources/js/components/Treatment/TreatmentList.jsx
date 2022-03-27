@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
-import useFetch from '../../hooks/useFetch';
 
 export default function TreatmentList(props) {
 
@@ -23,9 +22,21 @@ export default function TreatmentList(props) {
         }
       }
 
+    function completeTodo(id){
+        const updatedTodos = todos.map(todo => {
+            if (todo.id === id){
+            todo.is_complete = !todo.is_complete
+            }
+            return todo;
+        })
+        //this part needs to change
+        setTodos(updatedTodos);
+    }
+
     return(
     <>
     <TreatmentFilters 
+        todosFiltered={todosFiltered}
         filter={filter}
         setFilter={setFilter}
     />
@@ -37,7 +48,7 @@ export default function TreatmentList(props) {
         { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
              
                 <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                  

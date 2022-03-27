@@ -29,15 +29,6 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     setTodos([... todos].filter(todo => todo.id !== id));
   }
 
-  function completeTodo(id){
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id){
-        todo.isComplete = !todo.isComplete
-      }
-      return todo;
-    })
-    setTodos(updatedTodos);
-  }
 
   function markAsEditing(id){
     const updatedTodos = todos.map(todo => {
