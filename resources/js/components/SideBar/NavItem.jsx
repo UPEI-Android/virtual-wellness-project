@@ -5,8 +5,8 @@ export default class NavItem extends Component {
     render(){
         return (
                 <div className="sidebar-nav-item">
-                    <li class="nav-item">
-                        <a class="nav-link" href={this.props.link}>{ this.props.title }</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href={this.props.link}>{ this.props.title }</a>
                     </li>
                 </div>
         );

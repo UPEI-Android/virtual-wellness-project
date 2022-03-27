@@ -41,6 +41,6 @@ Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 
-//Route::get('/userprofile/{id}', [UserController::class,'show']);
+Route::get('/userprofile/{id}', [UserController::class,'show']);
 
 

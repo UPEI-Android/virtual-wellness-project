@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default function NoTreatments() {
     return(
     
-<div className="no-treatments-container">
+      <div className="no-treatments-container">
                             <svg
         width="247"
         height="241"
@@ -61,4 +62,9 @@ export default function NoTreatments() {
                             <p> Add some Treatments...</p>
                           </div>
 
-    )}
+)}
+
+if (document.getElementById('no-treatments')) {
+  const element = document.getElementById('no-treatments')
+  ReactDOM.render(<NoTreatments />, element);
+}

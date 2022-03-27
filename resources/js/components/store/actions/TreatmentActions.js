@@ -15,7 +15,6 @@ import {
 export const getTreatment = () => {
     return (dispatch) => {
         dispatch(fetchTreatmentsRequest)
-        //not the correct route
         axios.get('/api/treatments')
             .then(response =>{
                 const treatments = response.data

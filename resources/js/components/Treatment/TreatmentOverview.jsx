@@ -1,4 +1,4 @@
-import React,{ useEffect} from 'react';
+import React,{ useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
@@ -7,12 +7,17 @@ import TreatmentList from './TreatmentList';
 import TreatmentForm from './TreatmentForm';
 import {getTreatment} from '../store/actions/TreatmentActions'
 
-function TreatmentOverview({treatmentsData, getTreatment}) {
-
+function TreatmentOverview({treatmentsData, getTreatment}){
   useEffect(()=>{
     getTreatment()
   },[])
-         
+
+  const tList =  treatmentsData.treatments.map((treatment) => 
+            <li key={treatment.id}>
+              { treatment.title }
+            </li>
+          );
+  
   function addTodo(todo){
 
     setTodos([... todos,
@@ -29,7 +34,6 @@ function TreatmentOverview({treatmentsData, getTreatment}) {
   function deleteTodo(id){
     setTodos([... todos].filter(todo => todo.id !== id));
   }
-
 
   function completeTodo(id){
     const updatedTodos = todos.map(todo => {
@@ -93,7 +97,7 @@ function TreatmentOverview({treatmentsData, getTreatment}) {
   }
 
     return (
-      <div className="container background" style={{"padding-top":"2%"}}>
+      <div className="container background" style={{paddingTop:"2%"}}>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="align-right"><a href="/createTreatment" className="btn-primary create-treatment-button">CreateTreatment</a></div>
@@ -104,15 +108,16 @@ function TreatmentOverview({treatmentsData, getTreatment}) {
                 */
                 }
                 
-                  {/*
-                  {treatmentList.length > 0 ? (
-                      <ul>{treatmentList}</ul>
+                
+                  {tList.length > 0 ? (
+                      <ul>
+                        {tList}
+                        </ul>
                   ) : (
                     <NoTreatments />
                   ) }
-                  */}
-                 <h2> { treatmentsData}</h2>
-
+                  
+                   
                 {/*
                 { todos.length > 0 ? (
                     <TreatmentList 
@@ -133,12 +138,11 @@ function TreatmentOverview({treatmentsData, getTreatment}) {
             </div>
           </div>
         </div>
-        
     )
 }
 const mapStateToProps = state => {
   return {
-      treatmentsData: state.treatments
+      treatmentsData: state.treatment
   }
 }
 const mapDispatchToProps = dispatch =>{
