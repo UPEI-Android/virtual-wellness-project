@@ -47,4 +47,14 @@ Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 
+Route::get('send-mail',function(){
+
+    $user = DB::select('select email from users');
+    for ($x = 0; $x <= sizeof($user); $x++) {
+        $email = $user[$x]->email;
+        Mail::to($email)->queue(new \App\Mail\MyTestMail());
+        echo("Email is Sent to ".$user[0]->email);
+    }
+});
+
 
