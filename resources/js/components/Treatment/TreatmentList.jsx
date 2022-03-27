@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
+import {connect} from 'react-redux';
+import {getTreatment,saveTreatmentData} from '../store/actions/TreatmentActions'
 
-export default function TreatmentList(props) {
+function TreatmentList(props,{singleTreatmentData, getTreatment, saveTreatmentData}) {
+  useEffect(()=>{
+    getTreatment(id)
+  },[])
     
     const [filter, setFilter] = useState('all');
 
@@ -22,7 +27,8 @@ export default function TreatmentList(props) {
         }
       }
       function completeTodo(id){
-        const treatment = props.getTreatment(id)
+        console.log(id)
+        const treatment = getTreatment(id)
         console.log("in completetodo "+ treatment)
         if (treatment.id === id){
         treatment.is_completed = !treatment.is_completed
@@ -48,7 +54,6 @@ export default function TreatmentList(props) {
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
                 <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
-             
                 <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
                  
             </div>
@@ -72,5 +77,24 @@ export default function TreatmentList(props) {
     </div>
     </>
     )
+}
+const mapStateToProps = state => {
+  return {
+      singleTreatmentData: state.treatment
+  }
+}
+const mapDispatchToProps = dispatch =>{
+    return {
+        getTreatment: (id) => dispatch(getTreatment(id)),
+        saveTreatmentData: () => dispatch(saveTreatmentData())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TreatmentList)
+
+
+if (document.getElementById('treatment-list')) {
+    const element = document.getElementById('treatment-list')
+    const props = Object.assign({}, element.dataset )
+    ReactDOM.render(<TreatmentList {...props} />, element);
 }
   

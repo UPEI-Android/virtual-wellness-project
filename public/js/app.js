@@ -5990,11 +5990,19 @@ if (document.getElementById('treatment-form')) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TreatmentList)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TreatmentFilters */ "./resources/js/components/Treatment/TreatmentFilters.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6013,7 +6021,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TreatmentList(props) {
+
+
+
+function TreatmentList(props, _ref) {
+  var singleTreatmentData = _ref.singleTreatmentData,
+      getTreatment = _ref.getTreatment,
+      saveTreatmentData = _ref.saveTreatmentData;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getTreatment(id);
+  }, []);
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState2 = _slicedToArray(_useState, 2),
       filter = _useState2[0],
@@ -6040,7 +6058,8 @@ function TreatmentList(props) {
   }
 
   function completeTodo(id) {
-    var treatment = props.getTreatment(id);
+    console.log(id);
+    var treatment = getTreatment(id);
     console.log("in completetodo " + treatment);
 
     if (treatment.id === id) {
@@ -6050,43 +6069,43 @@ function TreatmentList(props) {
     saveTreatmentData(treatment);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__["default"], {
       todosFiltered: todosFiltered,
       filter: filter,
       setFilter: setFilter
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
       role: "list",
       className: "list-unstyled",
       children: todosFiltered(filter).map(function (todo, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
           className: "treatment-item-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "treatment-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               type: "checkbox",
               onChange: function onChange() {
                 return completeTodo(todo.id);
               },
               checked: todo.is_completed ? true : false
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
               href: "/treatment",
               className: "treatment-item treatment-list-item",
               children: todo.title
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "btn-group",
             style: {
               "display": "block"
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               type: "button",
               className: "btn",
               style: {
                 "display": "inline"
               },
               children: "Edit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               type: "button",
               className: "btn btn__danger",
               style: {
@@ -6097,14 +6116,39 @@ function TreatmentList(props) {
           })]
         }, todo.id);
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "remaining-block",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
         className: "btn",
         children: [remaining(), " Item(s) Remaining"]
       })
     })]
   });
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    singleTreatmentData: state.treatment
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getTreatment: function getTreatment(id) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.getTreatment)(id));
+    },
+    saveTreatmentData: function saveTreatmentData() {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.saveTreatmentData)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(TreatmentList));
+
+if (document.getElementById('treatment-list')) {
+  var element = document.getElementById('treatment-list');
+  var props = Object.assign({}, element.dataset);
+  ReactDOM.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TreatmentList, _objectSpread({}, props)), element);
 }
 
 /***/ }),
@@ -6125,7 +6169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _NoTreatments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 /* harmony import */ var _TreatmentList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
-/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
+/* harmony import */ var _store_actions_AllTreatmentActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/actions/AllTreatmentActions */ "./resources/js/components/store/actions/AllTreatmentActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -6156,9 +6200,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function TreatmentOverview(_ref) {
   var treatmentsData = _ref.treatmentsData,
-      getAllTreatments = _ref.getAllTreatments,
-      getTreatment = _ref.getTreatment,
-      saveTreatmentData = _ref.saveTreatmentData;
+      getAllTreatments = _ref.getAllTreatments;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getAllTreatments();
   }, []);
@@ -6244,9 +6286,7 @@ function TreatmentOverview(_ref) {
             className: "card-header",
             children: "Your Treatments"
           }), treatmentsData.treatments.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TreatmentList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            todos: treatmentsData.treatments,
-            saveTreatmentData: saveTreatmentData,
-            getTreatment: getTreatment
+            todos: treatmentsData.treatments
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_NoTreatments__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
         })]
       })
@@ -6256,20 +6296,14 @@ function TreatmentOverview(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    treatmentsData: state.treatment
+    treatmentsData: state.allTreatments
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getTreatment: function getTreatment(id) {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getTreatment)(id));
-    },
     getAllTreatments: function getAllTreatments() {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getAllTreatments)());
-    },
-    saveTreatmentData: function saveTreatmentData() {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_5__.saveTreatmentData)());
+      return dispatch((0,_store_actions_AllTreatmentActions__WEBPACK_IMPORTED_MODULE_5__.getAllTreatments)());
     }
   };
 };
@@ -6627,6 +6661,57 @@ var RESET_USER_FIELDS = 'RESET_USER_FIELDS';
 
 /***/ }),
 
+/***/ "./resources/js/components/store/actions/AllTreatmentActions.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/store/actions/AllTreatmentActions.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getAllTreatments": () => (/* binding */ getAllTreatments),
+/* harmony export */   "fetchTreatmentsRequest": () => (/* binding */ fetchTreatmentsRequest)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actionTypes/TreatmentTypes */ "./resources/js/components/store/actionTypes/TreatmentTypes.js");
+
+
+var getAllTreatments = function getAllTreatments() {
+  return function (dispatch) {
+    dispatch(fetchTreatmentsRequest);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
+      var treatments = response.data;
+      dispatch(fetchTreatmentsSuccess(treatments));
+    })["catch"](function (error) {
+      var errorMsg = error.message;
+      dispatch(fetchTreatmentsFailure(errorMsg));
+    });
+  };
+};
+var fetchTreatmentsRequest = function fetchTreatmentsRequest() {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS
+  };
+};
+
+var fetchTreatmentsSuccess = function fetchTreatmentsSuccess(treatments) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_SUCCESS,
+    payload: treatments
+  };
+};
+
+var fetchTreatmentsFailure = function fetchTreatmentsFailure(error) {
+  return {
+    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_FAILURE,
+    payload: error
+  };
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/store/actions/TreatmentActions.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/store/actions/TreatmentActions.js ***!
@@ -6638,8 +6723,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getTreatment": () => (/* binding */ getTreatment),
 /* harmony export */   "fetchTreatmentRequest": () => (/* binding */ fetchTreatmentRequest),
-/* harmony export */   "getAllTreatments": () => (/* binding */ getAllTreatments),
-/* harmony export */   "fetchTreatmentsRequest": () => (/* binding */ fetchTreatmentsRequest),
 /* harmony export */   "saveTreatmentData": () => (/* binding */ saveTreatmentData),
 /* harmony export */   "deleteTreatment": () => (/* binding */ deleteTreatment),
 /* harmony export */   "createTreatment": () => (/* binding */ createTreatment)
@@ -6683,38 +6766,6 @@ var fetchTreatmentSuccess = function fetchTreatmentSuccess(treatment) {
 var fetchTreatmentFailure = function fetchTreatmentFailure(error) {
   return {
     type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.SHOW_TREATMENT_FAILURE,
-    payload: error
-  };
-};
-
-var getAllTreatments = function getAllTreatments() {
-  return function (dispatch) {
-    dispatch(fetchTreatmentsRequest);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/treatments').then(function (response) {
-      var treatments = response.data;
-      dispatch(fetchTreatmentsSuccess(treatments));
-    })["catch"](function (error) {
-      var errorMsg = error.message;
-      dispatch(fetchTreatmentsFailure(errorMsg));
-    });
-  };
-};
-var fetchTreatmentsRequest = function fetchTreatmentsRequest() {
-  return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS
-  };
-};
-
-var fetchTreatmentsSuccess = function fetchTreatmentsSuccess(treatments) {
-  return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_SUCCESS,
-    payload: treatments
-  };
-};
-
-var fetchTreatmentsFailure = function fetchTreatmentsFailure(error) {
-  return {
-    type: _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_1__.LIST_TREATMENTS_FAILURE,
     payload: error
   };
 }; //saving data from treatment
@@ -6959,6 +7010,61 @@ var deleteUserFailure = function deleteUserFailure(error) {
 
 /***/ }),
 
+/***/ "./resources/js/components/store/reducers/AllTreatmentReducer.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/store/reducers/AllTreatmentReducer.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentReducer)
+/* harmony export */ });
+/* harmony import */ var _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/TreatmentTypes */ "./resources/js/components/store/actionTypes/TreatmentTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  loading: false,
+  treatments: [],
+  error: ""
+};
+function TreatmentReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_SUCCESS:
+      return {
+        loading: false,
+        treatments: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_FAILURE:
+      return {
+        loading: false,
+        treatments: [],
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/store/reducers/RootReducer.js":
 /*!***************************************************************!*\
   !*** ./resources/js/components/store/reducers/RootReducer.js ***!
@@ -6970,15 +7076,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _TreatmentReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreatmentReducer */ "./resources/js/components/store/reducers/TreatmentReducer.js");
-/* harmony import */ var _UserReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserReducer */ "./resources/js/components/store/reducers/UserReducer.js");
+/* harmony import */ var _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AllTreatmentReducer */ "./resources/js/components/store/reducers/AllTreatmentReducer.js");
+/* harmony import */ var _UserReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserReducer */ "./resources/js/components/store/reducers/UserReducer.js");
 
 
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+  allTreatments: _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   treatment: _TreatmentReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  user: _UserReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  user: _UserReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
 
@@ -7005,7 +7114,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   loading: false,
-  treatments: [],
   treatment: "",
   error: ""
 };
@@ -7030,25 +7138,6 @@ function TreatmentReducer() {
       return {
         loading: false,
         treatment: '',
-        error: action.payload
-      };
-
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS:
-      return _objectSpread(_objectSpread({}, state), {}, {
-        loading: true
-      });
-
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_SUCCESS:
-      return {
-        loading: false,
-        treatments: action.payload,
-        error: ''
-      };
-
-    case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TREATMENTS_FAILURE:
-      return {
-        loading: false,
-        treatments: [],
         error: action.payload
       };
 

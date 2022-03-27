@@ -10,9 +10,6 @@ import {
     DELETE_TREATMENTS,
     DELETE_TREATMENTS_SUCCESS,
     DELETE_TREATMENTS_FAILURE,
-    LIST_TREATMENTS,
-    LIST_TREATMENTS_FAILURE,
-    LIST_TREATMENTS_SUCCESS
 } from "../actionTypes/TreatmentTypes";
 /**
  * set treatment defaults
@@ -49,40 +46,6 @@ const fetchTreatmentSuccess = treatment => {
 const fetchTreatmentFailure = error => {
     return {
         type:SHOW_TREATMENT_FAILURE,
-        payload:error
-    }
-}
-
-export const getAllTreatments = () => {
-    return (dispatch) => {
-        dispatch(fetchTreatmentsRequest)
-        axios.get('/api/treatments')
-            .then(response =>{
-                const treatments = response.data
-                dispatch(fetchTreatmentsSuccess(treatments))
-            })
-            .catch(error =>{
-                const errorMsg = error.message
-                dispatch(fetchTreatmentsFailure(errorMsg))
-            })
-    }
-
-}
-export const fetchTreatmentsRequest = () => {
-    return{
-        type:LIST_TREATMENTS
-    }
-}
-const fetchTreatmentsSuccess = treatments => {
-    return{
-
-        type:LIST_TREATMENTS_SUCCESS,
-        payload: treatments
-    }
-}
-const fetchTreatmentsFailure = error => {
-    return {
-        type:LIST_TREATMENTS_FAILURE,
         payload:error
     }
 }

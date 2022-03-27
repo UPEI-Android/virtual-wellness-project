@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 
 import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
-import {getAllTreatments, getTreatment, saveTreatmentData} from '../store/actions/TreatmentActions'
+import {getAllTreatments} from '../store/actions/AllTreatmentActions'
 
-function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, saveTreatmentData}){
+function TreatmentOverview({treatmentsData, getAllTreatments}){
   useEffect(()=>{
     getAllTreatments()
   },[])
@@ -76,9 +76,6 @@ function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, save
                   {treatmentsData.treatments.length > 0 ? (
                         <TreatmentList
                           todos={treatmentsData.treatments}
-                          saveTreatmentData={saveTreatmentData}
-                          getTreatment={getTreatment}
-
                         />
                   ) : (
                     <NoTreatments />
@@ -101,14 +98,12 @@ function TreatmentOverview({treatmentsData, getAllTreatments, getTreatment, save
 }
 const mapStateToProps = state => {
   return {
-      treatmentsData: state.treatment
+      treatmentsData: state.allTreatments
   }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getTreatment: (id) => dispatch(getTreatment(id)),
-        getAllTreatments: () => dispatch(getAllTreatments()),
-        saveTreatmentData: () => dispatch(saveTreatmentData())
+        getAllTreatments: () => dispatch(getAllTreatments())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TreatmentOverview)
