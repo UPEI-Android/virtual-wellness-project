@@ -5997,6 +5997,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6051,13 +6059,23 @@ function TreatmentList(props) {
   function completeTodo(id) {
     props.getTreatment(id);
     var treatment = props.singleTreatmentData.treatment;
-    console.log(treatment);
 
     if (treatment.id === id) {
-      treatment.is_completed = !treatment.is_completed;
+      if (treatment.is_completed === 0) {
+        treatment.is_completed = 1;
+      } else {
+        treatment.is_completed = 0;
+      }
     }
 
+    console.log(treatment);
     props.saveTreatmentData(treatment, id);
+  }
+
+  function deleteTodo(id) {
+    setTodos(_toConsumableArray(todos).filter(function (todo) {
+      return todo.id !== id;
+    }));
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
@@ -6199,12 +6217,6 @@ function TreatmentOverview(_ref) {
     setidForTodo(function (prevIdForTodo) {
       return prevIdForTodo + 1;
     });
-  }
-
-  function deleteTodo(id) {
-    setTodos(_toConsumableArray(todos).filter(function (todo) {
-      return todo.id !== id;
-    }));
   }
 
   function markAsEditing(id) {

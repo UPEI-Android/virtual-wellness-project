@@ -29,12 +29,18 @@ function TreatmentList(props) {
       function completeTodo(id){
         props.getTreatment(id)
         const treatment = props.singleTreatmentData.treatment
-        console.log(treatment)
         if (treatment.id === id){
-        treatment.is_completed = !treatment.is_completed
+          if(treatment.is_completed === 0)
+          {treatment.is_completed =1}
+          else{treatment.is_completed=0}
         }
+          console.log(treatment)
            props.saveTreatmentData(treatment,id)
         }
+
+      function deleteTodo(id){
+        setTodos([... todos].filter(todo => todo.id !== id));
+      }
 
 
     return(

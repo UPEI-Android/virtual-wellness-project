@@ -25,10 +25,6 @@ function TreatmentOverview({treatmentsData, getAllTreatments}){
   setidForTodo(prevIdForTodo => prevIdForTodo + 1);
   }
 
-  function deleteTodo(id){
-    setTodos([... todos].filter(todo => todo.id !== id));
-  }
-
 
   function markAsEditing(id){
     const updatedTodos = todos.map(todo => {
