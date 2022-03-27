@@ -5,53 +5,37 @@ import useFetch from '../../hooks/useFetch';
 
 export default function TreatmentList(props) {
 
-    const [filter, setFilter] = useState('all');
+    //const [filter, setFilter] = useState('all');
 
     return(
     <>
-    <TreatmentFilters 
+    {/*<TreatmentFilters 
         todosFiltered={props.todosFiltered}
         filter={filter}
         setFilter={setFilter}
     />
+    */}
     
     <ul
         role="list"
         className="list-unstyled"
     >
-        { props.todosFiltered(filter).map((todo, index) => (
+        { props.todos.map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.isComplete ? true : false}/>
+                <input type="checkbox" />
 
                 {/* if the todo item is not in editing mode, display the title*/}
 
-                { !todo.isEditing ? (
-                    <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
-                ) : (
-
-                <input
-                type="text"
-                onBlur={(event) => props.updateTodo(event,todo.id)}
-                onKeyDown={event => {
-                    if(event.key == 'Enter'){
-                    props.updateTodo(event,todo.id)
-                    }
-                    else if(event.key =='Escape'){
-                    props.cancelEdit(event,todo.id)
-                    }
-                }}
-                defaultValue={todo.title}
-                className="treatment-input-group"
-                autoFocus
-                />
-                )}
+             
+                <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
+                 
             </div>
             <div className="btn-group" style={{"display" : "block"}}>
-                <button type="button" className="btn" onClick={() => props.markAsEditing(todo.id)} style={{"display" : "inline"}}>
+                <button type="button" className="btn" style={{"display" : "inline"}}>
                 Edit
                 </button>
-                <button type="button" className="btn btn__danger" onClick={() => props.deleteTodo(todo.id)} style={{"display" : "inline"}}>
+                <button type="button" className="btn btn__danger"  style={{"display" : "inline"}}>
                 Delete
                 </button>
             </div>
@@ -61,7 +45,7 @@ export default function TreatmentList(props) {
 
     <div className="remaining-block">
         <p className='btn'>
-            { props.remaining() } Items Remaining
+             Items Remaining
         </p>
         
     </div>

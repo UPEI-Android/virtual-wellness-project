@@ -12,12 +12,6 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     getTreatment()
   },[])
 
-  const tList =  treatmentsData.treatments.map((treatment) => 
-            <li key={treatment.id}>
-              { treatment.title }
-            </li>
-          );
-  
   function addTodo(todo){
 
     setTodos([... todos,
@@ -103,16 +97,11 @@ function TreatmentOverview({treatmentsData, getTreatment}){
             <div className="align-right"><a href="/createTreatment" className="btn-primary create-treatment-button">CreateTreatment</a></div>
             <div className="card" style={{"padding": "60px"}}>
               <div className="card-header">Your Treatments</div>
-                {/*
-                <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
-                */
-                }
-                
-                
-                  {tList.length > 0 ? (
-                      <ul>
-                        {tList}
-                        </ul>
+        
+                  {treatmentsData.treatments.length > 0 ? (
+                        <TreatmentList
+                          todos={treatmentsData.treatments}
+                        />
                   ) : (
                     <NoTreatments />
                   ) }
