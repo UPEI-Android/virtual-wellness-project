@@ -12,7 +12,7 @@ function UserProfile({ userData, getUser, userid}){
     useEffect(()=>{
         getUser(userid)
 
-    })
+    },[])
 
 
 
