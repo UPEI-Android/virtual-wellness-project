@@ -4,13 +4,13 @@ import {connect} from 'react-redux';
 
 import NoTreatments from './NoTreatments';
 import TreatmentList from './TreatmentList';
-import TreatmentForm from './TreatmentForm';
-import {getTreatment} from '../store/actions/TreatmentActions'
+import {getAllTreatments} from '../store/actions/AllTreatmentActions'
 
-function TreatmentOverview({treatmentsData, getTreatment}){
+function TreatmentOverview({treatmentsData, getAllTreatments}){
   useEffect(()=>{
-    getTreatment()
+    getAllTreatments()
   },[])
+  
 
   function addTodo(todo){
 
@@ -23,10 +23,6 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     ]);
 
   setidForTodo(prevIdForTodo => prevIdForTodo + 1);
-  }
-
-  function deleteTodo(id){
-    setTodos([... todos].filter(todo => todo.id !== id));
   }
 
 
@@ -65,15 +61,14 @@ function TreatmentOverview({treatmentsData, getTreatment}){
     setTodos(updatedTodos);
   }
 
-
     return (
+      
       <div className="container background" style={{paddingTop:"2%"}}>
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="align-right"><a href="/createTreatment" className="btn-primary create-treatment-button">CreateTreatment</a></div>
             <div className="card" style={{"padding": "60px"}}>
               <div className="card-header">Your Treatments</div>
-        
                   {treatmentsData.treatments.length > 0 ? (
                         <TreatmentList
                           todos={treatmentsData.treatments}
@@ -83,20 +78,13 @@ function TreatmentOverview({treatmentsData, getTreatment}){
                   ) }
                    
                 {/*
-                { todos.length > 0 ? (
                     <TreatmentList 
-                      todos={todos}
                       completeTodo={completeTodo}
                       markAsEditing={markAsEditing}
                       updateTodo={updateTodo}
                       cancelEdit={cancelEdit}
                       deleteTodo={deleteTodo}
-                      remaining={remaining}
-                      todosFiltered={todosFiltered}
                       />
-                  ) : (
-                    <NoTreatments />
-                  ) }
                   */}
               </div>
             </div>
@@ -106,12 +94,12 @@ function TreatmentOverview({treatmentsData, getTreatment}){
 }
 const mapStateToProps = state => {
   return {
-      treatmentsData: state.treatment
+      treatmentsData: state.allTreatments
   }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getTreatment: () => dispatch(getTreatment())
+        getAllTreatments: () => dispatch(getAllTreatments())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TreatmentOverview)

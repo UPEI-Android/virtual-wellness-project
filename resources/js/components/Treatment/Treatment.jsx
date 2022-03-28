@@ -1,43 +1,55 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import useFetch from '../../hooks/useFetch';
+import {getTreatment} from "../store/actions/TreatmentActions";
+import {connect} from "react-redux";
 
-export default function Treatment() {
-    const{data: treatments, isLoading} = useFetch('http://127.0.0.1:8000/api/treatments/1')
+function Treatment(props) {
+    useEffect(()=>{
+        props.getTreatment(props.id)
+    },[])
+
 
     return (
-        <div className="container background" style={{"padding-top":"5%"}}>
+        <div className="container background" style={{paddingTop:"5%"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    
-                        {isLoading && <div> Loading ...</div>}
-                        {treatments && (
-                            
+                        {props.singleTreatmentData && (
                                 <div className="card" style={{"padding": "60px"}}>
-                                <div className="card-header" key={treatment.id}>{ treatments.title }</div>
-                                <label className="col-form-label-lg">Treatment ID: {treatments.id}</label>
+                                    {console.log(props.singleTreatmentData.treatment)}
+                                <div className="card-header" key={props.singleTreatmentData.treatment.id}>{ props.singleTreatmentData.treatment.title }</div>
+                                <label className="col-form-label-lg">Treatment ID: {props.singleTreatmentData.treatment.id}</label>
                                 <label className="form-label">Description:</label>
-                                <div className="individual-treatment-form-control" style={{"margin-bottom":"20px"}}>
-                                    <p className="form-label">{treatments.notes}</p>
+                                <div className="individual-treatment-form-control" style={{marginBottom:"20px"}}>
+                                    <p className="form-label">{props.singleTreatmentData.treatment.notes}</p>
                                 </div>
                             </div>
                         )}
-                        { /* 
-                
-                        
+                        { /*
+
+
                             <div>
                             <label className="col-form-label-lg">Recurring?</label>
                             <input type="checkbox" style={{"margin-left":"10px"}}/>
                             </div>
                             */ }
                         { /*errorMessage && <div> {errorMessage} </div> */}
-                    
+
                 </div>
             </div>
         </div>
     );
 }
-
+const mapStateToProps = state => {
+    return {
+        singleTreatmentData: state.treatment
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return {
+        getTreatment: (id) => dispatch(getTreatment(id)),
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Treatment)
 if (document.getElementById('treatment')) {
     const element = document.getElementById('treatment')
     const props = Object.assign({}, element.dataset )
