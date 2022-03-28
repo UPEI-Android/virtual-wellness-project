@@ -5576,13 +5576,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function CreateTreatment(props) {
-  {
-    /*
-    useEffect(()=> {
-       getTreatment(1)
-    },[])
-    */
-  }
   {//const[todoInput, setTodoInput] = useState('');
 
     /*

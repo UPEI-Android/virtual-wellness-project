@@ -3,13 +3,7 @@ import {connect} from 'react-redux';
 import { getTreatment, createTreatment } from '../store/actions/TreatmentActions'
 import ReactDOM from 'react-dom';
 
-function CreateTreatment (props) {
-    {/*
-    useEffect(()=> {
-        getTreatment(1)
-    },[])
-*/}
-
+function CreateTreatment (props) {  
   {
     //const[todoInput, setTodoInput] = useState('');
 
