@@ -6148,7 +6148,7 @@ function TreatmentList(props) {
               },
               checked: todo.is_completed ? true : false
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-              href: "/treatment",
+              href: '/treatment/' + todo.id,
               className: "treatment-item treatment-list-item",
               children: todo.title
             })]

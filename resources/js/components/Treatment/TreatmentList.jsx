@@ -43,7 +43,6 @@ function TreatmentList(props) {
         props.deleteTreatment(id);
       }
 
-
     return(
     <>
     <TreatmentFilters
@@ -60,7 +59,7 @@ function TreatmentList(props) {
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
                 <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
-                <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
+                <a href={'/treatment/' + todo.id} className="treatment-item treatment-list-item" >{ todo.title }</a>
 
             </div>
             <div className="btn-group" style={{"display" : "block"}}>

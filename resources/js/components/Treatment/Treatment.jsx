@@ -8,7 +8,6 @@ function Treatment(props) {
         props.getTreatment(props.id)
     },[])
 
-    
 
     return (
         <div className="container background" style={{paddingTop:"5%"}}>
