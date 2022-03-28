@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
+import {connect} from 'react-redux';
+import {deleteTreatment, getTreatment, saveTreatmentData} from '../store/actions/TreatmentActions'
 
-export default function TreatmentList(props) {
+function TreatmentList(props) {
+  useEffect(()=>{
+    props.getTreatment(1)
+  },[])
 
     const [filter, setFilter] = useState('all');
 
     function remaining(){
-        return props.todos.filter(todo => !todo.is_complete).length;
+        return props.todos.filter(todo => !todo.is_completed).length;
       }
 
     function todosFiltered(filter){
@@ -15,32 +20,37 @@ export default function TreatmentList(props) {
           return props.todos;
         }
         else if (filter==='active'){
-          return props.todos.filter(todo => !todo.is_complete);
+          return props.todos.filter(todo => !todo.is_completed);
         }
         else if (filter==='completed'){
-          return props.todos.filter(todo => todo.is_complete);
+          return props.todos.filter(todo => todo.is_completed);
         }
       }
+      function completeTodo(id){
+        props.getTreatment(id)
+        const treatment = props.singleTreatmentData.treatment
+        if (treatment.id === id){
+          if(treatment.is_completed === 0)
+          {treatment.is_completed =1}
+          else{treatment.is_completed=0}
+        }
+          console.log(treatment)
+           props.saveTreatmentData(treatment,id)
+        }
 
-    function completeTodo(id){
-        const updatedTodos = todos.map(todo => {
-            if (todo.id === id){
-            todo.is_complete = !todo.is_complete
-            }
-            return todo;
-        })
-        //this part needs to change
-        setTodos(updatedTodos);
-    }
+      function deleteTodo(id){
+        //setTodos([... todos].filter(todo => todo.id !== id));
+        props.deleteTreatment(id);
+      }
 
     return(
     <>
-    <TreatmentFilters 
+    <TreatmentFilters
         todosFiltered={todosFiltered}
         filter={filter}
         setFilter={setFilter}
     />
-    
+
     <ul
         role="list"
         className="list-unstyled"
@@ -48,16 +58,15 @@ export default function TreatmentList(props) {
         { todosFiltered(filter).map((todo, index) => (
         <li key={todo.id} className="treatment-item-container">
             <div className ="treatment-item">
-                <input type="checkbox" onChange={() => props.completeTodo(todo.id)} checked={todo.is_complete ? true : false}/>
-             
-                <a href="/treatment" className="treatment-item treatment-list-item" >{ todo.title }</a>
-                 
+                <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
+                <a href={'/treatment/' + todo.id} className="treatment-item treatment-list-item" >{ todo.title }</a>
+
             </div>
             <div className="btn-group" style={{"display" : "block"}}>
                 <button type="button" className="btn" style={{"display" : "inline"}}>
                 Edit
                 </button>
-                <button type="button" className="btn btn__danger"  style={{"display" : "inline"}}>
+                <button type="button" className="btn btn__danger"  onClick={()=> deleteTodo(todo.id)} style={{"display" : "inline"}}>
                 Delete
                 </button>
             </div>
@@ -69,8 +78,21 @@ export default function TreatmentList(props) {
         <p className='btn'>
         { remaining() } Item(s) Remaining
         </p>
-        
+
     </div>
     </>
     )
 }
+const mapStateToProps = state => {
+  return {
+      singleTreatmentData: state.treatment
+  }
+}
+const mapDispatchToProps = dispatch =>{
+    return {
+        getTreatment: (id) => dispatch(getTreatment(id)),
+        saveTreatmentData: (state,id) => dispatch(saveTreatmentData(state,id)),
+        deleteTreatment: (id) => dispatch(deleteTreatment(id))
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TreatmentList)

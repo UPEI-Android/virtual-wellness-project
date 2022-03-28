@@ -62,6 +62,11 @@ class TreatmentController extends Controller
         return response($treatment);
     }
 
+    public function showTreatment(int $treatmentId){
+
+        return view('/treatmentViews/showTreatment',compact('treatmentId'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

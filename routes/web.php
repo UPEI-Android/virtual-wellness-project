@@ -39,9 +39,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');
 });
-Route::get('/treatment', function () {
-    return view('/treatmentViews/showTreatment');
-});
+
+Route::get('/treatment/{id}', [TreatmentController::class,'showTreatment']);
 
 Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
