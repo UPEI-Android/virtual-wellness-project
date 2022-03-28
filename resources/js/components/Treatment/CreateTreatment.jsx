@@ -12,11 +12,6 @@ export default function CreateTreatment(props) {
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">New Treatment</div>
                             <TreatmentForm />
-                            {
-                                /*
-                                <TreatmentForm addTodo={addTodo} completeTodo={completeTodo}/>
-                                */
-                            }
                     </div>
                 </div>
             </div>

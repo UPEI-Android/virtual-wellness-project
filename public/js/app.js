@@ -5844,21 +5844,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function TreatmentForm(props) {
-  //const[todoInput, setTodoInput] = useState('');
+  useEffect(function () {
+    props.getTreatment(1);
+  }, []);
+  {//const[todoInput, setTodoInput] = useState('');
 
-  /*
-  function handleInput(event){
-      setTodoInput(event.target.value);
-    }
-     function handleSubmit(event){
-    
-      event.preventDefault();
-      if(todoInput.trim().length === 0){
-      return;
+    /*
+    function handleInput(event){
+        setTodoInput(event.target.value);
       }
-      props.addTodo(todoInput)
-      setTodoInput('');
-      */
+       function handleSubmit(event){
+      
+        event.preventDefault();
+        if(todoInput.trim().length === 0){
+        return;
+        }
+        props.addTodo(todoInput)
+        setTodoInput('');
+        */
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.getTreatment(id);
+    var treatment = props.singleTreatmentData.treatment;
+    treatment.id = 1;
+    treatment.patient_id = 1;
+    treatment.title = e.target.title.value;
+    treatment.notes = e.target.notes.value;
+    treatment.start_date = e.target.start_date.value;
+    treatment.end_date = e.target.end_date.value;
+    treatment.start_time = e.target.start_time.value;
+    treatment.end_time = e.target.end_time.value;
+    console.log(treatment);
+    {// props.saveUserData(treament,treatment.id);
+    }
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "container background",
     style: {
@@ -5888,6 +5910,7 @@ function TreatmentForm(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "text",
                 id: "title",
+                defaultValue: "test",
                 className: "form-input-block",
                 placeholder: "Enter Treatment Title Here..."
               })]
@@ -5899,6 +5922,7 @@ function TreatmentForm(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
                 type: "text",
                 id: "notes",
+                defaultValue: "test",
                 rows: "4",
                 cols: "80",
                 className: "form-input-block",
@@ -5964,6 +5988,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    getTreatment: function getTreatment(id) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.getTreatment)(id));
+    },
     saveTreatmentData: function saveTreatmentData(state, id) {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.saveTreatmentData)(state, id));
     }
