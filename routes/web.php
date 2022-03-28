@@ -46,6 +46,6 @@ Route::get('/createTreatment', function () {
     return view('/treatmentViews/createTreatment');
 });
 
-Route::get('/profile/', [App\Http\Controllers\UserController::class, 'show']);
-Route::get('/profileedit',[UserController::class,'showEdit']);
+Route::get('send-mail',[\App\Http\Controllers\MailController::class,'basic_email']);
+
 
