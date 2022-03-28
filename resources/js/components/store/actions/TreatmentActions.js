@@ -10,6 +10,9 @@ import {
     DELETE_TREATMENTS,
     DELETE_TREATMENTS_SUCCESS,
     DELETE_TREATMENTS_FAILURE,
+    CREATE_TREATMENTS,
+    CREATE_TREATMENTS_SUCCESS,
+    CREATE_TREATMENTS_FAILURE,
 } from "../actionTypes/TreatmentTypes";
 /**
  * set treatment defaults
