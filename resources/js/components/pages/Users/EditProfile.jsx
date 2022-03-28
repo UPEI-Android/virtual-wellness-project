@@ -5,9 +5,9 @@ import store from "../../store/store";
 import {connect} from "react-redux";
 
 
-function EditProfile({ userState, getUser, saveUserData}){
+function EditProfile({ userState, getUser, saveUserData,userid}){
     useEffect(()=> {
-        getUser()
+        getUser(userid)
     },[])
     const [formState, setFormState] = useState(userState);
 
@@ -115,13 +115,13 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getUser: () => dispatch(getUser()),
+        getUser: (userid) => dispatch(getUser(userid)),
        saveUserData: () => dispatch(saveUserData(store.getState().user.users))
 
     }
 }
 
 if (document.getElementById('editprofileoutput')) {
-    ReactDOM.render(<EditProfile />, document.getElementById('editprofileoutput'));
+    ReactDOM.render(<EditProfile userid = {userid}/>, document.getElementById('editprofileoutput'));
 }
 export default connect(mapStateToProps,mapDispatchToProps)(EditProfile)
