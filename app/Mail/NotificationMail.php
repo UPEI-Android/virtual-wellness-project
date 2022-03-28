@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Carbon\Carbon;
 
-class MyTestMail extends Mailable
+class NotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class MyTestMail extends Mailable
         $title = $treatment->title;
         $diffInDays = $date->diff(Carbon::now())->days;
         $details = [
-            'title' => 'Test email',
+            'title' => 'Notification E-mail',
             'body' => 'Hi '.$name.'. This is for testing email to '.$email.". You have ".$diffInDays." days left to complete ".$title
         ];
         $this->details = $details;
@@ -43,6 +43,6 @@ class MyTestMail extends Mailable
     public function build()
     {
         return $this->subject('This is a test mail')
-            ->view('emails.testMail');
+            ->view('emails.notificationMail');
     }
 }

@@ -40,7 +40,7 @@ class MailController extends Controller
                 $users = DB::table('users')->where('id', '=', $patient_id)->get();
                 foreach ($users as $user) {
                     $email = $user->email;
-                    Mail::to($email)->queue(new \App\Mail\MyTestMail($rule_service->nextOccurrence()[0], $user, $treatment));
+                    Mail::to($email)->queue(new \App\Mail\NotificationMail($rule_service->nextOccurrence()[0], $user, $treatment));
                     echo("Email is Sent to " . $email);
                 }
             }
