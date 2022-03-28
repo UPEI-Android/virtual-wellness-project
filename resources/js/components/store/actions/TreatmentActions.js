@@ -87,11 +87,11 @@ const saveTreatmentFailure = error => {
 }
 
 //delete treatment
-export const deleteTreatment = () =>{
+export const deleteTreatment = (id) =>{
     return (dispatch) => {
         dispatch(deleteTreatmentRequest)
         //route is wrong
-        axios.delete('/api/treatments/1/')
+        axios.delete('/api/treatments/'+id)
             .then(response =>{
 
                 dispatch(deleteTreatmentSuccess(response))
