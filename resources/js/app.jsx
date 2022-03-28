@@ -19,6 +19,7 @@ require('./components/SideBar/NavItem');
 require('./components/pages/Users/UserProfile');
 require('./components/Treatment/TreatmentOverviewContainer');
 require('./components/Treatment/CreateTreatmentContainer');
+require('./components/Treatment/TreatmentContainer');
 
 require('./components/Treatment/NoTreatments');
 require('./components/Treatment/TreatmentList');

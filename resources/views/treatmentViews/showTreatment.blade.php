@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <div id="treatment"></div>
+    <div id="treatment-container"></div>
 
 @endsection

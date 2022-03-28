@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 function Treatment(props) {
     useEffect(()=>{
-        props.getTreatment(1)
+        props.getTreatment(4)
     },[])
 
     
@@ -14,14 +14,14 @@ function Treatment(props) {
         <div className="container background" style={{paddingTop:"5%"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                        {props.singleTreatmentData.treatment && (
+                        {props.singleTreatmentData && (
                                 <div className="card" style={{"padding": "60px"}}>
                                     {console.log(props.singleTreatmentData.treatment)}
-                                <div className="card-header" key={props.singleTreatmentData.treatment.id}>{ props.singleTreatmentData.title }</div>
-                                <label className="col-form-label-lg">Treatment ID: {treatments.id}</label>
+                                <div className="card-header" key={props.singleTreatmentData.treatment.id}>{ props.singleTreatmentData.treatment.title }</div>
+                                <label className="col-form-label-lg">Treatment ID: {props.singleTreatmentData.treatment.id}</label>
                                 <label className="form-label">Description:</label>
-                                <div className="individual-treatment-form-control" style={{"margin-bottom":"20px"}}>
-                                    <p className="form-label">{props.singleTreatmentData.notes}</p>
+                                <div className="individual-treatment-form-control" style={{marginBottom:"20px"}}>
+                                    <p className="form-label">{props.singleTreatmentData.treatment.notes}</p>
                                 </div>
                             </div>
                         )}

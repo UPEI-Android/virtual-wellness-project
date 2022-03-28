@@ -5282,6 +5282,8 @@ __webpack_require__(/*! ./components/Treatment/TreatmentOverviewContainer */ "./
 
 __webpack_require__(/*! ./components/Treatment/CreateTreatmentContainer */ "./resources/js/components/Treatment/CreateTreatmentContainer.jsx");
 
+__webpack_require__(/*! ./components/Treatment/TreatmentContainer */ "./resources/js/components/Treatment/TreatmentContainer.jsx");
+
 __webpack_require__(/*! ./components/Treatment/NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 
 __webpack_require__(/*! ./components/Treatment/TreatmentList */ "./resources/js/components/Treatment/TreatmentList.jsx");
@@ -5873,7 +5875,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function Treatment(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    props.getTreatment(1);
+    props.getTreatment(4);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "container background",
@@ -5884,28 +5886,28 @@ function Treatment(props) {
       className: "row justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "col-md-8",
-        children: props.singleTreatmentData.treatment && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: props.singleTreatmentData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "card",
           style: {
             "padding": "60px"
           },
           children: [console.log(props.singleTreatmentData.treatment), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "card-header",
-            children: props.singleTreatmentData.title
+            children: props.singleTreatmentData.treatment.title
           }, props.singleTreatmentData.treatment.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
             className: "col-form-label-lg",
-            children: ["Treatment ID: ", treatments.id]
+            children: ["Treatment ID: ", props.singleTreatmentData.treatment.id]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
             className: "form-label",
             children: "Description:"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "individual-treatment-form-control",
             style: {
-              "margin-bottom": "20px"
+              marginBottom: "20px"
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
               className: "form-label",
-              children: props.singleTreatmentData.notes
+              children: props.singleTreatmentData.treatment.notes
             })
           })]
         })
@@ -5934,6 +5936,40 @@ if (document.getElementById('treatment')) {
   var element = document.getElementById('treatment');
   var props = Object.assign({}, element.dataset);
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Treatment, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentContainer.jsx":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentContainer.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentContainer)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Treatment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Treatment */ "./resources/js/components/Treatment/Treatment.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function TreatmentContainer() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+    store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Treatment__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  });
+}
+
+if (document.getElementById('treatment-container')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TreatmentContainer, {}), document.getElementById('treatment-container'));
 }
 
 /***/ }),
