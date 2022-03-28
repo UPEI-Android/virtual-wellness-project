@@ -5280,7 +5280,7 @@ __webpack_require__(/*! ./components/pages/Users/UserProfile */ "./resources/js/
 
 __webpack_require__(/*! ./components/Treatment/TreatmentOverviewContainer */ "./resources/js/components/Treatment/TreatmentOverviewContainer.jsx");
 
-__webpack_require__(/*! ./components/Treatment/TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
+__webpack_require__(/*! ./components/Treatment/CreateTreatmentContainer */ "./resources/js/components/Treatment/CreateTreatmentContainer.jsx");
 
 __webpack_require__(/*! ./components/Treatment/NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 
@@ -5555,11 +5555,11 @@ if (document.getElementById('sidebarnav')) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CreateTreatment)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _TreatmentForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TreatmentForm */ "./resources/js/components/Treatment/TreatmentForm.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -5574,279 +5574,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function CreateTreatment(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "container background",
-    style: {
-      "padding-top": "5%"
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "card",
-          style: {
-            "padding": "60px"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "card-header",
-            children: "New Treatment"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TreatmentForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
-        })
-      })
-    })
-  });
-}
-
-if (document.getElementById('create-treatment')) {
-  var element = document.getElementById('create-treatment');
-  var props = Object.assign({}, element.dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(CreateTreatment, _objectSpread({}, props)), element);
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Treatment/NoTreatments.jsx":
-/*!************************************************************!*\
-  !*** ./resources/js/components/Treatment/NoTreatments.jsx ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ NoTreatments)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function NoTreatments() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "no-treatments-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
-      width: "247",
-      height: "241",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("g", {
-        clipPath: "url(#clip0)",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M156.806 54.2H90.25a5.729 5.729 0 00-5.72 5.718v147.858l-.764.233-16.327 4.998a3.057 3.057 0 01-3.81-2.025L15.063 52.412a3.05 3.05 0 012.025-3.808l25.16-7.701 72.941-22.317 25.16-7.7a3.048 3.048 0 013.81 2.02l12.414 40.532.233.762z",
-          fill: "#F2F2F2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M171.329 53.438l-14.961-48.85A6.475 6.475 0 00153.21.761a6.477 6.477 0 00-4.939-.473L112.897 11.11 39.961 33.43 4.587 44.259a6.489 6.489 0 00-4.302 8.094L51.42 219.3a6.494 6.494 0 006.202 4.586 6.408 6.408 0 001.895-.285l24.249-7.419.763-.236v-.797l-.763.232-24.474 7.491a5.729 5.729 0 01-7.143-3.793L1.017 52.127a5.708 5.708 0 013.795-7.14L40.186 34.16l72.936-22.317 35.374-10.827a5.783 5.783 0 011.682-.252 5.728 5.728 0 015.461 4.045l14.893 48.63.237.762h.793l-.233-.763z",
-          fill: "#3F3D56"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M46.789 48.728a3.44 3.44 0 01-3.284-2.427l-4.913-16.039a3.43 3.43 0 012.278-4.285l67.1-20.534a3.438 3.438 0 014.287 2.276l4.913 16.04a3.435 3.435 0 01-2.277 4.285L47.792 48.578c-.325.1-.663.15-1.003.15z",
-          fill: "#C7C7C7"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M72.522 17.138a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.624 7.626 7.626 0 00-7.628 7.624 7.626 7.626 0 007.628 7.625z",
-          fill: "#C7C7C7"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M72.522 14.341a4.83 4.83 0 100-9.656 4.83 4.83 0 100 9.656z",
-          fill: "#fff"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M229.838 221.939H100.929a3.248 3.248 0 01-3.242-3.241V64.302a3.243 3.243 0 013.242-3.24h128.909a3.247 3.247 0 013.241 3.24v154.396a3.245 3.245 0 01-3.241 3.241z",
-          fill: "#E6E6E6"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M170.532 53.438H90.25a6.494 6.494 0 00-6.484 6.48v155.464l.763-.233V59.919A5.724 5.724 0 0190.25 54.2h80.518l-.236-.762zm69.984 0H90.25a6.494 6.494 0 00-6.484 6.48V234.52A6.489 6.489 0 0090.25 241h150.266a6.491 6.491 0 006.484-6.481v-174.6a6.494 6.494 0 00-6.484-6.48v-.001zm5.721 181.081a5.727 5.727 0 01-5.721 5.719H90.25a5.73 5.73 0 01-5.72-5.719v-174.6a5.724 5.724 0 015.72-5.719h150.266a5.726 5.726 0 015.721 5.718V234.52z",
-          fill: "#3F3D56"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M200.471 70.212h-70.175a3.437 3.437 0 01-3.433-3.432V50.007a3.432 3.432 0 013.433-3.431h70.175a3.438 3.438 0 013.432 3.43V66.78a3.436 3.436 0 01-3.432 3.431z",
-          fill: "#C7C7C7"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M165.383 47.72a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.625 7.627 7.627 0 00-7.628 7.625 7.627 7.627 0 007.628 7.624z",
-          fill: "#C7C7C7"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-          d: "M165.383 44.739a4.645 4.645 0 100-9.288 4.645 4.645 0 100 9.288z",
-          fill: "#fff"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("defs", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("clipPath", {
-          id: "clip0",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-            fill: "#fff",
-            d: "M0 0h247v241H0z"
-          })
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-      children: " Add some Treatments..."
-    })]
-  });
-}
-
-if (document.getElementById('no-treatments')) {
-  var element = document.getElementById('no-treatments');
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NoTreatments, {}), element);
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Treatment/Treatment.jsx":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/Treatment/Treatment.jsx ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Treatment)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./resources/js/hooks/useFetch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-function Treatment() {
-  var _useFetch = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"])('http://127.0.0.1:8000/api/treatments/1'),
-      treatments = _useFetch.data,
-      isLoading = _useFetch.isLoading;
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "container background",
-    style: {
-      "padding-top": "5%"
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "col-md-8",
-        children: [isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          children: " Loading ..."
-        }), treatments && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "card",
-          style: {
-            "padding": "60px"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "card-header",
-            children: treatments.title
-          }, treatment.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-            className: "col-form-label-lg",
-            children: ["Treatment ID: ", treatments.id]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            className: "form-label",
-            children: "Description:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "individual-treatment-form-control",
-            style: {
-              "margin-bottom": "20px"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "form-label",
-              children: treatments.notes
-            })
-          })]
-        })]
-      })
-    })
-  });
-}
-
-if (document.getElementById('treatment')) {
-  var element = document.getElementById('treatment');
-  var props = Object.assign({}, element.dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Treatment, _objectSpread({}, props)), element);
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Treatment/TreatmentFilters.jsx":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/Treatment/TreatmentFilters.jsx ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TreatmentFilters)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-function TreatmentFilters(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "btn-group",
-    style: {
-      verticalAlign: "middle"
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      onClick: function onClick() {
-        props.setFilter('all');
-        props.todosFiltered('all');
-      },
-      type: "button",
-      className: "btn ".concat(props.filter == 'all' ? 'btn-active' : ''),
-      "aria-pressed": "false",
-      children: "All"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      onClick: function onClick() {
-        props.setFilter('active');
-        props.todosFiltered('active');
-      },
-      type: "button",
-      className: "btn ".concat(props.filter == 'active' ? 'btn-active' : ''),
-      "aria-pressed": "false",
-      children: "Active"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      onClick: function onClick() {
-        props.setFilter('completed');
-        props.todosFiltered('completed');
-      },
-      type: "button",
-      className: "btn ".concat(props.filter == 'completed' ? 'btn-active' : ''),
-      "aria-pressed": "false",
-      children: "Completed"
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Treatment/TreatmentForm.jsx":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/Treatment/TreatmentForm.jsx ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function TreatmentForm(props) {
-  useEffect(function () {
-    props.getTreatment(1);
-  }, []);
   {//const[todoInput, setTodoInput] = useState('');
 
     /*
@@ -5865,6 +5592,7 @@ function TreatmentForm(props) {
   }
 
   function handleSubmit(e) {
+    console.log("hy!");
     e.preventDefault();
     props.getTreatment(id);
     var treatment = props.singleTreatmentData.treatment;
@@ -5877,14 +5605,13 @@ function TreatmentForm(props) {
     treatment.start_time = e.target.start_time.value;
     treatment.end_time = e.target.end_time.value;
     console.log(treatment);
-    {// props.saveUserData(treament,treatment.id);
-    }
+    props.createTreatment(treament);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "container background",
     style: {
-      "padding-top": "5%"
+      paddingTop: "5%"
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "row justify-content-center",
@@ -5988,16 +5715,286 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getTreatment: function getTreatment(id) {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.getTreatment)(id));
-    },
-    saveTreatmentData: function saveTreatmentData(state, id) {
-      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.saveTreatmentData)(state, id));
+    //getTreatment: (id) => dispatch(getTreatment(id)),
+    createTreatment: function createTreatment(state) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.createTreatment)(state));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(TreatmentForm));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CreateTreatment));
+
+if (document.getElementById('create-treatment')) {
+  var element = document.getElementById('create-treatment');
+  var props = Object.assign({}, element.dataset);
+  ReactDOM.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(CreateTreatment, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/CreateTreatmentContainer.jsx":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Treatment/CreateTreatmentContainer.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CreateTreatmentContainer)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _CreateTreatment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreateTreatment */ "./resources/js/components/Treatment/CreateTreatment.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function CreateTreatmentContainer() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+    store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CreateTreatment__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  });
+}
+
+if (document.getElementById('create-treatment-container')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CreateTreatmentContainer, {}), document.getElementById('create-treatment-container'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/NoTreatments.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Treatment/NoTreatments.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ NoTreatments)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function NoTreatments() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "no-treatments-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+      width: "247",
+      height: "241",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("g", {
+        clipPath: "url(#clip0)",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M156.806 54.2H90.25a5.729 5.729 0 00-5.72 5.718v147.858l-.764.233-16.327 4.998a3.057 3.057 0 01-3.81-2.025L15.063 52.412a3.05 3.05 0 012.025-3.808l25.16-7.701 72.941-22.317 25.16-7.7a3.048 3.048 0 013.81 2.02l12.414 40.532.233.762z",
+          fill: "#F2F2F2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M171.329 53.438l-14.961-48.85A6.475 6.475 0 00153.21.761a6.477 6.477 0 00-4.939-.473L112.897 11.11 39.961 33.43 4.587 44.259a6.489 6.489 0 00-4.302 8.094L51.42 219.3a6.494 6.494 0 006.202 4.586 6.408 6.408 0 001.895-.285l24.249-7.419.763-.236v-.797l-.763.232-24.474 7.491a5.729 5.729 0 01-7.143-3.793L1.017 52.127a5.708 5.708 0 013.795-7.14L40.186 34.16l72.936-22.317 35.374-10.827a5.783 5.783 0 011.682-.252 5.728 5.728 0 015.461 4.045l14.893 48.63.237.762h.793l-.233-.763z",
+          fill: "#3F3D56"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M46.789 48.728a3.44 3.44 0 01-3.284-2.427l-4.913-16.039a3.43 3.43 0 012.278-4.285l67.1-20.534a3.438 3.438 0 014.287 2.276l4.913 16.04a3.435 3.435 0 01-2.277 4.285L47.792 48.578c-.325.1-.663.15-1.003.15z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M72.522 17.138a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.624 7.626 7.626 0 00-7.628 7.624 7.626 7.626 0 007.628 7.625z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M72.522 14.341a4.83 4.83 0 100-9.656 4.83 4.83 0 100 9.656z",
+          fill: "#fff"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M229.838 221.939H100.929a3.248 3.248 0 01-3.242-3.241V64.302a3.243 3.243 0 013.242-3.24h128.909a3.247 3.247 0 013.241 3.24v154.396a3.245 3.245 0 01-3.241 3.241z",
+          fill: "#E6E6E6"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M170.532 53.438H90.25a6.494 6.494 0 00-6.484 6.48v155.464l.763-.233V59.919A5.724 5.724 0 0190.25 54.2h80.518l-.236-.762zm69.984 0H90.25a6.494 6.494 0 00-6.484 6.48V234.52A6.489 6.489 0 0090.25 241h150.266a6.491 6.491 0 006.484-6.481v-174.6a6.494 6.494 0 00-6.484-6.48v-.001zm5.721 181.081a5.727 5.727 0 01-5.721 5.719H90.25a5.73 5.73 0 01-5.72-5.719v-174.6a5.724 5.724 0 015.72-5.719h150.266a5.726 5.726 0 015.721 5.718V234.52z",
+          fill: "#3F3D56"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M200.471 70.212h-70.175a3.437 3.437 0 01-3.433-3.432V50.007a3.432 3.432 0 013.433-3.431h70.175a3.438 3.438 0 013.432 3.43V66.78a3.436 3.436 0 01-3.432 3.431z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M165.383 47.72a7.626 7.626 0 007.628-7.625 7.626 7.626 0 00-7.628-7.625 7.627 7.627 0 00-7.628 7.625 7.627 7.627 0 007.628 7.624z",
+          fill: "#C7C7C7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+          d: "M165.383 44.739a4.645 4.645 0 100-9.288 4.645 4.645 0 100 9.288z",
+          fill: "#fff"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("defs", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("clipPath", {
+          id: "clip0",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+            fill: "#fff",
+            d: "M0 0h247v241H0z"
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      children: " Add some Treatments..."
+    })]
+  });
+}
+
+if (document.getElementById('no-treatments')) {
+  var element = document.getElementById('no-treatments');
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NoTreatments, {}), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/Treatment.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Treatment/Treatment.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+function Treatment(props) {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    props.getTreatment(1);
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "container background",
+    style: {
+      paddingTop: "5%"
+    },
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "row justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "col-md-8",
+        children: props.singleTreatmentData.treatment && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "card",
+          style: {
+            "padding": "60px"
+          },
+          children: [console.log(props.singleTreatmentData.treatment), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "card-header",
+            children: props.singleTreatmentData.title
+          }, props.singleTreatmentData.treatment.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+            className: "col-form-label-lg",
+            children: ["Treatment ID: ", treatments.id]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "form-label",
+            children: "Description:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "individual-treatment-form-control",
+            style: {
+              "margin-bottom": "20px"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              className: "form-label",
+              children: props.singleTreatmentData.notes
+            })
+          })]
+        })
+      })
+    })
+  });
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    singleTreatmentData: state.treatment
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getTreatment: function getTreatment(id) {
+      return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_2__.getTreatment)(id));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_3__.connect)(mapStateToProps, mapDispatchToProps)(Treatment));
+
+if (document.getElementById('treatment')) {
+  var element = document.getElementById('treatment');
+  var props = Object.assign({}, element.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Treatment, _objectSpread({}, props)), element);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Treatment/TreatmentFilters.jsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Treatment/TreatmentFilters.jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TreatmentFilters)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function TreatmentFilters(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "btn-group",
+    style: {
+      verticalAlign: "middle"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('all');
+        props.todosFiltered('all');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'all' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "All"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('active');
+        props.todosFiltered('active');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'active' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "Active"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        props.setFilter('completed');
+        props.todosFiltered('completed');
+      },
+      type: "button",
+      className: "btn ".concat(props.filter == 'completed' ? 'btn-active' : ''),
+      "aria-pressed": "false",
+      children: "Completed"
+    })]
+  });
+}
 
 /***/ }),
 
@@ -7333,70 +7330,6 @@ __webpack_require__.r(__webpack_exports__);
 var initialState = {};
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_2__.createStore)(_reducers_RootReducer__WEBPACK_IMPORTED_MODULE_1__["default"], (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_0__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_2__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"])));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
-
-/***/ }),
-
-/***/ "./resources/js/hooks/useFetch.js":
-/*!****************************************!*\
-  !*** ./resources/js/hooks/useFetch.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-function useFetch(url) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      data = _useState2[0],
-      setData = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-      _useState4 = _slicedToArray(_useState3, 2),
-      isLoading = _useState4[0],
-      setIsLoading = _useState4[1]; //const [errorMessage, setErrorMessage] = useState(null);
-
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (results) {
-      setIsLoading(false);
-      setData(results);
-    });
-    {
-      /*
-      .catch(error => {
-          setIsLoading(false);
-          setErrorMessage('There was an error.')
-      })
-      */
-    }
-  }, [url]);
-  return {
-    data: data,
-    isLoading: isLoading
-  };
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useFetch);
 
 /***/ }),
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="treatment-form"></div>
+    <div id="create-treatment-container"></div>
 
 
 @endsection
