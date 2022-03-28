@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call (MailController::class,"basic_mail")-everyMinute();
+        $schedule->call ('App\Http\Controllers\MailController@basic_email')->everyFiveMinutes();
     }
 
     /**
