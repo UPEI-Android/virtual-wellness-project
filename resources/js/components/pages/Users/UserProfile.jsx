@@ -1,24 +1,19 @@
 import React, { useEffect} from 'react';
 import store from '../../store/store'
 import {connect} from 'react-redux';
-import {getUser,saveUserData} from '../../store/actions/UserActions'
+import {getUser} from '../../store/actions/UserActions';
 
 import ReactDOM from "react-dom";
 
 
-function handleSubmit()
-{
-//doesn't truly function yet. used to fake a submit for spoofed redux action call
-// but it is the endpoint
-    saveUserData();
-    console.log(store.getState().user.users);
-}
 
-function UserProfile({ userData, getUser, saveUserData}){
+
+function UserProfile({ userData, getUser, userid}){
     useEffect(()=>{
-        saveUserData()
-        getUser()
-    },[])
+        getUser(userid)
+
+    })
+
 
 
     return userData.loading?(
@@ -28,18 +23,21 @@ function UserProfile({ userData, getUser, saveUserData}){
     ): (
         <div>
 
-            <div className="student-profile py-4">
+            <div className="user-profile py-4">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="card shadow-sm">
-                                <link type="submit" className="btn" onClick={handleSubmit} value="Edit User"/>
+                                <a href="/profileedit">Edit Profile</a>
+
+
+
                                 <div className="card-header bg-transparent text-center">
                                     <h3>{userData.users.name}</h3>
                                 </div>
                                 <div className="card-body">
                                     <p className="mb-0"><strong className="pr-1">Patient ID:</strong> {userData.users.id}</p>
-                                    <p className="mb-0"><strong className="pr-1">Treatment:</strong>Diabetes</p>
+                                    <p className="mb-0"><strong className="pr-1">Treatment:</strong>{userData.users.treatment_group}</p>
                                 </div>
                             </div>
                         </div>
@@ -104,6 +102,7 @@ function UserProfile({ userData, getUser, saveUserData}){
         </div>
     )
 }
+
 const mapStateToProps = state => {
     return {
         userData: state.user
@@ -111,13 +110,14 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getUser: () => dispatch(getUser()),
-        saveUserData: () => dispatch(saveUserData(store.getState().user.users))
+        getUser: (userid) => dispatch(getUser(userid)),
 
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(UserProfile)
+
 
 if (document.getElementById('userprofintr')) {
-    ReactDOM.render(<UserProfile />, document.getElementById('userprofintr'));
+    ReactDOM.render(<UserProfile userid = {userid}/>, document.getElementById('userprofintr'));
 }
+export default connect(mapStateToProps,mapDispatchToProps)(UserProfile)
+

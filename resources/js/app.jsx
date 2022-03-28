@@ -16,10 +16,12 @@ require('./components/Example');
 
 require('./components/SideBar/SideBarNav');
 require('./components/SideBar/NavItem');
-require('./components/pages/Users/UserProfile');
+
 require('./components/Treatment/TreatmentOverviewContainer');
 require('./components/Treatment/CreateTreatmentContainer');
 require('./components/Treatment/TreatmentContainer');
+require('./components/pages/Users/UserProfileContainer');
+require('./components/pages/Users/EditProfileContainer');
 
 require('./components/Treatment/NoTreatments');
 require('./components/Treatment/TreatmentList');

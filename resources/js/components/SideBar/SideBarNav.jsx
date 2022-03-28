@@ -7,8 +7,7 @@ export default class SideBarNav extends Component {
         return (
             <div className="sidebar">
                 <ul className="nav flex-column">
-
-                    <NavItem title = "Profile" link="/userprofile" />
+                    <NavItem title = "Profile" link="/profile" />
                     <NavItem title = "Treatments" link="/treatments" />
                     <NavItem title = "Notifications" link='#'/>
                 </ul>
