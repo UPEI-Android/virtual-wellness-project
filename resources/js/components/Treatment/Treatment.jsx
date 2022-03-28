@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 function Treatment(props) {
     useEffect(()=>{
-        props.getTreatment(4)
+        props.getTreatment(props.id)
     },[])
 
     
