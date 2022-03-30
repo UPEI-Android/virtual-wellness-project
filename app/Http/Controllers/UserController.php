@@ -203,14 +203,14 @@ class UserController extends Controller
             $user->delete();
             return response()->json([
                 'status'=> 200,
-                'message'=>'Student Deleted Successfully',
+                'message'=>'User Deleted Successfully',
             ]);
         }
         else
         {
             return response()->json([
                 'status'=> 404,
-                'message' => 'No Student ID Found',
+                'message' => 'No User ID Found',
             ]);
         }
     }
