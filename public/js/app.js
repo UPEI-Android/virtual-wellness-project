@@ -6079,6 +6079,11 @@ function TreatmentList(props) {
       filter = _useState2[0],
       setFilter = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      list = _useState4[0],
+      setList = _useState4[1];
+
   function remaining() {
     return props.todos.filter(function (todo) {
       return !todo.is_completed;
@@ -6116,8 +6121,8 @@ function TreatmentList(props) {
   }
 
   function deleteTodo(id) {
-    //setTodos([... todos].filter(todo => todo.id !== id));
     props.deleteTreatment(id);
+    window.location.reload(false);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {

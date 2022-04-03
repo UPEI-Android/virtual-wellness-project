@@ -11,6 +11,8 @@ function TreatmentList(props) {
 
     const [filter, setFilter] = useState('all');
 
+    const [list, setList] = useState([]);
+
     function remaining(){
         return props.todos.filter(todo => !todo.is_completed).length;
       }
@@ -26,22 +28,21 @@ function TreatmentList(props) {
           return props.todos.filter(todo => todo.is_completed);
         }
       }
-      function completeTodo(id){
-        props.getTreatment(id)
-        const treatment = props.singleTreatmentData.treatment
-        if (treatment.id === id){
-          if(treatment.is_completed === 0)
-          {treatment.is_completed =1}
-          else{treatment.is_completed=0}
-        }
-          console.log(treatment)
-           props.saveTreatmentData(treatment,id)
-        }
-
-      function deleteTodo(id){
-        //setTodos([... todos].filter(todo => todo.id !== id));
-        props.deleteTreatment(id);
+    function completeTodo(id){
+      props.getTreatment(id)
+      const treatment = props.singleTreatmentData.treatment
+      if (treatment.id === id){
+        if(treatment.is_completed === 0)
+        {treatment.is_completed =1}
+        else{treatment.is_completed=0}
       }
+        console.log(treatment)
+          props.saveTreatmentData(treatment,id)
+      }
+    function deleteTodo(id){
+      props.deleteTreatment(id);
+      window.location.reload(false)
+    }
 
     return(
     <>
