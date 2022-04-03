@@ -5276,13 +5276,15 @@ __webpack_require__(/*! ./components/SideBar/SideBarNav */ "./resources/js/compo
 
 __webpack_require__(/*! ./components/SideBar/NavItem */ "./resources/js/components/SideBar/NavItem.jsx");
 
-__webpack_require__(/*! ./components/pages/Users/UserProfile */ "./resources/js/components/pages/Users/UserProfile.jsx");
-
 __webpack_require__(/*! ./components/Treatment/TreatmentOverviewContainer */ "./resources/js/components/Treatment/TreatmentOverviewContainer.jsx");
 
 __webpack_require__(/*! ./components/Treatment/CreateTreatmentContainer */ "./resources/js/components/Treatment/CreateTreatmentContainer.jsx");
 
 __webpack_require__(/*! ./components/Treatment/TreatmentContainer */ "./resources/js/components/Treatment/TreatmentContainer.jsx");
+
+__webpack_require__(/*! ./components/pages/Users/UserProfileContainer */ "./resources/js/components/pages/Users/UserProfileContainer.jsx");
+
+__webpack_require__(/*! ./components/pages/Users/EditProfileContainer */ "./resources/js/components/pages/Users/EditProfileContainer.jsx");
 
 __webpack_require__(/*! ./components/Treatment/NoTreatments */ "./resources/js/components/Treatment/NoTreatments.jsx");
 
@@ -5524,7 +5526,7 @@ var SideBarNav = /*#__PURE__*/function (_Component) {
           className: "nav flex-column",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "Profile",
-            link: "/userprofile"
+            link: "/profile"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_NavItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
             title: "Treatments",
             link: "/treatments"
@@ -5597,7 +5599,7 @@ function CreateTreatment(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.singleTreatmentData.patient_id = 1;
+    props.singleTreatmentData.patient_id = props.userId;
     props.singleTreatmentData.title = e.target.title.value;
     props.singleTreatmentData.notes = e.target.notes.value;
     props.singleTreatmentData.start_date = e.target.start_date.value;
@@ -5745,20 +5747,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _CreateTreatment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreateTreatment */ "./resources/js/components/Treatment/CreateTreatment.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
-function CreateTreatmentContainer() {
+
+function CreateTreatmentContainer(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
     store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CreateTreatment__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CreateTreatment__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      userId: props.userId
+    })
   });
 }
 
 if (document.getElementById('create-treatment-container')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CreateTreatmentContainer, {}), document.getElementById('create-treatment-container'));
+  var element = document.getElementById('create-treatment-container');
+  var props = Object.assign({}, element.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(CreateTreatmentContainer, _objectSpread({}, props)), element);
 }
 
 /***/ }),
@@ -6405,6 +6417,217 @@ if (document.getElementById('treatment-overview-container')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/pages/Users/EditProfile.jsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/pages/Users/EditProfile.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions/UserActions */ "./resources/js/components/store/actions/UserActions.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function EditProfile(_ref) {
+  var userState = _ref.userState,
+      getUser = _ref.getUser,
+      saveUserData = _ref.saveUserData;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    getUser();
+  }, []);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userState),
+      _useState2 = _slicedToArray(_useState, 2),
+      formState = _useState2[0],
+      setFormState = _useState2[1]; //setFormState(userState);
+
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    userState.users.name = e.target.username.value;
+    userState.users.first_name = e.target.firstname.value;
+    userState.users.last_name = e.target.lastname.value;
+    userState.users.birthday = e.target.birthday.value;
+    userState.users.current_weight = e.target.currentweight.value;
+    userState.users.resting_heart_rate = e.target.hrate.value;
+    userState.users.phone = e.target.phone.value;
+    saveUserData(formState.users);
+  };
+
+  return userState.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+    children: "Loading"
+  }) : userState.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+    children: userState.error
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "user-profile py-4",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "row",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "col-lg-4",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "card shadow-sm",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+              className: "form-control",
+              action: "#",
+              onSubmit: handleSubmit,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "form-group",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Username"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  className: "form-input-block",
+                  id: "username",
+                  placeholder: userState.users.name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "First Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  className: "form-input-block",
+                  id: "firstname",
+                  placeholder: userState.users.first_name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Last Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  className: "form-input-block",
+                  id: "lastname",
+                  placeholder: userState.users.last_name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Birthdate"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "date",
+                  className: "form-input-block",
+                  id: "birthday",
+                  placeholder: userState.users.birthday
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Current Weight"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "number",
+                  className: "form-input-block",
+                  id: "currentweight",
+                  placeholder: userState.users.current_weight
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Phone"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  className: "form-input-block",
+                  id: "phone",
+                  placeholder: userState.users.phone
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "form-input-label",
+                  children: "Resting Heart Rate"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  className: "form-input-block",
+                  id: "hrate",
+                  placeholder: userState.users.resting_heart_rate
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                type: "submit",
+                children: "Submit"
+              })]
+            })
+          })
+        })
+      })
+    })
+  });
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    userState: state.user
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getUser: function getUser() {
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.getUser)());
+    },
+    saveUserData: function saveUserData() {
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.saveUserData)(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"].getState().user.users));
+    }
+  };
+};
+
+if (document.getElementById('editprofileoutput')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(EditProfile, {}), document.getElementById('editprofileoutput'));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_4__.connect)(mapStateToProps, mapDispatchToProps)(EditProfile));
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Users/EditProfileContainer.jsx":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/pages/Users/EditProfileContainer.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ EditProfileContainer)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/pages/Users/EditProfile.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function EditProfileContainer() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+    store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  });
+}
+
+if (document.getElementById('editprofile')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(EditProfileContainer, {}), document.getElementById('editprofile'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/pages/Users/UserProfile.jsx":
 /*!*************************************************************!*\
   !*** ./resources/js/components/pages/Users/UserProfile.jsx ***!
@@ -6430,29 +6653,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function handleSubmit() {
-  //doesn't truly function yet. used to fake a submit for spoofed redux action call
-  // but it is the endpoint
-  (0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__.saveUserData)();
-
-  console.log(_store_store__WEBPACK_IMPORTED_MODULE_1__["default"].getState().user.users);
-}
-
 function UserProfile(_ref) {
   var userData = _ref.userData,
       getUser = _ref.getUser,
-      saveUserData = _ref.saveUserData;
+      userid = _ref.userid;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    saveUserData();
-    getUser();
-  }, []);
+    getUser(userid);
+  });
   return userData.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
     children: "Loading"
   }) : userData.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
     children: userData.error
   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "student-profile py-4",
+      className: "user-profile py-4",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6461,11 +6675,9 @@ function UserProfile(_ref) {
             className: "col-lg-4",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "card shadow-sm",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("link", {
-                type: "submit",
-                className: "btn",
-                onClick: handleSubmit,
-                value: "Edit User"
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+                href: "/profileedit",
+                children: "Edit Profile"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "card-header bg-transparent text-center",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
@@ -6484,7 +6696,7 @@ function UserProfile(_ref) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
                     className: "pr-1",
                     children: "Treatment:"
-                  }), "Diabetes"]
+                  }), userData.users.treatment_group]
                 })]
               })]
             })
@@ -6599,19 +6811,57 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getUser: function getUser() {
-      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__.getUser)());
-    },
-    saveUserData: function saveUserData() {
-      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__.saveUserData)(_store_store__WEBPACK_IMPORTED_MODULE_1__["default"].getState().user.users));
+    getUser: function getUser(userid) {
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__.getUser)(userid));
     }
   };
 };
 
+if (document.getElementById('userprofintr')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserProfile, {
+    userid: userid
+  }), document.getElementById('userprofintr'));
+}
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(UserProfile));
 
-if (document.getElementById('userprofintr')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserProfile, {}), document.getElementById('userprofintr'));
+/***/ }),
+
+/***/ "./resources/js/components/pages/Users/UserProfileContainer.jsx":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/pages/Users/UserProfileContainer.jsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UserProfileContainer)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/store */ "./resources/js/components/store/store.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserProfile */ "./resources/js/components/pages/Users/UserProfile.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function UserProfileContainer(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+    store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_UserProfile__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      userid: props.userid
+    })
+  });
+}
+
+if (document.getElementById('userProf')) {
+  var userid = document.getElementById('userProf').getAttribute('userid');
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(UserProfileContainer, {
+    userid: userid
+  }), document.getElementById('userProf'));
 }
 
 /***/ }),
@@ -6954,10 +7204,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 //GETTING ONE USER
 
-var getUser = function getUser() {
+var getUser = function getUser(userid) {
   return function (dispatch) {
     dispatch(fetchUsersRequest);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/userprofile/1/').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/userprofile/' + userid).then(function (response) {
       var users = response.data;
       dispatch(fetchUserSuccess(users));
     })["catch"](function (error) {
@@ -7028,10 +7278,10 @@ var saveUserFailure = function saveUserFailure(error) {
 }; //delete user
 
 
-var deleteUser = function deleteUser() {
+var deleteUser = function deleteUser(userid) {
   return function (dispatch) {
     dispatch(deleteUserRequest);
-    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/userprofile/1/').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('/api/userprofile/' + userid).then(function (response) {
       dispatch(deleteUserSuccess(response));
     })["catch"](function (error) {
       var errorMsg = error.message;
