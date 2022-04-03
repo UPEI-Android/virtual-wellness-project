@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="create-treatment-container"></div>
+    <div id="create-treatment-container" ></div>
 
 
 @endsection

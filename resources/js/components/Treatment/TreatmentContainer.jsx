@@ -2,12 +2,8 @@ import ReactDOM from 'react-dom';
 import store from '../store/store';
 import {Provider} from 'react-redux';
 import Treatment from "./Treatment";
-import { checkPropTypes } from 'prop-types';
-
-
 
 export default function TreatmentContainer(props) {
-
 
     return (
         <Provider store={store}>

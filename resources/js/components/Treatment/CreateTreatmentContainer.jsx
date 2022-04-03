@@ -7,7 +7,7 @@ export default function CreateTreatmentContainer(props) {
 
     return (
         <Provider store={store}>
-            <CreateTreatment userId={props.userId}/>
+            <CreateTreatment />
         </Provider>
     );
 }

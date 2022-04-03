@@ -5599,7 +5599,6 @@ function CreateTreatment(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.singleTreatmentData.patient_id = props.userId;
     props.singleTreatmentData.title = e.target.title.value;
     props.singleTreatmentData.notes = e.target.notes.value;
     props.singleTreatmentData.start_date = e.target.start_date.value;
@@ -5761,9 +5760,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function CreateTreatmentContainer(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
     store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CreateTreatment__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      userId: props.userId
-    })
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CreateTreatment__WEBPACK_IMPORTED_MODULE_3__["default"], {})
   });
 }
 
@@ -5973,7 +5970,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -6457,9 +6453,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function EditProfile(_ref) {
   var userState = _ref.userState,
       getUser = _ref.getUser,
-      saveUserData = _ref.saveUserData;
+      saveUserData = _ref.saveUserData,
+      userid = _ref.userid;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    getUser();
+    getUser(userid);
   }, []);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userState),
@@ -6577,8 +6574,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    getUser: function getUser() {
-      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.getUser)());
+    getUser: function getUser(userid) {
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.getUser)(userid));
     },
     saveUserData: function saveUserData() {
       return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.saveUserData)(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"].getState().user.users));
@@ -6587,7 +6584,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 if (document.getElementById('editprofileoutput')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(EditProfile, {}), document.getElementById('editprofileoutput'));
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(EditProfile, {
+    userid: userid
+  }), document.getElementById('editprofileoutput'));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_4__.connect)(mapStateToProps, mapDispatchToProps)(EditProfile));
@@ -6615,15 +6614,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function EditProfileContainer() {
+function EditProfileContainer(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
     store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      userid: props.userid
+    })
   });
 }
 
 if (document.getElementById('editprofile')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(EditProfileContainer, {}), document.getElementById('editprofile'));
+  var userid = document.getElementById('editprofile').getAttribute('userid');
+  react_dom__WEBPACK_IMPORTED_MODULE_0__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(EditProfileContainer, {
+    userid: userid
+  }), document.getElementById('editprofile'));
 }
 
 /***/ }),
@@ -6659,7 +6663,7 @@ function UserProfile(_ref) {
       userid = _ref.userid;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getUser(userid);
-  });
+  }, []);
   return userData.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
     children: "Loading"
   }) : userData.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
