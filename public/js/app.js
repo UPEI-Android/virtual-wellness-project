@@ -5580,23 +5580,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function CreateTreatment(props) {
-  {//const[todoInput, setTodoInput] = useState('');
-
-    /*
-    function handleInput(event){
-        setTodoInput(event.target.value);
-      }
-       function handleSubmit(event){
-      
-        event.preventDefault();
-        if(todoInput.trim().length === 0){
-        return;
-        }
-        props.addTodo(todoInput)
-        setTodoInput('');
-        */
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
     props.singleTreatmentData.title = e.target.title.value;
@@ -5606,6 +5589,7 @@ function CreateTreatment(props) {
     props.singleTreatmentData.start_time = e.target.start_time.value;
     props.singleTreatmentData.end_time = e.target.end_time.value;
     props.createTreatment(props.singleTreatmentData);
+    e.target.reset();
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
