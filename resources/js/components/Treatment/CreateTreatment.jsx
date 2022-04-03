@@ -26,7 +26,7 @@ function CreateTreatment (props) {
     function handleSubmit (e) {
         e.preventDefault();
           
-          props.singleTreatmentData.patient_id=1
+          props.singleTreatmentData.patient_id= props.userId
           props.singleTreatmentData.title = e.target.title.value
           props.singleTreatmentData.notes = e.target.notes.value
           props.singleTreatmentData.start_date = e.target.start_date.value
