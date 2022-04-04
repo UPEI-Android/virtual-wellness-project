@@ -291,7 +291,6 @@ kbd kbd {
   font-size: 1em;
   font-weight: 700;
 }
-
 figure {
   margin: 0 0 1rem;
 }
@@ -303,7 +302,8 @@ svg {
 
 table {
   caption-side: bottom;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 15px 15px;
 }
 
 caption {
@@ -317,6 +317,7 @@ th {
   text-align: inherit;
   text-align: -webkit-match-parent;
 }
+
 
 thead,
 tbody,
@@ -1966,12 +1967,15 @@ progress {
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  color: #000;
+  border-color: #bacbe6;
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
   vertical-align: top;
   border-color: #dee2e6;
 }
+
 .table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;
   background-color: var(--bs-table-bg);
@@ -11472,10 +11476,9 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.form-group{
+.form-group-lg{
   padding-bottom: 10px;
   font-size: 1.2rem;
-  position: relative;
 }
 .form-input-label {
   font-size: 1.2rem;
@@ -11485,4 +11488,18 @@ textarea.form-control-lg {
   width: 100%;
   display: block;
   font-size: 1.2rem;
+}
+
+.form-group-sm{
+  font-size: 1.2rem;
+}
+.form-input-sm {
+  font-size: 1.2rem;
+  display: block;
+  padding-top:5px;
+  padding-bottom:5px;
+  width: 100%;
+}
+.fixed-height{
+  height: 40px;
 }

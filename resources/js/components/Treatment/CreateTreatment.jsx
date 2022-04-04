@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import { getTreatment, createTreatment } from '../store/actions/TreatmentActions'
 import ReactDOM from 'react-dom';
+import { left } from '@popperjs/core';
 
 function CreateTreatment (props) {  
+
+    const [show, setShow] = useState(false);
 
     function handleSubmit (e) {
         e.preventDefault();
@@ -25,16 +28,16 @@ function CreateTreatment (props) {
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">New Treatment</div>
                             <form className="form-control"action="#" onSubmit={(handleSubmit)}>
-                              <div className="form-group">
-                              <label className="form-input-label">Title</label>
-                                  <input
-                                    type="string"
-                                    name="title"
-                                    className="form-input-block"
-                                    placeholder="Enter Treatment Title Here..."
-                                  />
+                              <div className="form-group-lg">
+                                <label className="form-input-label">Title</label>
+                                    <input
+                                      type="string"
+                                      name="title"
+                                      className="form-input-block"
+                                      placeholder="Enter Treatment Title Here..."
+                                    />
                               </div>
-                              <div className="form-group">
+                              <div className="form-group-lg">
                                 <label className="form-input-label">Description:</label>
                                 <textarea
                                   type="text"
@@ -45,46 +48,84 @@ function CreateTreatment (props) {
                                   placeholder="Enter Treatment Description Here..."
                                 />
                               </div>
-                              <div className="form-group">
-                                <label className="form-input-label">Start Date:</label>
-                                <input
-                                    type="date"
-                                    name="start_date"
-                                    className="form-input-block"
-                                  />
-                              </div>
-                              <div className="form-group">
-                                <label className="form-input-label">End Date:</label>
-                                <input
-                                    type="date"
-                                    name="end_date"
-                                    className="form-input-block"
-                                  />
-                              </div>
-
-                              <div className="form-group">
-                                <label className="form-input-label">Start Time:</label>
-                                <input
-                                    type="time"
-                                    name="start_time"
-                                    className="form-input-block"
-                                  />
-                              </div>
-                              <div className="form-group">
-                                <label className="form-input-label">End Time:</label>
-                                <input
-                                    type="time"
-                                    name="end_time" 
-                                    className="form-input-block"
-                                  />
-                              </div>
-                              {/*
+                              
                               <div>
                                 <label className="col-form-label-lg">Recurring?</label>
-                                <input type="checkbox" style={{"margin-left":"10px"}}/>
+                                <input type="checkbox" onChange={() => setShow(prev => !prev)} style={{marginLeft:"10px"}}/>
                               </div>
-                              */}
-                            <button type="submit" className="btn-primary" >Create Treatment</button>
+                              { show ? 
+                                <table>
+                                  <tr className="fixed-height">
+                                    <th>
+                                      <label className="form-input-sm" >Start Date:</label>
+                                    </th>
+                                    <td>
+                                      <input
+                                        type="date"
+                                        name="start_date"
+                                        className="form-input-sm"
+                                      />
+                                    </td>
+                                    <td>
+                                    <input
+                                      type="time"
+                                      name="start_time"
+                                      className="form-input-sm"
+                                    />
+                                  </td>
+                                  </tr>
+                                  <tr className="fixed-height">
+                                    <th>
+                                      <label className="form-input-sm" >End Date:</label>
+                                    </th>
+                                    <td>
+                                    <input
+                                      type="date"
+                                      name="end_date"
+                                      className="form-input-sm"
+                                    />
+                                    </td>
+                                    <td>
+                                     <input
+                                      type="time"
+                                      name="end_time" 
+                                      className="form-input-sm"
+                                    />
+                                    </td>
+                                  </tr>
+                                  <tr className="fixed-height">
+                                    <th>
+                                      <label className="form-input-sm" >Frequency:</label>
+                                    </th>
+                                    <td>
+                                      <select name="frequency" className="form-input-sm">
+                                        <option value="DAILY">Daily</option>
+                                        <option value="WEEKLY">Weekly</option>
+                                        <option value="MONTHLY">Monthly</option>
+                                        <option value="YEARLY">Yearly</option>
+                                      </select>
+                                      </td>
+                                      <td></td>
+                                  </tr>
+                                  <tr className="fixed-height">
+                                  <th>
+                                    <label className="form-input-sm" >Interval:</label>     
+                                    </th>
+                                    <td>
+                                    <input
+                                      type="integer"
+                                      name="interval"
+                                      className="form-input-sm"
+                                    />
+                                    </td>
+                                  </tr>
+ 
+                                  </table>
+                              : null }
+                              <div style={{position:"relative",display:"block", float: left}}>
+                              <button type="submit" className="btn-primary" >Create Treatment</button>
+                              </div>
+                            
                             </form>
                             
                     </div>
