@@ -16,23 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('/welcome');
-});
-
 Route::get('/login', function () {
-
     return view('/auth/login');
 });
 Auth::routes();
-
-Route::post('/login');
 
 Route::post('/register',
 [\App\Http\App\Http\Controllers\RegisterController::class,'create']);
 Auth::routes();
 
+
+//takes us to home dashboard if logged in
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('auth');
+
+//goes to welcome only if a guest, redirects to home if you are authenticated
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome') -> middleware('guest');
 
 //user routes
 Route::get('/profile/', [App\Http\Controllers\UserController::class, 'show']);
