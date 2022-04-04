@@ -16,8 +16,8 @@ import {
 
 const initialState = {
     loading: false,
-    treatment:"",
-    error: "",
+    treatment:'',
+    error:'',
 
 };
 export default function TreatmentReducer (state=initialState,action)
@@ -70,13 +70,13 @@ export default function TreatmentReducer (state=initialState,action)
         case DELETE_TREATMENTS_SUCCESS:
             return {
                 loading: false,
-                treatments: action.payload,
+                treatment: action.payload,
                 error: ''
             }
         case DELETE_TREATMENTS_FAILURE:
             return{
                 loading:false,
-                treatments:[],
+                treatment:'',
                 error:action.payload
             }
         case CREATE_TREATMENTS:
@@ -89,13 +89,13 @@ export default function TreatmentReducer (state=initialState,action)
         case CREATE_TREATMENTS_SUCCESS:
             return {
                 loading: false,
-                treatments: action.payload,
+                treatment: action.payload,
                 error: ''
             }
         case CREATE_TREATMENTS_FAILURE:
             return{
                 loading:false,
-                treatments:[],
+                treatment:'',
                 error:action.payload
             }
 

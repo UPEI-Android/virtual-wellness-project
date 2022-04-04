@@ -5619,7 +5619,7 @@ function CreateTreatment(props) {
                 className: "form-input-label",
                 children: "Title"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "text",
+                type: "string",
                 name: "title",
                 className: "form-input-block",
                 placeholder: "Enter Treatment Title Here..."
@@ -7409,8 +7409,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   loading: false,
-  treatment: "",
-  error: ""
+  treatment: '',
+  error: ''
 };
 function TreatmentReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -7463,14 +7463,14 @@ function TreatmentReducer() {
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_SUCCESS:
       return {
         loading: false,
-        treatments: action.payload,
+        treatment: action.payload,
         error: ''
       };
 
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TREATMENTS_FAILURE:
       return {
         loading: false,
-        treatments: [],
+        treatment: '',
         error: action.payload
       };
 
@@ -7482,14 +7482,14 @@ function TreatmentReducer() {
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_TREATMENTS_SUCCESS:
       return {
         loading: false,
-        treatments: action.payload,
+        treatment: action.payload,
         error: ''
       };
 
     case _actionTypes_TreatmentTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_TREATMENTS_FAILURE:
       return {
         loading: false,
-        treatments: [],
+        treatment: '',
         error: action.payload
       };
 

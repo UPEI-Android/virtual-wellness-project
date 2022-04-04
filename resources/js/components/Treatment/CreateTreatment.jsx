@@ -28,7 +28,7 @@ function CreateTreatment (props) {
                               <div className="form-group">
                               <label className="form-input-label">Title</label>
                                   <input
-                                    type="text"
+                                    type="string"
                                     name="title"
                                     className="form-input-block"
                                     placeholder="Enter Treatment Title Here..."
