@@ -1,4 +1,6 @@
 # Virtual Wellness App
+![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m791358814-c42fb9dbc0b2fa02cb90f56d?label=Uptime&style=plastic)
+
 
 Visit us at: http://virtualwellness.systems
 
