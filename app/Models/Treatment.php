@@ -2,27 +2,34 @@
 
 namespace App\Models;
 
+use App\Traits\SelfReferenceTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Treatment extends Model
 {
-    use HasFactory;
+    use HasFactory, SelfReferenceTrait;
 
     protected $guarded = [];
 
-    public function care_node() {
+    protected $hidden = [
+        'patient_id'
+    ];
 
-        return $this->belongsTo(CareNode::class);
+    public function path() {
 
+        return "/treatments/{$this->id}";
     }
 
-    public function daily_schedule() {
+    public function patient() {
 
-        return $this->hasOne(DailySchedule::class);
-
+        return $this->belongsTo(User::class);
     }
 
-
+    public function rule(): HasOne
+    {
+        return $this->hasOne(Rule::class);
+    }
 
 }

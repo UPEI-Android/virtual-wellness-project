@@ -4,6 +4,10 @@ use Illuminate\Support\Str;
 
 return [
 
+    //Nikki: This ensures Sanctum actually works actoss all subdomains
+
+    'domain' => '.domain.com',
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -18,7 +22,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    'driver' => env('SESSION_DRIVER', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,7 +104,7 @@ return [
     |
     */
 
-    'store' => env('SESSION_STORE', null),
+    'store' => env('SESSION_STORE', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
