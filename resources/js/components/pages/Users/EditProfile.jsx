@@ -80,7 +80,7 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         placeholder= {userState.users.birthday}
                     />
 
-                    <label className="form-input-label">Current Weight</label>
+                    <label className="form-input-label">Weight</label>
                     <input
                         type="number"
                         className="form-input-block"
