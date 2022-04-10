@@ -2223,7 +2223,7 @@ progress {
   color: #212529;
   background-color: #f8fafc;
   outline: 0;
-  
+
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.6em;
@@ -3021,7 +3021,7 @@ textarea.form-control-lg {
 }
 .btn:hover {
   color: #212529;
-  
+
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
@@ -4601,7 +4601,7 @@ textarea.form-control-lg {
 
 .card-title {
   margin-bottom: 0.5rem;
-  
+
 }
 
 .card-subtitle {
@@ -11503,3 +11503,10 @@ textarea.form-control-lg {
 .fixed-height{
   height: 40px;
 }
+
+.sizing-profile{
+    width: 70%;
+    display: block;
+
+}
+
