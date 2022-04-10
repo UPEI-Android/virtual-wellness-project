@@ -27,6 +27,7 @@ class TreatmentRequest extends FormRequest
             //
             'title' => ['required'],
             'start_date' => ['required'],
+            'notes' => ['required'],
         ];
     }
 }
