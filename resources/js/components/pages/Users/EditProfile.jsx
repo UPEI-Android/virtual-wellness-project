@@ -1,9 +1,11 @@
 import ReactDOM from "react-dom";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {getUser, saveUserData} from "../../store/actions/UserActions";
 import store from "../../store/store";
 import {connect} from "react-redux";
-import {Route} from "react-router-dom";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function EditProfile({ userState, getUser, saveUserData,userid}){
@@ -11,24 +13,39 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
         getUser(userid)
     },[])
 
-
+    toast.configure()
     //setFormState(userState);
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        userState.users.name = e.target.username.value
-        userState.users.first_name = e.target.firstname.value
-        userState.users.last_name = e.target.lastname.value
-        userState.users.email = e.target.email.value
-        userState.users.birthday = e.target.birthday.value
-        userState.users.current_weight = e.target.currentweight.value
-        userState.users.rest_heart_rate = e.target.hrate.value
-        userState.users.phone = e.target.phone.value
+
+        if(e.target.firstname.value)
+        {
+            userState.users.first_name = e.target.firstname.value
+        }
+        if(e.target.lastname.value){
+            userState.users.last_name = e.target.lastname.value
+        }
+        if(e.target.email.value){
+            userState.users.email = e.target.email.value
+        }
+        if(e.target.birthday.value){
+            userState.users.birthday = e.target.birthday.value
+        }
+        if(e.target.currentweight.value){
+            userState.users.current_weight = e.target.currentweight.value
+        }
+        if(e.target.hrate.value)
+        {
+            userState.users.rest_heart_rate = e.target.hrate.value
+        }
+        if(e.target.phone.value){
+            userState.users.phone = e.target.phone.value
+        }
 
         saveUserData(userState.users);
 
-        window.location.reload()
-
+        toast.success("Profile Successfully Updated")
     }
 
     return userState.loading?(
@@ -42,13 +59,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         <div className="card shadow-sm">
             <form className="form-control" action="" onSubmit={(handleSubmit)}>
                 <div className="form-group">
-                    <label className="form-input-label">Username</label>
-                    <input
-                        type="text"
-                        className="form-input-block"
-                        id='username'
-                        placeholder= {userState.users.name}
-                    />
                     <label className="form-input-label">First Name</label>
                     <input
                         type="text"

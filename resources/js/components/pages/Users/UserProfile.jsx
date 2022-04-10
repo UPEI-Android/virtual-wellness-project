@@ -34,11 +34,10 @@ function UserProfile({ userData, getUser, userid}){
 
 
                                 <div className="card-header bg-transparent text-center">
-                                    <h3>{userData.users.name}</h3>
+                                    <h3>{userData.users.first_name}</h3>
                                 </div>
                                 <div className="card-body">
                                     <p className="mb-0"><strong className="pr-1">Patient ID:</strong> {userData.users.id}</p>
-                                    <p className="mb-0"><strong className="pr-1">Treatment:</strong>{userData.users.treatment_group}</p>
                                 </div>
                         </div>
 
@@ -68,11 +67,6 @@ function UserProfile({ userData, getUser, userid}){
                                             <th width="30%">Weight</th>
                                             <td width="2%">:</td>
                                             <td>{userData.users.current_weight}</td>
-                                        </tr>
-                                        <tr>
-                                            <th width="30%">Gender</th>
-                                            <td width="2%">:</td>
-                                            <td>Male</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Ave Resting Heart Rate</th>

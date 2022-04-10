@@ -153,12 +153,6 @@ class UserController extends Controller
 
         if($user)
         {
-            if($request->state['name'] ==null ){
-                $this->write_to_console($request->state['name']);
-            }
-            else{
-                $user->name =  $request->state['name'];
-            }
             if($request->state['email'] == null){
                 $this->write_to_console($request->state['email']);
             }
