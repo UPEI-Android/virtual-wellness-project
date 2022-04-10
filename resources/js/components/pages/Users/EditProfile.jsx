@@ -16,7 +16,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        userState.users.name = e.target.username.value
         userState.users.first_name = e.target.firstname.value
         userState.users.last_name = e.target.lastname.value
         userState.users.email = e.target.email.value
@@ -27,7 +26,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
 
         saveUserData(userState.users);
 
-        window.location.reload()
 
     }
 
@@ -42,13 +40,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         <div className="card shadow-sm">
             <form className="form-control" action="" onSubmit={(handleSubmit)}>
                 <div className="form-group">
-                    <label className="form-input-label">Username</label>
-                    <input
-                        type="text"
-                        className="form-input-block"
-                        id='username'
-                        placeholder= {userState.users.name}
-                    />
                     <label className="form-input-label">First Name</label>
                     <input
                         type="text"
