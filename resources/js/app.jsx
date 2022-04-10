@@ -22,10 +22,13 @@ require('./components/Treatment/CreateTreatmentContainer');
 require('./components/Treatment/TreatmentContainer');
 require('./components/pages/Users/UserProfileContainer');
 require('./components/pages/Users/EditProfileContainer');
+require('./components/Treatment/EditTreatmentContainer');
 
+/*
 require('./components/Treatment/NoTreatments');
 require('./components/Treatment/TreatmentList');
 require('./components/Treatment/TreatmentFilters');
 require('./components/Treatment/Treatment');
 require('./components/Treatment/CreateTreatment');
+*/
 

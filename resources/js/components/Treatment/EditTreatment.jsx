@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import { getTreatment, createTreatment } from '../store/actions/TreatmentActions'
+import { getTreatment, saveTreatmentData } from '../store/actions/TreatmentActions'
 import ReactDOM from 'react-dom';
 import { left } from '@popperjs/core';
 
-function CreateTreatment (props) {  
+function EditTreatment (props) {  
 
     const [show, setShow] = useState(false);
 
@@ -142,14 +142,14 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        //getTreatment: (id) => dispatch(getTreatment(id)),
-        createTreatment: (state) => dispatch(createTreatment(state))
+        getTreatment: (id) => dispatch(getTreatment(id)),
+        saveTreatmentData: (state) => dispatch(saveTreatmentData(state))
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(CreateTreatment)
+export default connect(mapStateToProps,mapDispatchToProps)(EditTreatment)
 
-if (document.getElementById('create-treatment')) {
-    const element = document.getElementById('create-treatment')
+if (document.getElementById('edit-treatment')) {
+    const element = document.getElementById('edit-treatment')
     const props = Object.assign({}, element.dataset )
-    ReactDOM.render(<CreateTreatment {...props} />, element);
+    ReactDOM.render(<EditTreatment {...props} />, element);
 }
