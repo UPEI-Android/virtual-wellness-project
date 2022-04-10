@@ -6,7 +6,7 @@ return [
 
     //Nikki: This ensures Sanctum actually works actoss all subdomains
 
-    'domain' => '.domain.com',
+    'domain' => 'virtualwellness.systems',
 
     /*
     |--------------------------------------------------------------------------

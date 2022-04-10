@@ -1,5 +1,4 @@
 import React, { useEffect} from 'react';
-import store from '../../store/store'
 import {connect} from 'react-redux';
 import {getUser} from '../../store/actions/UserActions';
 
@@ -21,14 +20,16 @@ function UserProfile({ userData, getUser, userid}){
     ): userData.error? (
         <h2>{userData.error}</h2>
     ): (
-        <div>
 
-            <div className="user-profile py-4">
-                <div className="container">
+
+
+                <div className="container sizing-profile">
                     <div className="row">
-                        <div className="col-lg-4">
+                        <div className="align-right"><a href="/profileedit" className="btn-primary create-treatment-button">Edit Profile</a></div>
+
                             <div className="card shadow-sm">
-                                <a href="/profileedit">Edit Profile</a>
+
+
 
 
 
@@ -39,12 +40,11 @@ function UserProfile({ userData, getUser, userid}){
                                     <p className="mb-0"><strong className="pr-1">Patient ID:</strong> {userData.users.id}</p>
                                     <p className="mb-0"><strong className="pr-1">Treatment:</strong>{userData.users.treatment_group}</p>
                                 </div>
-                            </div>
                         </div>
-                        <div className="col-lg-8">
+
                             <div className="card shadow-sm">
                                 <div className="card-header bg-transparent border-0">
-                                    <h3 className="mb-0"><i className="far fa-clone pr-1"></i>General Information</h3>
+                                    <h3 className="mb-0">General Information</h3>
                                 </div>
                                 <div className="card-body pt-0">
                                     <table className="table table-bordered">
@@ -57,7 +57,7 @@ function UserProfile({ userData, getUser, userid}){
                                         <tr>
                                             <th width="30%">Phone</th>
                                             <td width="2%">:</td>
-                                            <td></td>
+                                            <td>{userData.users.phone}</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Age</th>
@@ -65,9 +65,9 @@ function UserProfile({ userData, getUser, userid}){
                                             <td>32</td>
                                         </tr>
                                         <tr>
-                                            <th width="30%">Year Joined</th>
+                                            <th width="30%">Weight</th>
                                             <td width="2%">:</td>
-                                            <td>2022</td>
+                                            <td>{userData.users.current_weight}</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Gender</th>
@@ -75,18 +75,18 @@ function UserProfile({ userData, getUser, userid}){
                                             <td>Male</td>
                                         </tr>
                                         <tr>
-                                            <th width="30%">Blood Type</th>
+                                            <th width="30%">Ave Resting Heart Rate</th>
                                             <td width="2%">:</td>
-                                            <td>B+</td>
+                                            <td>{userData.users.rest_heart_rate}</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+
 
                             <div className="card shadow-sm">
                                 <div className="card-header bg-transparent border-0">
-                                    <h3 className="mb-0"><i className="far fa-clone pr-1"></i>Additional Information</h3>
+                                    <h3 className="mb-0">Additional Information</h3>
                                 </div>
                                 <div className="card-body pt-0">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -98,8 +98,8 @@ function UserProfile({ userData, getUser, userid}){
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+
     )
 }
 
