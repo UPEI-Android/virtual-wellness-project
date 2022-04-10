@@ -5593,10 +5593,54 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function CreateTreatment(props) {
+  //whether to show recurring stuff
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       show = _useState2[0],
-      setShow = _useState2[1];
+      setShow = _useState2[1]; //this is the state for the dropdown for interval dependent on frequency
+
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(""),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      selected = _React$useState2[0],
+      setSelected = _React$useState2[1];
+
+  var changeSelectOptionHandler = function changeSelectOptionHandler(event) {
+    setSelected(event.target.value);
+  };
+
+  var date = new Date();
+  var currentDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+  var currentTime = date.getHours() + ':' + date.getMinutes();
+  var endTime = date.getHours() + 1 + ':' + date.getMinutes();
+  var days = [1, 2, 3, 4, 5, 6];
+  var weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  var years = [1, 2, 3, 4, 5];
+  /** Type variable to store different array for different dropdown */
+
+  var type = days;
+  /** This will be used to create set of options that user will see */
+
+  var options = null;
+
+  if (selected === "DAILY") {
+    type = days;
+  } else if (selected === "WEEKLY") {
+    type = weeks;
+  } else if (selected === "MONTHLY") {
+    type = months;
+  } else if (selected === "YEARLY") {
+    type = years;
+  }
+
+  if (type) {
+    options = type.map(function (el) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+        children: el
+      }, el);
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -5655,104 +5699,95 @@ function CreateTreatment(props) {
                 className: "form-input-block",
                 placeholder: "Enter Treatment Description Here..."
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                className: "col-form-label-lg",
-                children: "Recurring?"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "checkbox",
-                onChange: function onChange() {
-                  return setShow(function (prev) {
-                    return !prev;
-                  });
-                },
-                style: {
-                  marginLeft: "10px"
-                }
-              })]
-            }), show ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                className: "fixed-height",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                    className: "form-input-sm",
-                    children: "Start Date:"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "date",
-                    name: "start_date",
-                    className: "form-input-sm"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "time",
-                    name: "start_time",
-                    className: "form-input-sm"
-                  })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("table", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tbody", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "Occurences: "
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                      type: "integer",
+                      name: "",
+                      className: "form-input-sm"
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "Start:"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                      name: "start_date",
+                      className: "form-input-sm",
+                      defaultValue: currentDate,
+                      type: "date"
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "Every"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+                      name: "interval",
+                      className: "form-input-sm",
+                      children: options
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                      name: "frequency",
+                      className: "form-input-sm",
+                      onChange: changeSelectOptionHandler,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: "DAILY",
+                        children: "Day(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: "WEEKLY",
+                        children: "Week(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: "MONTHLY",
+                        children: "Month(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: "YEARLY",
+                        children: "Year(s)"
+                      })]
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "From:"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                      type: "time",
+                      name: "start_time",
+                      className: "form-input-sm",
+                      defaultValue: currentTime
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                      type: "time",
+                      name: "end_time",
+                      className: "form-input-sm",
+                      defaultValue: endTime
+                    })
+                  })]
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                className: "fixed-height",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                    className: "form-input-sm",
-                    children: "End Date:"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "date",
-                    name: "end_date",
-                    className: "form-input-sm"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "time",
-                    name: "end_time",
-                    className: "form-input-sm"
-                  })
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                className: "fixed-height",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                    className: "form-input-sm",
-                    children: "Frequency:"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-                    name: "frequency",
-                    className: "form-input-sm",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: "DAILY",
-                      children: "Daily"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: "WEEKLY",
-                      children: "Weekly"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: "MONTHLY",
-                      children: "Monthly"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                      value: "YEARLY",
-                      children: "Yearly"
-                    })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                className: "fixed-height",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                    className: "form-input-sm",
-                    children: "Interval:"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "integer",
-                    name: "interval",
-                    className: "form-input-sm"
-                  })
-                })]
-              })]
-            }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               style: {
                 position: "relative",
                 display: "block",
@@ -6420,7 +6455,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TreatmentFilters */ "./resources/js/components/Treatment/TreatmentFilters.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_actions_AllTreatmentActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/AllTreatmentActions */ "./resources/js/components/store/actions/AllTreatmentActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6442,9 +6478,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function TreatmentList(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    props.getTreatment(1);
+    props.getAllTreatments();
   }, []);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
@@ -6478,19 +6515,27 @@ function TreatmentList(props) {
   }
 
   function completeTodo(id) {
-    props.getTreatment(id);
-    var treatment = props.singleTreatmentData.treatment;
+    // need to find specific treatment within the array of treatments
+    var $treatment = null;
+    var $i = 0;
 
-    if (treatment.id === id) {
-      if (treatment.is_completed === 0) {
-        treatment.is_completed = 1;
-      } else {
-        treatment.is_completed = 0;
+    for ($i; $i < props.singleTreatmentData.treatments.length; $i++) {
+      if (props.singleTreatmentData.treatments[$i].id === id) {
+        console.log(props.singleTreatmentData.treatments[$i].id);
+        $treatment = props.singleTreatmentData.treatments[$i];
       }
     }
 
-    console.log(treatment);
-    props.saveTreatmentData(treatment, id);
+    if ($treatment.id === id) {
+      if ($treatment.is_completed === 0) {
+        $treatment.is_completed = 1;
+      } else {
+        $treatment.is_completed = 0;
+      }
+    }
+
+    props.saveTreatmentData($treatment, id);
+    window.location.reload(false);
   }
 
   function deleteTodo(id) {
@@ -6498,43 +6543,43 @@ function TreatmentList(props) {
     window.location.reload(false);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_TreatmentFilters__WEBPACK_IMPORTED_MODULE_1__["default"], {
       todosFiltered: todosFiltered,
       filter: filter,
       setFilter: setFilter
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
       role: "list",
       className: "list-unstyled",
       children: todosFiltered(filter).map(function (todo, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
           className: "treatment-item-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "treatment-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
               type: "checkbox",
               onChange: function onChange() {
                 return completeTodo(todo.id);
               },
               checked: todo.is_completed ? true : false
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: '/treatment/' + todo.id,
               className: "treatment-item treatment-list-item",
               children: todo.title
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "btn-group",
             style: {
               "display": "block"
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               type: "button",
               className: "btn",
               style: {
                 "display": "inline"
               },
               children: "Edit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               type: "button",
               className: "btn btn__danger",
               onClick: function onClick() {
@@ -6548,9 +6593,9 @@ function TreatmentList(props) {
           })]
         }, todo.id);
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "remaining-block",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "btn",
         children: [remaining(), " Item(s) Remaining"]
       })
@@ -6560,12 +6605,15 @@ function TreatmentList(props) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    singleTreatmentData: state.treatment
+    singleTreatmentData: state.allTreatments
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    getAllTreatments: function getAllTreatments() {
+      return dispatch((0,_store_actions_AllTreatmentActions__WEBPACK_IMPORTED_MODULE_4__.getAllTreatments)());
+    },
     getTreatment: function getTreatment(id) {
       return dispatch((0,_store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__.getTreatment)(id));
     },
@@ -6792,17 +6840,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/store */ "./resources/js/components/store/store.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -6819,24 +6856,20 @@ function EditProfile(_ref) {
       userid = _ref.userid;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getUser(userid);
-  }, []);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(userState),
-      _useState2 = _slicedToArray(_useState, 2),
-      formState = _useState2[0],
-      setFormState = _useState2[1]; //setFormState(userState);
-
+  }, []); //setFormState(userState);
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     userState.users.name = e.target.username.value;
     userState.users.first_name = e.target.firstname.value;
     userState.users.last_name = e.target.lastname.value;
+    userState.users.email = e.target.email.value;
     userState.users.birthday = e.target.birthday.value;
     userState.users.current_weight = e.target.currentweight.value;
-    userState.users.resting_heart_rate = e.target.hrate.value;
+    userState.users.rest_heart_rate = e.target.hrate.value;
     userState.users.phone = e.target.phone.value;
-    saveUserData(formState.users);
+    saveUserData(userState.users);
+    window.location.reload();
   };
 
   return userState.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
@@ -6844,85 +6877,85 @@ function EditProfile(_ref) {
   }) : userState.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
     children: userState.error
   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    className: "user-profile py-4",
+    className: "container sizing-profile",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "row",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "col-lg-4",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "card shadow-sm",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
-              className: "form-control",
-              action: "#",
-              onSubmit: handleSubmit,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "text",
-                  className: "form-input-block",
-                  id: "username",
-                  placeholder: userState.users.name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "First Name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "text",
-                  className: "form-input-block",
-                  id: "firstname",
-                  placeholder: userState.users.first_name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Last Name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "text",
-                  className: "form-input-block",
-                  id: "lastname",
-                  placeholder: userState.users.last_name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Birthdate"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "date",
-                  className: "form-input-block",
-                  id: "birthday",
-                  placeholder: userState.users.birthday
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Current Weight"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "number",
-                  className: "form-input-block",
-                  id: "currentweight",
-                  placeholder: userState.users.current_weight
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Phone"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "text",
-                  className: "form-input-block",
-                  id: "phone",
-                  placeholder: userState.users.phone
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                  className: "form-input-label",
-                  children: "Resting Heart Rate"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                  type: "text",
-                  className: "form-input-block",
-                  id: "hrate",
-                  placeholder: userState.users.resting_heart_rate
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                type: "submit",
-                children: "Submit"
-              })]
-            })
-          })
-        })
+      className: "card shadow-sm",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+        className: "form-control",
+        action: "",
+        onSubmit: handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Username"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-input-block",
+            id: "username",
+            placeholder: userState.users.name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "First Name"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-input-block",
+            id: "firstname",
+            placeholder: userState.users.first_name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Last Name"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-input-block",
+            id: "lastname",
+            placeholder: userState.users.last_name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Email"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "email",
+            className: "form-input-block",
+            id: "email",
+            placeholder: userState.users.email
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Birthdate"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "date",
+            className: "form-input-block",
+            id: "birthday",
+            placeholder: userState.users.birthday
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Weight"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "number",
+            className: "form-input-block",
+            id: "currentweight",
+            placeholder: userState.users.current_weight
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Phone"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-input-block",
+            id: "phone",
+            placeholder: userState.users.phone
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "form-input-label",
+            children: "Resting Heart Rate"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-input-block",
+            id: "hrate",
+            placeholder: userState.users.resting_heart_rate
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "btn-primary create-treatment-button",
+          type: "submit",
+          children: "Submit"
+        })]
       })
     })
   });
@@ -7006,12 +7039,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/store */ "./resources/js/components/store/store.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/actions/UserActions */ "./resources/js/components/store/actions/UserActions.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions/UserActions */ "./resources/js/components/store/actions/UserActions.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -7026,145 +7057,136 @@ function UserProfile(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getUser(userid);
   }, []);
-  return userData.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+  return userData.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
     children: "Loading"
-  }) : userData.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+  }) : userData.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
     children: userData.error
-  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "user-profile py-4",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "row",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "col-lg-4",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "card shadow-sm",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-                href: "/profileedit",
-                children: "Edit Profile"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "card-header bg-transparent text-center",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-                  children: userData.users.name
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                className: "card-body",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                  className: "mb-0",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
-                    className: "pr-1",
-                    children: "Patient ID:"
-                  }), " ", userData.users.id]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                  className: "mb-0",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
-                    className: "pr-1",
-                    children: "Treatment:"
-                  }), userData.users.treatment_group]
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "container sizing-profile",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "align-right",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+          href: "/profileedit",
+          className: "btn-primary create-treatment-button",
+          children: "Edit Profile"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "card shadow-sm",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "card-header bg-transparent text-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+            children: userData.users.name
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "card-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+            className: "mb-0",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+              className: "pr-1",
+              children: "Patient ID:"
+            }), " ", userData.users.id]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+            className: "mb-0",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+              className: "pr-1",
+              children: "Treatment:"
+            }), userData.users.treatment_group]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "card shadow-sm",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "card-header bg-transparent border-0",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+            className: "mb-0",
+            children: "General Information"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "card-body pt-0",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("table", {
+            className: "table table-bordered",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tbody", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: userData.users.email
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Phone"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: userData.users.phone
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Age"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: "32"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Weight"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: userData.users.current_weight
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Gender"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: "Male"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  width: "30%",
+                  children: "Ave Resting Heart Rate"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  width: "2%",
+                  children: ":"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  children: userData.users.rest_heart_rate
                 })]
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "col-lg-8",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "card shadow-sm",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "card-header bg-transparent border-0",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h3", {
-                  className: "mb-0",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-                    className: "far fa-clone pr-1"
-                  }), "General Information"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "card-body pt-0",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("table", {
-                  className: "table table-bordered",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tbody", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Email"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: userData.users.email
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Phone"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {})]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Age"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: "32"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Year Joined"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: "2022"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Gender"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: "Male"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                        width: "30%",
-                        children: "Blood Type"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        width: "2%",
-                        children: ":"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: "B+"
-                      })]
-                    })]
-                  })
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "card shadow-sm",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "card-header bg-transparent border-0",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h3", {
-                  className: "mb-0",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-                    className: "far fa-clone pr-1"
-                  }), "Additional Information"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "card-body pt-0",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-                  children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                })
-              })]
-            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "card shadow-sm",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "card-header bg-transparent border-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+              className: "mb-0",
+              children: "Additional Information"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "card-body pt-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            })
           })]
-        })
-      })
+        })]
+      })]
     })
   });
 }
@@ -7178,18 +7200,18 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     getUser: function getUser(userid) {
-      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_3__.getUser)(userid));
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.getUser)(userid));
     }
   };
 };
 
 if (document.getElementById('userprofintr')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserProfile, {
+  react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(UserProfile, {
     userid: userid
   }), document.getElementById('userprofintr'));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(UserProfile));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(UserProfile));
 
 /***/ }),
 
@@ -7229,6 +7251,55 @@ if (document.getElementById('userProf')) {
     userid: userid
   }), document.getElementById('userProf'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/store/actionTypes/RuleTypes.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/store/actionTypes/RuleTypes.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LIST_RULES": () => (/* binding */ LIST_RULES),
+/* harmony export */   "LIST_RULES_SUCCESS": () => (/* binding */ LIST_RULES_SUCCESS),
+/* harmony export */   "LIST_RULES_FAILURE": () => (/* binding */ LIST_RULES_FAILURE),
+/* harmony export */   "CREATE_RULES": () => (/* binding */ CREATE_RULES),
+/* harmony export */   "CREATE_RULES_SUCCESS": () => (/* binding */ CREATE_RULES_SUCCESS),
+/* harmony export */   "CREATE_RULES_FAILURE": () => (/* binding */ CREATE_RULES_FAILURE),
+/* harmony export */   "EDIT_RULE": () => (/* binding */ EDIT_RULE),
+/* harmony export */   "EDIT_RULE_SUCCESS": () => (/* binding */ EDIT_RULE_SUCCESS),
+/* harmony export */   "EDIT_RULE_FAILURE": () => (/* binding */ EDIT_RULE_FAILURE),
+/* harmony export */   "DELETE_RULE": () => (/* binding */ DELETE_RULE),
+/* harmony export */   "DELETE_RULE_SUCCESS": () => (/* binding */ DELETE_RULE_SUCCESS),
+/* harmony export */   "DELETE_RULE_FAILURE": () => (/* binding */ DELETE_RULE_FAILURE),
+/* harmony export */   "SHOW_RULE": () => (/* binding */ SHOW_RULE),
+/* harmony export */   "SHOW_RULE_SUCCESS": () => (/* binding */ SHOW_RULE_SUCCESS),
+/* harmony export */   "SHOW_RULE_FAILURE": () => (/* binding */ SHOW_RULE_FAILURE),
+/* harmony export */   "HANDLE_RULE_CHANGE": () => (/* binding */ HANDLE_RULE_CHANGE),
+/* harmony export */   "SET_RULE_DEFAULTS": () => (/* binding */ SET_RULE_DEFAULTS),
+/* harmony export */   "RESET_RULE_FIELDS": () => (/* binding */ RESET_RULE_FIELDS)
+/* harmony export */ });
+var LIST_RULES = 'LIST_RULES';
+var LIST_RULES_SUCCESS = 'LIST_RULES_SUCCESS';
+var LIST_RULES_FAILURE = 'LIST_RULES_FAILURE';
+var CREATE_RULES = 'CREATE_RULES';
+var CREATE_RULES_SUCCESS = 'CREATE_RULES_SUCCESS';
+var CREATE_RULES_FAILURE = 'CREATE_RULES_FAILURE';
+var EDIT_RULE = 'EDIT_RULE';
+var EDIT_RULE_SUCCESS = 'EDIT_RULE_SUCCESS';
+var EDIT_RULE_FAILURE = 'EDIT_RULE_FAILURE';
+var DELETE_RULE = 'DELETE_RULES';
+var DELETE_RULE_SUCCESS = 'DELETE_RULES_SUCCESS';
+var DELETE_RULE_FAILURE = 'DELETE_RULES_FAILURE';
+var SHOW_RULE = 'SHOW_RULE';
+var SHOW_RULE_SUCCESS = 'SHOW_RULE_SUCCESS';
+var SHOW_RULE_FAILURE = 'SHOW_RULE_FAILURE';
+var HANDLE_RULE_CHANGE = 'HANDLE_RULE_CHANGE';
+var SET_RULE_DEFAULTS = 'SET_RULE_DEFAULTS';
+var RESET_RULE_FIELDS = 'RESET_RULE_FIELDS';
 
 /***/ }),
 
@@ -7744,20 +7815,135 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _TreatmentReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreatmentReducer */ "./resources/js/components/store/reducers/TreatmentReducer.js");
-/* harmony import */ var _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AllTreatmentReducer */ "./resources/js/components/store/reducers/AllTreatmentReducer.js");
-/* harmony import */ var _UserReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserReducer */ "./resources/js/components/store/reducers/UserReducer.js");
+/* harmony import */ var _RuleReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RuleReducer */ "./resources/js/components/store/reducers/RuleReducer.js");
+/* harmony import */ var _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AllTreatmentReducer */ "./resources/js/components/store/reducers/AllTreatmentReducer.js");
+/* harmony import */ var _UserReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserReducer */ "./resources/js/components/store/reducers/UserReducer.js");
 
 
 
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
-  allTreatments: _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+  allTreatments: _AllTreatmentReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  rule: _RuleReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   treatment: _TreatmentReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  user: _UserReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  user: _UserReducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
+
+/***/ }),
+
+/***/ "./resources/js/components/store/reducers/RuleReducer.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/store/reducers/RuleReducer.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RuleReducer)
+/* harmony export */ });
+/* harmony import */ var _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/RuleTypes */ "./resources/js/components/store/actionTypes/RuleTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  loading: false,
+  rule: '',
+  error: ''
+};
+function RuleReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_RULE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_RULE_SUCCESS:
+      return {
+        loading: false,
+        rule: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_RULE_FAILURE:
+      return {
+        loading: false,
+        rule: '',
+        error: action.payload
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_RULE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_RULE_SUCCESS:
+      return {
+        loading: false,
+        rule: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_RULE_FAILURE:
+      return {
+        loading: false,
+        rule: '',
+        error: action.payload
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_RULE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_RULE_SUCCESS:
+      return {
+        loading: false,
+        rule: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_RULE_FAILURE:
+      return {
+        loading: false,
+        rule: '',
+        error: action.payload
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_RULES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
+      });
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_RULES_SUCCESS:
+      return {
+        loading: false,
+        rule: action.payload,
+        error: ''
+      };
+
+    case _actionTypes_RuleTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_RULES_FAILURE:
+      return {
+        loading: false,
+        rule: '',
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+}
 
 /***/ }),
 
