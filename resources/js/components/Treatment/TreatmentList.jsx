@@ -3,10 +3,11 @@ import { useState } from 'react';
 import TreatmentFilters from './TreatmentFilters';
 import {connect} from 'react-redux';
 import {deleteTreatment, getTreatment, saveTreatmentData} from '../store/actions/TreatmentActions'
+import {getAllTreatments} from "../store/actions/AllTreatmentActions";
 
 function TreatmentList(props) {
   useEffect(()=>{
-    props.getTreatment(1)
+    props.getAllTreatments()
   },[])
 
     const [filter, setFilter] = useState('all');
@@ -28,16 +29,28 @@ function TreatmentList(props) {
           return props.todos.filter(todo => todo.is_completed);
         }
       }
+
     function completeTodo(id){
-      props.getTreatment(id)
-      const treatment = props.singleTreatmentData.treatment
-      if (treatment.id === id){
-        if(treatment.is_completed === 0)
-        {treatment.is_completed =1}
-        else{treatment.is_completed=0}
+
+        // need to find specific treatment within the array of treatments
+        let $treatment = null;
+        let $i=0;
+        for($i;$i<props.singleTreatmentData.treatments.length;$i++){
+            if (props.singleTreatmentData.treatments[$i].id===id){
+                console.log(props.singleTreatmentData.treatments[$i].id)
+                $treatment = props.singleTreatmentData.treatments[$i]
+            }
+        }
+
+
+      if ($treatment.id === id){
+        if($treatment.is_completed === 0)
+        {$treatment.is_completed =1}
+        else{$treatment.is_completed=0}
       }
-        console.log(treatment)
-          props.saveTreatmentData(treatment,id)
+
+        props.saveTreatmentData($treatment,id)
+        window.location.reload(false)
       }
     function deleteTodo(id){
       props.deleteTreatment(id);
@@ -86,11 +99,12 @@ function TreatmentList(props) {
 }
 const mapStateToProps = state => {
   return {
-      singleTreatmentData: state.treatment
+      singleTreatmentData: state.allTreatments
   }
 }
 const mapDispatchToProps = dispatch =>{
     return {
+        getAllTreatments: () => dispatch(getAllTreatments()),
         getTreatment: (id) => dispatch(getTreatment(id)),
         saveTreatmentData: (state,id) => dispatch(saveTreatmentData(state,id)),
         deleteTreatment: (id) => dispatch(deleteTreatment(id))

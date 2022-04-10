@@ -27,6 +27,8 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
 
         saveUserData(userState.users);
 
+        window.location.reload()
+
     }
 
     return userState.loading?(
