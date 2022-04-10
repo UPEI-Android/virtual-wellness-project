@@ -1,8 +1,8 @@
-# Virtual Wellness App
+# Virtual Wellness App - Heroku Deployment Fork
 
 ## Visit us at: http://virtualwellness.systems
 
-## For Documentation see: https://github.com/UPEI-Android/virtual-wellness-project/wiki
+## For Documentation see: https://github.com/UPEI-Android/virtual-wellness-project/wiki 
 
 ### Status
 [<img src="https://img.shields.io/uptimerobot/ratio/m791358814-c42fb9dbc0b2fa02cb90f56d?style=flat-square"/>](http://status.virtualwellness.systems)
