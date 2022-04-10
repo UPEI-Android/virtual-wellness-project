@@ -69,11 +69,6 @@ function UserProfile({ userData, getUser, userid}){
                                             <td>{userData.users.current_weight}</td>
                                         </tr>
                                         <tr>
-                                            <th width="30%">Gender</th>
-                                            <td width="2%">:</td>
-                                            <td>Male</td>
-                                        </tr>
-                                        <tr>
                                             <th width="30%">Ave Resting Heart Rate</th>
                                             <td width="2%">:</td>
                                             <td>{userData.users.rest_heart_rate}</td>
