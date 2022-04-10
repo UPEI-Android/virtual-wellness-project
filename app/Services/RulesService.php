@@ -22,16 +22,16 @@ class RulesService
 
     }
 
-    public function createRRule(int $freq): RRule
+    public function createRRule(string $freq): RRule
     {
 
-        if($freq == 1) {
+        if($freq == 'yearly' || $freq == 'YEARLY') {
             return $this->create_y_rrule();
-        } elseif ($freq == 2) {
+        } elseif ($freq == 'monthly' || $freq == 'MONTHLY') {
             return $this->create_m_rrule();
-        }elseif ($freq == 3) {
+        }elseif ($freq == 'weekly' || $freq == 'WEEKLY') {
             return $this->create_w_rrule();
-        }else {
+        }elseif($freq == 'daily' || $freq == ('DAILY')) {
             return $this->create_d_rrule();
         }
 

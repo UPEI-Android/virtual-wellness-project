@@ -28,7 +28,7 @@ class RulesParsingTest extends TestCase
 
         $rule = Rule::factory()->daily()->create([
             'treatment_id' => $treatment->id,
-            'freq' => 4,
+            'freq' => 'daily',
             'interval' => 1,
         ]);
 
@@ -60,7 +60,7 @@ class RulesParsingTest extends TestCase
 
         $rule = Rule::factory()->yearly()->create([
             'treatment_id' => $treatment->id,
-            'freq' => 1,
+            'freq' => 'YEARLY',
             'interval' => 1,
             'day_of_month' => 28,
             'month_of_year' => 3,
@@ -91,7 +91,7 @@ class RulesParsingTest extends TestCase
 
         $rule = Rule::factory()->weekly()->create([
             'treatment_id' => $treatment->id,
-            'freq' => 3,
+            'freq' => 'weekly',
             'interval' => 2,
             'day_of_week' => ['Th'],
         ]);
@@ -124,7 +124,7 @@ class RulesParsingTest extends TestCase
 
         $rule = Rule::factory()->weekly()->create([
             'treatment_id' => $treatment->id,
-            'freq' => 2,
+            'freq' => 'monthly',
             'interval' => 1,
             'day_of_week' => ['Th', 'Fr'],
         ]);
