@@ -43,7 +43,7 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
             userState.users.phone = e.target.phone.value
         }
 
-        saveUserData(userState.users);
+        saveUserData(userState.users,userid);
 
         toast.success("Profile Successfully Updated")
     }
@@ -139,7 +139,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getUser: (userid) => dispatch(getUser(userid)),
-       saveUserData: () => dispatch(saveUserData(store.getState().user.users))
+       saveUserData: (state,userid) => dispatch(saveUserData(state ,userid))
 
     }
 }

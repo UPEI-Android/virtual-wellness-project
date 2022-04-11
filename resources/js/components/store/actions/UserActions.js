@@ -48,7 +48,7 @@ const fetchUserFailure = error => {
 
 //saving data from user profile
 
-export const saveUserData = state => {
+export const saveUserData = (state, id) => {
 
   /*  state = {
         "name":"jared",
@@ -58,7 +58,7 @@ export const saveUserData = state => {
     return (dispatch) => {
         dispatch(saveUserRequest)
         //state variable must be properly formatted json object containing user
-        axios.put('/api/userprofile/1/', { state
+        axios.put('/api/userprofile/'+id, { state
         })
             .then(response =>{
                 dispatch(saveUserSuccess(response))

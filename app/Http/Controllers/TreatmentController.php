@@ -93,7 +93,7 @@ class TreatmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treatment $treatment)
+    public function update(Request $request, int $id)
     {
         $treatment = Treatment::find($id);
 
@@ -103,7 +103,7 @@ class TreatmentController extends Controller
             $treatment->update(($request['state']));
         }
 
-        $treatment->update($request->all());
+        //$treatment->update($request->all());
         return response($treatment);
 
     }
