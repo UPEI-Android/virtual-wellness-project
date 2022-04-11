@@ -5595,6 +5595,7 @@ https://www.geeksforgeeks.org/how-to-change-a-selects-options-based-on-another-d
 
 
 
+
 react_toastify__WEBPACK_IMPORTED_MODULE_4__.toast.configure();
 
 function CreateTreatment(props) {
@@ -5642,8 +5643,12 @@ function CreateTreatment(props) {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
       showYearOptions = _useState6[0],
-      setShowYearOptions = _useState6[1]; //shows
+      setShowYearOptions = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      showSeriesOn = _useState8[0],
+      setShowSeriesOn = _useState8[1];
   /** Type variable to store different array for different dropdown */
 
 
@@ -5714,6 +5719,14 @@ function CreateTreatment(props) {
 
   ;
 
+  function changeSeriesOptions(event) {
+    if (event.target.value == "on") {
+      setShowSeriesOn(true);
+    } else if (event.target.value == "after") {
+      setShowSeriesOn(false);
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     props.singleTreatmentData.title = e.target.title.value;
@@ -5781,7 +5794,39 @@ function CreateTreatment(props) {
                 backgroundColor: "rgba(111, 112, 168, 0.11)"
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tbody", {
-                children: [showDayOfWeek ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "Every:"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+                    colSpan: "2",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("select", {
+                      name: "interval",
+                      className: "form-input-tiny",
+                      children: options
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+                      name: "frequency",
+                      className: "form-input-tiny",
+                      onChange: changeSelectOptionHandler,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "DAILY",
+                        children: "Day(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "WEEKLY",
+                        children: "Week(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "MONTHLY",
+                        children: "Month(s)"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "YEARLY",
+                        children: "Year(s)"
+                      })]
+                    })]
+                  })]
+                }), showDayOfWeek ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
                       className: "form-input-sm",
@@ -5904,22 +5949,63 @@ function CreateTreatment(props) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
                       className: "form-input-sm",
-                      children: "Dates:"
+                      children: "Start:"
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                     colSpan: "2",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
                       name: "start_date",
                       className: "form-input-sm",
                       defaultValue: currentDate,
                       type: "date"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
-                      className: "form-input-label-tiny",
-                      children: "to"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                  className: "fixed-height",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                      className: "form-input-sm",
+                      children: "Series Ends "
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+                      name: "interval",
+                      className: "form-input-tiny",
+                      onChange: changeSeriesOptions,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        style: {
+                          width: "35px"
+                        },
+                        value: "on",
+                        children: "on"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        style: {
+                          width: "35px"
+                        },
+                        value: "after",
+                        children: "after"
+                      })]
+                    }), showSeriesOn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
                       name: "end_date",
                       className: "form-input-sm",
+                      defaultValue: currentDate,
                       type: "date"
+                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                        style: {
+                          width: "60px"
+                        },
+                        type: "integer",
+                        name: "interval",
+                        className: "form-input-sm",
+                        defaultValue: "5"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                        className: "form-input-tiny",
+                        style: {
+                          width: "60px"
+                        },
+                        children: " events"
+                      })]
                     })]
                   })]
                 })]
@@ -7023,7 +7109,7 @@ function EditProfile(_ref) {
       userState.users.phone = e.target.phone.value;
     }
 
-    saveUserData(userState.users);
+    saveUserData(userState.users, userid);
     react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.success("Profile Successfully Updated");
   };
 
@@ -7119,8 +7205,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     getUser: function getUser(userid) {
       return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.getUser)(userid));
     },
-    saveUserData: function saveUserData() {
-      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.saveUserData)(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"].getState().user.users));
+    saveUserData: function saveUserData(state, userid) {
+      return dispatch((0,_store_actions_UserActions__WEBPACK_IMPORTED_MODULE_2__.saveUserData)(state, userid));
     }
   };
 };
@@ -7805,7 +7891,7 @@ var fetchUserFailure = function fetchUserFailure(error) {
 }; //saving data from user profile
 
 
-var saveUserData = function saveUserData(state) {
+var saveUserData = function saveUserData(state, id) {
   /*  state = {
         "name":"jared",
         "current_weight":"65",
@@ -7814,7 +7900,7 @@ var saveUserData = function saveUserData(state) {
   return function (dispatch) {
     dispatch(saveUserRequest); //state variable must be properly formatted json object containing user
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/userprofile/1/', {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/userprofile/' + id, {
       state: state
     }).then(function (response) {
       dispatch(saveUserSuccess(response));

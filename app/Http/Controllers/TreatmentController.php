@@ -105,9 +105,6 @@ class TreatmentController extends Controller
 
             $treatment->update(($request['state']));
         }
-
-
-      
         //$treatment->update($request->all());
         return response($treatment);
 

@@ -29,7 +29,8 @@ function CreateTreatment (props) {
   //whether to show day_of_week
   const [showDayOfWeek, setShowDayOfWeek] = useState(false)
   const [showWeekOfMonth,setShowWeekOfMonth] = useState(false)
-  const [showYearOptions,setShowYearOptions] = useState(false)//shows
+  const [showYearOptions,setShowYearOptions] = useState(false)
+  const [showSeriesOn, setShowSeriesOn] = useState(true)
 
   /** Type variable to store different array for different dropdown */
   let type = days;
@@ -84,6 +85,16 @@ function CreateTreatment (props) {
     }
   };
 
+  function changeSeriesOptions(event) {
+    if(event.target.value =="on")
+    {
+      setShowSeriesOn(true)
+    }
+    else if(event.target.value =="after"){
+      setShowSeriesOn(false)
+    }
+  }
+
   function handleSubmit (e) {
       e.preventDefault();
         props.singleTreatmentData.title = e.target.title.value
@@ -131,7 +142,6 @@ function CreateTreatment (props) {
                               </div>
                                 <table style={{backgroundColor:"rgba(111, 112, 168, 0.11)"}}>
                                   <tbody>
-                                    {/*
                                   <tr className="fixed-height">
                                     <th>
                                       <label className="form-input-sm" >Every:</label>
@@ -148,7 +158,6 @@ function CreateTreatment (props) {
                                       </select>
                                       </td>
                                   </tr>
-                                    */}
 
                                   { showDayOfWeek ?
                                   <tr>
@@ -238,7 +247,7 @@ function CreateTreatment (props) {
                                   </tr>
                                   <tr className="fixed-height">
                                     <th>
-                                      <label className="form-input-sm">Dates:</label>
+                                      <label className="form-input-sm">Start:</label>
                                     </th>
                                     <td colSpan="2">
                                     <input
@@ -248,28 +257,38 @@ function CreateTreatment (props) {
                                       type="date"
                                       
                                     />
-                                    <label className="form-input-label-tiny">to</label>
-                                    <input
-                                      name="end_date"
-                                      className="form-input-sm"
-                                      type="date"
-                                    />
                                     </td>
                                   </tr>
-                                  {/*
                                   <tr className="fixed-height">
                                     <th>
-                                      <label className="form-input-sm">How Many? </label>
+                                      <label className="form-input-sm">Series Ends </label>
                                     </th>
                                     <td>
-                                    <input
-                                      type="integer"
-                                      name="interval" 
-                                      className="form-input-sm"
-                                    />
+                                    <select name="interval" className="form-input-tiny" onChange={(changeSeriesOptions)}>
+                                      <option style={{width:"35px"}} value="on">on</option>
+                                      <option style={{width:"35px"}}value="after">after</option>
+                                    </select>
+                                    { showSeriesOn ? 
+                                        <input
+                                        name="end_date"
+                                        className="form-input-sm"
+                                        defaultValue={currentDate}
+                                        type="date"
+                                      />
+                                    : 
+                                      <>
+                                      <input
+                                        style={{width:"60px"}}
+                                        type="integer"
+                                        name="interval" 
+                                        className="form-input-sm"
+                                        defaultValue="5"
+                                      />
+                                      <label className="form-input-tiny" style={{width:"60px"}}> events</label>
+                                      </>
+                                    }
                                     </td>
                                   </tr>
-                                  */}
                                   </tbody>
                                   </table>
 
