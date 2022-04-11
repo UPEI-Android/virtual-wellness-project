@@ -44,6 +44,8 @@ class TreatmentController extends Controller
     public function store(TreatmentRequest $request)
     {
         //
+
+       // $this->write_to_console($request);
         return auth()->user()
             ->treatments()
             ->create($request->validated());
@@ -77,12 +79,13 @@ class TreatmentController extends Controller
     {
         //
     }
+
     function write_to_console($data) {
         $console = $data;
         if (is_array($console))
             $console = implode(',', $console);
 
-        echo "<script>console.log('Console: " . $console . "' );</script>";
+       echo "<script>console.log('Console: " . $console . "' );</script>";
     }
 
     /**
@@ -99,11 +102,13 @@ class TreatmentController extends Controller
         if($treatment) {
 
 
+
             $treatment->update(($request['state']));
         }
-        /*
-        $treatment->update($request->all());
-        */
+
+
+      
+        //$treatment->update($request->all());
         return response($treatment);
 
     }
