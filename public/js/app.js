@@ -6690,19 +6690,12 @@ function TreatmentList(props) {
               className: "treatment-item treatment-list-item",
               children: todo.title
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "btn-group",
             style: {
               "display": "block"
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              className: "btn",
-              style: {
-                "display": "inline"
-              },
-              children: "Edit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               type: "button",
               className: "btn btn__danger",
               onClick: function onClick() {
@@ -6712,7 +6705,7 @@ function TreatmentList(props) {
                 "display": "inline"
               },
               children: "Delete"
-            })]
+            })
           })]
         }, todo.id);
       })

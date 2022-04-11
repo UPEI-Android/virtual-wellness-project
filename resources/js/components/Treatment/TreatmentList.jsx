@@ -77,9 +77,11 @@ function TreatmentList(props) {
 
             </div>
             <div className="btn-group" style={{"display" : "block"}}>
+              {/*
                 <button type="button" className="btn" style={{"display" : "inline"}}>
                 Edit
                 </button>
+              */}
                 <button type="button" className="btn btn__danger"  onClick={()=> deleteTodo(todo.id)} style={{"display" : "inline"}}>
                 Delete
                 </button>
