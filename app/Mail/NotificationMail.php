@@ -14,6 +14,7 @@ class NotificationMail extends Mailable
 
     public $details;
     public $user;
+    public $title;
 
     /**
      * Create a new message instance.
@@ -26,9 +27,10 @@ class NotificationMail extends Mailable
         $name  = $user->first_name.' '.$user->last_name;
         $email = $user ->email;
         $title = $treatment->title;
+        $this ->title = $title;
         $diffInDays = $date->diff(Carbon::now())->days;
         $details = [
-            'title' => 'Notification E-mail',
+            'title' => 'Notification E-mail of '.$title,
             'body' => 'Hi '.$name.'. This is for testing email to '.$email.". You have ".$diffInDays." days left to complete ".$title
         ];
         $this->details = $details;
@@ -42,7 +44,7 @@ class NotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('This is a test mail')
+        return $this->subject('Notification E-mail of '.$this->title)
             ->view('emails.notificationMail');
     }
 }
