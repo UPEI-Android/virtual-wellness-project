@@ -41,12 +41,12 @@ class TreatmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TreatmentRequest $request)
+    public function store(Request $request)
     {
         //
         return auth()->user()
             ->treatments()
-            ->create($request->validated());
+            ->create($request->all());
 
     }
 
@@ -62,10 +62,10 @@ class TreatmentController extends Controller
         return response($treatment);
     }
 
-    public function showTreatment(int $treatmentId){
-
-        return view('/treatmentViews/showTreatment',compact('treatmentId'));
-    }
+//    public function showTreatment(int $treatmentId){
+//
+//        return view('/treatmentViews/showTreatment',compact('treatmentId'));
+//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -77,13 +77,14 @@ class TreatmentController extends Controller
     {
         //
     }
-    function write_to_console($data) {
-        $console = $data;
-        if (is_array($console))
-            $console = implode(',', $console);
 
-        echo "<script>console.log('Console: " . $console . "' );</script>";
-    }
+//    function write_to_console($data) {
+//        $console = $data;
+//        if (is_array($console))
+//            $console = implode(',', $console);
+//
+//        echo "<script>console.log('Console: " . $console . "' );</script>";
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -92,18 +93,17 @@ class TreatmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, Treatment $treatment)
     {
-        $treatment = Treatment::find($id);
+//        $treatment = Treatment::find($id);
+//
+//        if($treatment) {
+//
+//
+//            $treatment->update(($request['state']));
+//        }
 
-        if($treatment) {
-
-
-            $treatment->update(($request['state']));
-        }
-        /*
         $treatment->update($request->all());
-        */
         return response($treatment);
 
     }
