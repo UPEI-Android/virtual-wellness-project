@@ -17,21 +17,6 @@ class MailController extends Controller
         $rules = Rule::all();
 
         foreach ($rules as $rule) {
-
-            switch ($rule->freq) {
-                case(1):
-                    $rule->freq = RRule::YEARLY;
-                    break;
-                case(2):
-                    $rule->freq = RRule::MONTHLY;
-                    break;
-                case(3):
-                    $rule->freq = RRule::WEEKLY;
-                    break;
-                default:
-                    $rule->freq = RRule::DAILY;
-            }
-
             $rule_service = new RulesService($rule);
             $treatment_id = $rule->treatment_id;
             $treatments = DB::table('treatments')->where('id', '=', $treatment_id)->get();
@@ -41,6 +26,7 @@ class MailController extends Controller
                 foreach ($users as $user) {
                     $email = $user->email;
                     Mail::to($email)->queue(new \App\Mail\NotificationMail($rule_service->nextOccurrence()[0], $user, $treatment));
+
                     echo("Email is Sent to " . $email);
                 }
             }
