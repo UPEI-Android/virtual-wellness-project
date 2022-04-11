@@ -41,12 +41,12 @@ class TreatmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TreatmentRequest $request)
     {
         //
         return auth()->user()
             ->treatments()
-            ->create($request->all());
+            ->create($request->validated());
 
     }
 
@@ -95,13 +95,13 @@ class TreatmentController extends Controller
      */
     public function update(Request $request, Treatment $treatment)
     {
-//        $treatment = Treatment::find($id);
-//
-//        if($treatment) {
-//
-//
-//            $treatment->update(($request['state']));
-//        }
+        $treatment = Treatment::find($id);
+
+        if($treatment) {
+
+
+            $treatment->update(($request['state']));
+        }
 
         $treatment->update($request->all());
         return response($treatment);
