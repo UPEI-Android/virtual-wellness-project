@@ -1,3 +1,8 @@
+/*
+Some references materials:
+https://stackoverflow.com/questions/6040515/how-do-i-get-month-and-date-of-javascript-in-2-digit-format
+https://www.geeksforgeeks.org/how-to-change-a-selects-options-based-on-another-dropdown-using-react/
+*/
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import { getTreatment, createTreatment } from '../store/actions/TreatmentActions'
@@ -10,13 +15,13 @@ function CreateTreatment (props) {
 
   var date = new Date()
   var currentDate = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2)
-  var currentTime = date.getHours() + ':' + date.getMinutes()
-  var endTime = date.getHours() + 1 + ':' + date.getMinutes()
+  var currentTime = ("0" + date.getHours()).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2)
+  var endTime = ("0" + (date.getHours() + 1)).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2)
   
   const days= Array.from({length: 31}, (_, i) => i + 1)
-  const weeks=[1,2,3,4,5,6,7,8,9,10]
-  const months=[1,2,3,4,5,6,7,8,9,10,11,12]
-  const years=[1,2,3,4,5,6,7,8,9,10]
+  const weeks=Array.from({length: 10}, (_, i) => i + 1)
+  const months=Array.from({length: 12}, (_, i) => i + 1)
+  const years=Array.from({length: 30}, (_, i) => i + 1)
 
   
   //this is the state for the dropdown for interval dependent on frequency
@@ -51,17 +56,9 @@ function CreateTreatment (props) {
     }
   }
 
-
-  // Calling toast method by passing string
-  const notify = ()=>{
-    // default notification
-    toast('Form Submitted')
-  }
-
   /*
   What interval to show based on frequency, once daily, weekly, monthly, yearly,
   it will populate the interval dropdown with the correesponding arrays listed as constants 
-  pulled from https://www.geeksforgeeks.org/how-to-change-a-selects-options-based-on-another-dropdown-using-react/
   */
   function changeSelectOptionHandler(event) {
     setSelected(event.target.value)
@@ -97,9 +94,14 @@ function CreateTreatment (props) {
         props.singleTreatmentData.end_time = e.target.end_time.value
         props.createTreatment(props.singleTreatmentData);
         e.target.reset();
+        toast.success("Your Treatment Has Been Submitted")
   }
     
-    return(
+    return props.singleTreatmentData.loading?(
+      <h2>Loading</h2>
+      ): props.singleTreatmentData.error? (
+          <h2>{props.singleTreatmentData.error}</h2>
+      ): (
 
       <div className="container background" style={{paddingTop:"5%"}}>
             <div className="row justify-content-center">
@@ -272,7 +274,7 @@ function CreateTreatment (props) {
                                   </table>
 
                               <div style={{position:"relative",display:"block", float:"left"}}>
-                              <button type="submit" className="btn-primary" onClick={notify}>Create Treatment</button>
+                              <button type="submit" className="btn-primary">Create Treatment</button>
                               </div>
                             
                             </form>

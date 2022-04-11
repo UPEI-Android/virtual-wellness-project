@@ -5582,6 +5582,11 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+/*
+Some references materials:
+https://stackoverflow.com/questions/6040515/how-do-i-get-month-and-date-of-javascript-in-2-digit-format
+https://www.geeksforgeeks.org/how-to-change-a-selects-options-based-on-another-dropdown-using-react/
+*/
 
 
 
@@ -5595,16 +5600,28 @@ react_toastify__WEBPACK_IMPORTED_MODULE_4__.toast.configure();
 function CreateTreatment(props) {
   var date = new Date();
   var currentDate = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2);
-  var currentTime = date.getHours() + ':' + date.getMinutes();
-  var endTime = date.getHours() + 1 + ':' + date.getMinutes();
+  var currentTime = ("0" + date.getHours()).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2);
+  var endTime = ("0" + (date.getHours() + 1)).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2);
   var days = Array.from({
     length: 31
   }, function (_, i) {
     return i + 1;
   });
-  var weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  var years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //this is the state for the dropdown for interval dependent on frequency
+  var weeks = Array.from({
+    length: 10
+  }, function (_, i) {
+    return i + 1;
+  });
+  var months = Array.from({
+    length: 12
+  }, function (_, i) {
+    return i + 1;
+  });
+  var years = Array.from({
+    length: 30
+  }, function (_, i) {
+    return i + 1;
+  }); //this is the state for the dropdown for interval dependent on frequency
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(""),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -5666,17 +5683,10 @@ function CreateTreatment(props) {
         }, el);
       });
     }
-  } // Calling toast method by passing string
-
-
-  var notify = function notify() {
-    // default notification
-    (0,react_toastify__WEBPACK_IMPORTED_MODULE_4__.toast)('Form Submitted');
-  };
+  }
   /*
   What interval to show based on frequency, once daily, weekly, monthly, yearly,
   it will populate the interval dropdown with the correesponding arrays listed as constants 
-  pulled from https://www.geeksforgeeks.org/how-to-change-a-selects-options-based-on-another-dropdown-using-react/
   */
 
 
@@ -5714,9 +5724,14 @@ function CreateTreatment(props) {
     props.singleTreatmentData.end_time = e.target.end_time.value;
     props.createTreatment(props.singleTreatmentData);
     e.target.reset();
+    react_toastify__WEBPACK_IMPORTED_MODULE_4__.toast.success("Your Treatment Has Been Submitted");
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  return props.singleTreatmentData.loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+    children: "Loading"
+  }) : props.singleTreatmentData.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+    children: props.singleTreatmentData.error
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     className: "container background",
     style: {
       paddingTop: "5%"
@@ -5918,7 +5933,6 @@ function CreateTreatment(props) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                 type: "submit",
                 className: "btn-primary",
-                onClick: notify,
                 children: "Create Treatment"
               })
             })]
