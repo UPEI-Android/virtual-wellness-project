@@ -99,13 +99,16 @@ class TreatmentController extends Controller
     {
         $treatment = Treatment::find($id);
 
-      if($treatment) {
+        if($treatment) {
+
 
 
             $treatment->update(($request['state']));
         }
 
-       // $treatment->update($request->all());
+
+      
+        //$treatment->update($request->all());
         return response($treatment);
 
     }
