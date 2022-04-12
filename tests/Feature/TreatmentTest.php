@@ -14,15 +14,22 @@ class TreatmentTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     private $treatment;
+    protected $user;
 
     public function setUp():void{
 
         parent::setUp();
-        $user = User::factory()->create();
-        Sanctum::actingAs($user);
+
+        $this->user = User::factory()->create();
+        Sanctum::actingAs($this->user);
+
         $this->treatment = $this->createTreatment([
             'title' => 'Insulin',
-            'patient_id' => $user->id
+            'patient_id' => $this->user->id,
+            'notes' => 'diabetic',
+            'start_date' => '2022-03-28',
+            'start_time' => '12:02:50',
+            'end_time' => '12:02:50',
         ]);
 
     }
@@ -67,19 +74,36 @@ class TreatmentTest extends TestCase
     public function store_treatment() {
 
         $treatment = Treatment::factory()->make();
+        //$treatment = $this->createTreatment();
 
         $response = $this->postJson(route('treatments.store'), [
             'title' => $treatment->title,
+            'notes' => $treatment->notes,
             'start_date' => $treatment->start_date,
-            'patient_id' => $treatment->patient_id
+            'end_date' => $treatment->end_date,
+            'start_time' => $treatment->start_time,
+            'end_time' => $treatment->end_time
         ])
             ->assertCreated()
             ->json();
 
 
         $this->assertEquals($treatment->title, $response['title']);
+        $this->assertEquals($this->user->id, $response['patient_id']);
+        $this->assertEquals($treatment->notes, $response['notes']);
+        $this->assertEquals($treatment->start_date, $response['start_date']);
+        $this->assertEquals($treatment->end_date, $response['end_date']);
+        $this->assertEquals($treatment->start_time, $response['start_time']);
+        $this->assertEquals($treatment->end_time, $response['end_time']);
 
-        $this->assertDatabaseHas('treatments', ['title' => $treatment->title]);
+        $this->assertDatabaseHas('treatments', [
+            'title' => $treatment->title,
+            'notes' => $treatment->notes,
+            'start_date' => $treatment->start_date,
+            'end_date' => $treatment->end_date,
+            'start_time' => $treatment->start_time,
+            'end_time' => $treatment->end_time
+        ]);
     }
 
     /**

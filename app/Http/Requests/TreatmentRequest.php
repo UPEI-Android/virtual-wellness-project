@@ -26,8 +26,12 @@ class TreatmentRequest extends FormRequest
         return [
             //
             'title' => ['required'],
+            'notes' => ['nullable'],
             'start_date' => ['required'],
-            'notes' => ['required'],
+            'end_date' => 'nullable|date',
+            'start_time' => 'nullable',
+            'end_time' => 'nullable',
+            'is_completed' => 'nullable|boolean'
         ];
     }
 }
