@@ -1,4 +1,4 @@
-# Virtual Wellness App - Development Fork
+# Virtual Wellness App - Deployment Fork
 
 ## Visit us at: http://virtualwellness.systems
 
