@@ -45,7 +45,7 @@ Front End Design: @etoop, Elizabeth Toop
 
 Front End: @jamqu Jared Quinn, @etoop Elizabeth Toop
 
-Back End: @Shivangi58 Shivangi Shawarma
+Back End: @Shivangi58 Shivangi Sharma
 
 Notifications, Email: @Nameless7193 Jiarui Qu
 
