@@ -6,16 +6,13 @@ use App\Traits\SelfReferenceTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class Treatment extends Model
 {
-    use HasFactory, SelfReferenceTrait;
+    use HasFactory, RefreshDatabase, SelfReferenceTrait;
 
     protected $guarded = [];
-
-    protected $hidden = [
-        'patient_id'
-    ];
 
     public function path() {
 
