@@ -1,4 +1,4 @@
-# Virtual Wellness App - Heroku Deployment Fork
+# Virtual Wellness App - Development Fork
 
 ## Visit us at: http://virtualwellness.systems
 
