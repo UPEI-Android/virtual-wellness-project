@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import React, {useEffect} from "react";
 import {getUser, saveUserData} from "../../store/actions/UserActions";
-import store from "../../store/store";
+
 import {connect} from "react-redux";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
