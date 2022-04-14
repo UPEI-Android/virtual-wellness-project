@@ -37,7 +37,7 @@ function TreatmentList(props) {
         let $i=0;
         for($i;$i<props.singleTreatmentData.treatments.length;$i++){
             if (props.singleTreatmentData.treatments[$i].id===id){
-                console.log(props.singleTreatmentData.treatments[$i].id)
+
                 $treatment = props.singleTreatmentData.treatments[$i]
             }
         }

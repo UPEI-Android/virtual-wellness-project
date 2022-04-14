@@ -1,116 +1,83 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import {connect} from 'react-redux';
-import {getUser} from '../../store/actions/UserActions';
+import {deleteUser, getUser, saveUserData} from '../../store/actions/UserActions'
+import {getAllUsers} from "../../store/actions/AllUsersActions";
 
-import ReactDOM from "react-dom";
-
-
-
-
-function UserIndex({ userData, getUser, userid}){
+function UserIndex(props) {
     useEffect(()=>{
-        getUser(userid)
-
+        props.getAllUsers()
     },[])
 
 
+    function completeTodo(id){
 
-    return userData.loading?(
-        <h2>Loading</h2>
-    ): userData.error? (
-        <h2>{userData.error}</h2>
-    ): (
+        // need to find specific treatment within the array of treatments
+        let $treatment = null;
+        let $i=0;
+        for($i;$i<props.singleTreatmentData.treatments.length;$i++){
+            if (props.singleTreatmentData.treatments[$i].id===id){
 
-
-
-        <div className="container sizing-profile">
-            <div className="row">
-                <div className="align-right"><a href="/profileedit" className="btn-primary create-treatment-button">Edit Profile</a></div>
-
-                <div className="card shadow-sm">
+                $treatment = props.singleTreatmentData.treatments[$i]
+            }
+        }
 
 
+        if ($treatment.id === id){
+            if($treatment.is_completed === 0)
+            {$treatment.is_completed =1}
+            else{$treatment.is_completed=0}
+        }
 
+        props.saveTreatmentData($treatment,id)
+        window.location.reload(false)
+    }
+    function deleteTodo(id){
+        props.deleteUser(id);
+        window.location.reload(false)
+    }
 
+    return(
+        <>
+            <ul
+                role="list"
+                className="list-unstyled"
+            >
+                { todosFiltered(filter).map((todo, index) => (
+                    <li key={todo.id} className="treatment-item-container">
+                        <div className ="treatment-item">
+                            <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
+                            <a href={'/user/' + todo.id} className="treatment-item treatment-list-item" >{ todo.title }</a>
 
-                    <div className="card-header bg-transparent text-center">
-                        <h3>{userData.users.first_name}</h3>
-                    </div>
-                    <div className="card-body">
-                        <p className="mb-0"><strong className="pr-1">Patient ID:</strong> {userData.users.id}</p>
-                    </div>
-                </div>
-
-                <div className="card shadow-sm">
-                    <div className="card-header bg-transparent border-0">
-                        <h3 className="mb-0">General Information</h3>
-                    </div>
-                    <div className="card-body pt-0">
-                        <table className="table table-bordered">
-                            <tbody>
-                            <tr>
-                                <th width="30%">Email</th>
-                                <td width="2%">:</td>
-                                <td>{userData.users.email}</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Phone</th>
-                                <td width="2%">:</td>
-                                <td>{userData.users.phone}</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Age</th>
-                                <td width="2%">:</td>
-                                <td>32</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Weight</th>
-                                <td width="2%">:</td>
-                                <td>{userData.users.current_weight}</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Ave Resting Heart Rate</th>
-                                <td width="2%">:</td>
-                                <td>{userData.users.rest_heart_rate}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                    <div className="card shadow-sm">
-                        <div className="card-header bg-transparent border-0">
-                            <h3 className="mb-0">Additional Information</h3>
                         </div>
-                        <div className="card-body pt-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div className="btn-group" style={{"display" : "block"}}>
+                            {/*
+                <button type="button" className="btn" style={{"display" : "inline"}}>
+                Edit
+                </button>
+              */}
+                            <button type="button" className="btn btn__danger"  onClick={()=> deleteTodo(todo.id)} style={{"display" : "inline"}}>
+                                Delete
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </li>
+                ))}
+            </ul>
 
-
+        </>
     )
 }
-
 const mapStateToProps = state => {
     return {
-        userData: state.user
+        singleTreatmentData: state.allTreatments
     }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getUser: (userid) => dispatch(getUser(userid)),
-
+        getAllTreatments: () => dispatch(getAllTreatments()),
+        getTreatment: (id) => dispatch(getTreatment(id)),
+        saveTreatmentData: (state,id) => dispatch(saveTreatmentData(state,id)),
+        deleteTreatment: (id) => dispatch(deleteTreatment(id))
     }
-}
-
-
-if (document.getElementById('userindexintr')) {
-    ReactDOM.render(<UserIndex userid = {userid}/>, document.getElementById('userindexintr'));
 }
 export default connect(mapStateToProps,mapDispatchToProps)(UserIndex)

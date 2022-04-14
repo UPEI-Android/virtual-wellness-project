@@ -3,7 +3,7 @@ import axios from "axios";
 
 import {LIST_USERS,LIST_USERS_FAILURE,LIST_USERS_SUCCESS} from "../actionTypes/UserTypes";
 
-export const getAllTreatments = () => {
+export const getAllUsers = () => {
     return (dispatch) => {
         dispatch(fetchUsersRequest)
         axios.get('/api/users')
