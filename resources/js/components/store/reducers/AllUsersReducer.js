@@ -24,13 +24,13 @@ export default function TreatmentReducer (state=initialState,action)
         case LIST_USERS_SUCCESS:
             return{
                 loading:false,
-                treatments:action.payload,
+                users:action.payload,
                 error:''
             }
         case LIST_USERS_FAILURE:
             return{
                 loading:false,
-                treatments:[],
+                users:[],
                 error: action.payload
             }
 

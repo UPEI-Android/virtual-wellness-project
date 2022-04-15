@@ -35,6 +35,7 @@ Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name(
 //user routes
 Route::get('/profile/', [App\Http\Controllers\UserController::class, 'show']);
 Route::get('/profileedit',[UserController::class,'showEdit']);
+Route::get('/users',[UserController::class, 'showAllUsers']);
 
 //treatment pages
 Route::get('/treatments', function () {

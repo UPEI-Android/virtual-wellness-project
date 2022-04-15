@@ -1,19 +1,18 @@
 import ReactDOM from 'react-dom';
 import store from '../../store/store';
 import {Provider} from 'react-redux';
-import UserIndex from "./UserIndex";
+import UserOverview from "./UserOverview";
 
 
-export default function UserOverviewContainer(props) {
-
+export default function UserOverviewContainer() {
 
     return (
         <Provider store={store}>
-            <UserIndex userid={props.userid}/>
+            <UserOverview/>
+
         </Provider>
     );
 }
 if (document.getElementById('useroverview')) {
-    let userid = document.getElementById('useroverview').getAttribute('userid');
-    ReactDOM.render(<UserOverviewContainer userid={userid}/>, document.getElementById('useroverview'));
+    ReactDOM.render(<UserOverviewContainer />, document.getElementById('useroverview'));
 }

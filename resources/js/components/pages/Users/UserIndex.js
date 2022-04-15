@@ -29,7 +29,7 @@ function UserIndex(props) {
             else{$treatment.is_completed=0}
         }
 
-        props.saveTreatmentData($treatment,id)
+        props.saveUserData($treatment,id)
         window.location.reload(false)
     }
     function deleteTodo(id){
@@ -43,7 +43,7 @@ function UserIndex(props) {
                 role="list"
                 className="list-unstyled"
             >
-                { todosFiltered(filter).map((todo, index) => (
+                { props.todos.map((todo, index) => (
                     <li key={todo.id} className="treatment-item-container">
                         <div className ="treatment-item">
                             <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
@@ -69,15 +69,15 @@ function UserIndex(props) {
 }
 const mapStateToProps = state => {
     return {
-        singleTreatmentData: state.allTreatments
+        singleUserData: state.allUsers
     }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        getAllTreatments: () => dispatch(getAllTreatments()),
-        getTreatment: (id) => dispatch(getTreatment(id)),
-        saveTreatmentData: (state,id) => dispatch(saveTreatmentData(state,id)),
-        deleteTreatment: (id) => dispatch(deleteTreatment(id))
+        getAllUsers: () => dispatch(getAllUsers()),
+        getUser: (id) => dispatch(getUser(id)),
+        saveUserData: (state,id) => dispatch(saveUserData(state,id)),
+        deleteUser: (id) => dispatch(deleteUser(id))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(UserIndex)

@@ -95,6 +95,10 @@ class UserController extends Controller
         $userid = Auth()->id();
         return view('users.editprofile',compact('userid'));
     }
+    public function showAllUsers()
+    {
+        return view('users.userindex');
+    }
 
 
     /**
