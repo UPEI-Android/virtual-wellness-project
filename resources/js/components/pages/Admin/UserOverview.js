@@ -20,21 +20,8 @@ function UserOverview({usersData, getAllUsers}){
                         <div className="card-header">All Users</div>
 
                             <UserIndex
-                                todos={usersData}
+                                todos={usersData.users}
                             />
-
-
-                         }
-
-                        {/*
-                    <TreatmentList
-                      completeTodo={completeTodo}
-                      markAsEditing={markAsEditing}
-                      updateTodo={updateTodo}
-                      cancelEdit={cancelEdit}
-                      deleteTodo={deleteTodo}
-                      />
-                  */}
                     </div>
                 </div>
             </div>

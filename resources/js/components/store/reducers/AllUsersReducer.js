@@ -11,7 +11,7 @@ const initialState = {
     error: "",
 
 };
-export default function TreatmentReducer (state=initialState,action)
+export default function AllUsersReducer (state=initialState,action)
 {
     switch (action.type)
     {

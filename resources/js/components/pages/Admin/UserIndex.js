@@ -9,7 +9,6 @@ function UserIndex(props) {
         props.getAllUsers()
     },[])
 
-
     function completeTodo(id){
 
         // need to find specific treatment within the array of treatments
@@ -43,11 +42,10 @@ function UserIndex(props) {
                 role="list"
                 className="list-unstyled"
             >
-                { props.todos.map((todo, index) => (
+                { props.todos.map((todo,index) => (
                     <li key={todo.id} className="treatment-item-container">
                         <div className ="treatment-item">
-                            <input type="checkbox" onChange={() => completeTodo(todo.id)} checked={todo.is_completed ? true : false}/>
-                            <a href={'/user/' + todo.id} className="treatment-item treatment-list-item" >{ todo.title }</a>
+                            <a href={'/user/' + todo.id} className="treatment-item treatment-list-item" >{ todo.first_name }</a>
 
                         </div>
                         <div className="btn-group" style={{"display" : "block"}}>
@@ -56,6 +54,9 @@ function UserIndex(props) {
                 Edit
                 </button>
               */}
+                            <button type="button" className="btn btn__danger"  onClick={()=> (todo.id)} style={{"display" : "inline"}}>
+                                Assign Treatment
+                            </button>
                             <button type="button" className="btn btn__danger"  onClick={()=> deleteTodo(todo.id)} style={{"display" : "inline"}}>
                                 Delete
                             </button>

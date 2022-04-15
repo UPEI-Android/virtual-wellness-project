@@ -13,6 +13,6 @@ export default function UserOverviewContainer() {
         </Provider>
     );
 }
-if (document.getElementById('useroverview')) {
-    ReactDOM.render(<UserOverviewContainer />, document.getElementById('useroverview'));
+if (document.getElementById('user-overview-container')) {
+    ReactDOM.render(<UserOverviewContainer />, document.getElementById('user-overview-container'));
 }

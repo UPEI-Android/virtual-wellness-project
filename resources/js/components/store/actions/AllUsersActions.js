@@ -4,15 +4,11 @@ import axios from "axios";
 import {LIST_USERS,LIST_USERS_FAILURE,LIST_USERS_SUCCESS} from "../actionTypes/UserTypes";
 
 export const getAllUsers = () => {
-    console.log("this happens?")
     return (dispatch) => {
-console.log("this happens?")
         dispatch(fetchUsersRequest)
         axios.get('/api/users')
             .then(response =>{
-
-                const users = response.data
-                console.log(users)
+                const users = response.data.users
                 dispatch(fetchUsersSuccess(users))
             })
             .catch(error =>{
