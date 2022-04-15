@@ -27,7 +27,7 @@ Route::put('/userprofile/{id}',[UserController::class,'update'])->name('user.upd
 Route::delete('userprofile/{id}',[UserController::class,'destroy'])->name('user.destroy');
 //Route::post('/treatments/',[TreatmentController::class,'store'])->name('treatment.store');
 
-
+Route::post('assignTreatment',[TreatmentController::class,'assign']);
 
     Route::apiResource('treatments', TreatmentController::class);
 

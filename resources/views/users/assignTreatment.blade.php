@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <div id="user-overview-container" ></div>
+    <div id="assign-treatment-container" ></div>
 
 @endsection

@@ -31,10 +31,19 @@ function UserIndex(props) {
         props.saveUserData($treatment,id)
         window.location.reload(false)
     }
+    function assigningTreatment(id)
+    {
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("userid", id)
+        }
+        window.location.href='assignTreatment'
+    }
     function deleteTodo(id){
         props.deleteUser(id);
         window.location.reload(false)
     }
+    const userID = "";
 
     return(
         <>
@@ -45,8 +54,8 @@ function UserIndex(props) {
                 { props.todos.map((todo,index) => (
                     <li key={todo.id} className="treatment-item-container">
                         <div className ="treatment-item">
-                            <a href={'/user/' + todo.id} className="treatment-item treatment-list-item" >{ todo.first_name }</a>
-
+                            <a href={'/userprofile/' + todo.id} className="treatment-item treatment-list-item" >{ todo.first_name }{" "+todo.last_name}</a>
+                            <a className="treatment-item treatment-list-item"> {todo.email}</a>
                         </div>
                         <div className="btn-group" style={{"display" : "block"}}>
                             {/*
@@ -54,7 +63,7 @@ function UserIndex(props) {
                 Edit
                 </button>
               */}
-                            <button type="button" className="btn btn__danger"  onClick={()=> (todo.id)} style={{"display" : "inline"}}>
+                            <button type="button" className="btn btn__danger" onClick={()=> assigningTreatment(todo.id)}  style={{"display" : "inline"}}>
                                 Assign Treatment
                             </button>
                             <button type="button" className="btn btn__danger"  onClick={()=> deleteTodo(todo.id)} style={{"display" : "inline"}}>

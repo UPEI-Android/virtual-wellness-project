@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TreatmentRequest;
 use App\Http\Resources\TreatmentResource;
 use App\Models\Treatment;
+
 use Illuminate\Http\Request;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class TreatmentController extends Controller
@@ -43,13 +45,20 @@ class TreatmentController extends Controller
      */
     public function store(TreatmentRequest $request)
     {
-        //
-
        // $this->write_to_console($request);
         return auth()->user()
             ->treatments()
             ->create($request->validated());
+    }
 
+    public function assign(TreatmentRequest $request)
+    {
+        return Treatment::create([
+            'title' => $request['title'],
+            'patient_id' => $request['patient_id'],
+            'notes' => $request['notes'],
+            'start_date' => $request['start_date'],
+        ]);
     }
 
     /**
@@ -100,9 +109,6 @@ class TreatmentController extends Controller
         $treatment = Treatment::find($id);
 
         if($treatment) {
-
-
-
             $treatment->update(($request['state']));
         }
         //$treatment->update($request->all());
