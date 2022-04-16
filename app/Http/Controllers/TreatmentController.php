@@ -51,6 +51,12 @@ class TreatmentController extends Controller
             ->create($request->validated());
     }
 
+    /**
+     * Allows the admin user to assign treatments to individuals users.
+     * Could not use same store function as patient_id is set automatically in that case
+     * @param TreatmentRequest $request
+     * @return treatment
+     */
     public function assign(TreatmentRequest $request)
     {
         return Treatment::create([
@@ -58,6 +64,9 @@ class TreatmentController extends Controller
             'patient_id' => $request['patient_id'],
             'notes' => $request['notes'],
             'start_date' => $request['start_date'],
+            'end_date'=>$request['end_date'],
+            'start_time'=>$request['start_time'],
+            'end_time'=>$request['end_time'],
         ]);
     }
 
