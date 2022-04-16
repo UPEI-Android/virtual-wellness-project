@@ -15,7 +15,6 @@ function UserOverview({usersData, getAllUsers}){
         <div className="container background" style={{paddingTop:"2%"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <div className="align-right"><a href="/createUser" className="btn-primary create-treatment-button">Create User</a></div>
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">All Users</div>
 
