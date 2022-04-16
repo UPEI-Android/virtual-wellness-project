@@ -6680,6 +6680,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_actions_TreatmentActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/TreatmentActions */ "./resources/js/components/store/actions/TreatmentActions.js");
 /* harmony import */ var _store_actions_AllTreatmentActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/AllTreatmentActions */ "./resources/js/components/store/actions/AllTreatmentActions.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6704,66 +6712,101 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function TreatmentList(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    props.getAllTreatments();
-  }, []);
+    props.getAllTreatments, todosFiltered(filter);
+  }, [shownList, allList, completeList, activeList, filter, props.todos]);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState2 = _slicedToArray(_useState, 2),
       filter = _useState2[0],
       setFilter = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.todos),
       _useState4 = _slicedToArray(_useState3, 2),
-      list = _useState4[0],
-      setList = _useState4[1];
+      shownList = _useState4[0],
+      setShownList = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.todos),
+      _useState6 = _slicedToArray(_useState5, 2),
+      allList = _useState6[0],
+      setAllList = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.todos.filter(function (todo) {
+    return todo.is_completed;
+  })),
+      _useState8 = _slicedToArray(_useState7, 2),
+      completeList = _useState8[0],
+      setCompleteList = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.todos.filter(function (todo) {
+    return !todo.is_completed;
+  })),
+      _useState10 = _slicedToArray(_useState9, 2),
+      activeList = _useState10[0],
+      setActiveList = _useState10[1];
 
   function remaining() {
-    return props.todos.filter(function (todo) {
+    return shownList.filter(function (todo) {
       return !todo.is_completed;
     }).length;
   }
 
   function todosFiltered(filter) {
     if (filter === 'all') {
-      return props.todos;
+      setShownList(allList);
+      return shownList;
     } else if (filter === 'active') {
-      return props.todos.filter(function (todo) {
-        return !todo.is_completed;
-      });
+      //setList($treatments.filter(todo => !todo.is_completed))
+      setShownList(activeList);
+      return shownList;
     } else if (filter === 'completed') {
-      return props.todos.filter(function (todo) {
-        return todo.is_completed;
-      });
+      //setList($treatments.filter(todo => todo.is_completed))
+      setShownList(completeList);
+      return shownList;
     }
   }
 
   function completeTodo(id) {
     // need to find specific treatment within the array of treatments
     var $treatment = null;
-    var $i = 0;
-
-    for ($i; $i < props.singleTreatmentData.treatments.length; $i++) {
-      if (props.singleTreatmentData.treatments[$i].id === id) {
-        console.log(props.singleTreatmentData.treatments[$i].id);
-        $treatment = props.singleTreatmentData.treatments[$i];
+    props.singleTreatmentData.treatments.forEach(function (treatment) {
+      if (treatment.id === id) {
+        $treatment = treatment;
       }
-    }
+    });
 
     if ($treatment.id === id) {
-      if ($treatment.is_completed === 0) {
-        $treatment.is_completed = 1;
+      if ($treatment.is_completed) {
+        $treatment.is_completed = !$treatment.is_completed;
+        setActiveList([].concat(_toConsumableArray(activeList), [$treatment]));
+        setCompleteList(completeList.filter(function (treatment) {
+          return treatment.id != id;
+        }));
       } else {
-        $treatment.is_completed = 0;
+        $treatment.is_completed = !$treatment.is_completed;
+        setCompleteList([].concat(_toConsumableArray(completeList), [$treatment]));
+        setActiveList(activeList.filter(function (treatment) {
+          return treatment.id != id;
+        }));
       }
     }
 
     props.saveTreatmentData($treatment, id);
-    window.location.reload(false);
   }
 
   function deleteTodo(id) {
     props.deleteTreatment(id);
-    window.location.reload(false);
+    setAllList(allList.filter(function (treatment) {
+      return treatment.id != id;
+    }));
+    setActiveList(activeList.filter(function (treatment) {
+      return treatment.id != id;
+    }));
+    setCompleteList(completeList.filter(function (treatment) {
+      return treatment.id != id;
+    }));
+    setShownList(allList.filter(function (treatment) {
+      return treatment.id != id;
+    }));
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
@@ -6774,7 +6817,7 @@ function TreatmentList(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
       role: "list",
       className: "list-unstyled",
-      children: todosFiltered(filter).map(function (todo, index) {
+      children: shownList.map(function (todo, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
           className: "treatment-item-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
