@@ -142,7 +142,6 @@ Creating a Treatment
 export const createTreatment = (state) =>{
     return (dispatch) => {
         dispatch(createTreatmentRequest)
-        console.log(state)
         axios.post('/api/treatments/',state)
             .then(response =>{
 
@@ -181,7 +180,6 @@ const createTreatmentFailure = error => {
 export const assignTreatment = (state) =>{
     return (dispatch) => {
         dispatch(assignTreatmentRequest)
-        console.log(state)
         axios.post('/api/assignTreatment/',state)
             .then(response =>{
 
