@@ -98,14 +98,6 @@ class TreatmentController extends Controller
         //
     }
 
-    function write_to_console($data) {
-        $console = $data;
-        if (is_array($console))
-            $console = implode(',', $console);
-
-       echo "<script>console.log('Console: " . $console . "' );</script>";
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -116,12 +108,16 @@ class TreatmentController extends Controller
     public function update(Request $request, int $id)
     {
         $treatment = Treatment::find($id);
-
         if($treatment) {
-            $treatment->update(($request['state']));
+
+            $treatment->update(($request->all()));
+
+            return response($treatment);
         }
-        //$treatment->update($request->all());
-        return response($treatment);
+    else
+        {
+            return response('Invalid ID, Treatment not found', Response::HTTP_UNAUTHORIZED);
+        }
 
     }
 
