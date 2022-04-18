@@ -42,6 +42,9 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
         if(e.target.phone.value){
             userState.users.phone = e.target.phone.value
         }
+        if(e.target.gender.value){
+            userState.users.gender = e.target.gender.value
+        }
 
         saveUserData(userState.users,userid);
 
@@ -62,8 +65,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                     <label className="form-input-label">First Name</label>
                     <input
                         type="text"
-
-                        className="form-input-block"
                         id='firstname'
                         placeholder= {userState.users.first_name}
                     />
@@ -71,7 +72,6 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                     <input
                         type="text"
 
-                        className="form-input-block"
                         id='lastname'
                         placeholder= {userState.users.last_name}
                     />
@@ -79,15 +79,21 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                     <input
                         type="email"
 
-                        className="form-input-block"
                         id='email'
                         placeholder= {userState.users.email}
                     />
+                    <label htmlFor='gender-label'className="form-input-label">Gender</label>
+                    <select name="gender-label" id="gender">
+                        placeholder= {userState.users.gender}
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Non-Binary">Non-Binary</option>
+
+                    </select>
                     <label className="form-input-label">Birthdate</label>
                     <input
                         type="date"
 
-                        className="form-input-block"
                         id='birthday'
                         placeholder= {userState.users.birthday}
                     />
@@ -95,7 +101,7 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                     <label className="form-input-label">Weight</label>
                     <input
                         type="number"
-                        className="form-input-block"
+
                         id='currentweight'
                         placeholder= {userState.users.current_weight}
                     />
@@ -103,14 +109,13 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                 <label className="form-input-label">Phone</label>
                 <input
                     type="text"
-                    className="form-input-block"
+
                     id='phone'
                     placeholder= {userState.users.phone}
                 />
                     <label className="form-input-label">Resting Heart Rate</label>
                     <input
                         type="text"
-                        className="form-input-block"
                         id='hrate'
                         placeholder= {userState.users.resting_heart_rate}
                     />

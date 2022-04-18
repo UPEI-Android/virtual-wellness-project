@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->integer('initial_weight')->nullable();
             $table->integer('current_weight')->nullable();
             $table->integer('rest_heart_rate')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }

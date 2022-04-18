@@ -65,9 +65,14 @@ function UserProfile({ userData, getUser, userid}){
                                             <td>{userData.users.phone}</td>
                                         </tr>
                                         <tr>
+                                            <th width="30%">Gender</th>
+                                            <td width="2%">:</td>
+                                            <td>{userData.users.gender}</td>
+                                        </tr>
+                                        <tr>
                                             <th width="30%">Age</th>
                                             <td width="2%">:</td>
-                                            <td>32</td>
+                                            <td>{userData.users.age}</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Weight</th>
