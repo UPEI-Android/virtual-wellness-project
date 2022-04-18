@@ -95,6 +95,10 @@ class UserController extends Controller
         $userid = Auth()->id();
         return view('users.editprofile',compact('userid'));
     }
+    public function showAllUsers()
+    {
+        return view('users.userindex');
+    }
 
 
     /**
@@ -154,7 +158,7 @@ class UserController extends Controller
         if($user)
         {
             if($request->state['email'] == null){
-                $this->write_to_console($request->state['email']);
+                //$this->write_to_console($request->state['email']);
             }
             else{
                 $user->email =  $request->state['email'];

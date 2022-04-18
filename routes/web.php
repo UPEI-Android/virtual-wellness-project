@@ -35,7 +35,10 @@ Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name(
 //user routes
 Route::get('/profile/', [App\Http\Controllers\UserController::class, 'show']);
 Route::get('/profileedit',[UserController::class,'showEdit']);
-
+Route::get('/users',[UserController::class, 'showAllUsers'])-> middleware('admin');;
+Route::get('/assignTreatment',function(){
+    return view('/users/assignTreatment');
+}) -> middleware('admin');
 //treatment pages
 Route::get('/treatments', function () {
     return view('/treatmentViews/indexOfTreatments');

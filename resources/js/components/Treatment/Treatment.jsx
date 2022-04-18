@@ -15,7 +15,7 @@ function Treatment(props) {
                 <div className="col-md-8">
                         {props.singleTreatmentData && (
                                 <div className="card" style={{"padding": "60px"}}>
-                                    {console.log(props.singleTreatmentData.treatment)}
+
                                 <div className="card-header" key={props.singleTreatmentData.treatment.id}>{ props.singleTreatmentData.treatment.title }</div>
                                 <label className="col-form-label-lg">Treatment ID: {props.singleTreatmentData.treatment.id}</label>
                                 <label className="form-label">Description:</label>

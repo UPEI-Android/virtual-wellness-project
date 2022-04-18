@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 function UserProfile({ userData, getUser, userid}){
     useEffect(()=>{
         getUser(userid)
-
     },[])
 
 
@@ -25,7 +24,14 @@ function UserProfile({ userData, getUser, userid}){
 
                 <div className="container sizing-profile">
                     <div className="row">
-                        <div className="align-right"><a href="/profileedit" className="btn-primary create-treatment-button">Edit Profile</a></div>
+                        <div className="align-right"><a href="/profileedit" className="btn-primary create-treatment-button">Edit Profile</a>
+
+                            {userid == 1 &&
+
+                                    <a href="/users" className="btn-primary create-treatment-button">Admin</a>
+
+                            }
+                      </div>
 
                             <div className="card shadow-sm">
 
@@ -105,13 +111,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getUser: (userid) => dispatch(getUser(userid)),
-
     }
 }
-
+export default connect(mapStateToProps,mapDispatchToProps)(UserProfile)
 
 if (document.getElementById('userprofintr')) {
     ReactDOM.render(<UserProfile userid = {userid}/>, document.getElementById('userprofintr'));
 }
-export default connect(mapStateToProps,mapDispatchToProps)(UserProfile)
 

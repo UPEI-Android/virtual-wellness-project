@@ -40,6 +40,7 @@ function TreatmentList(props) {
     }
 
     function completeTodo(id){
+
       // need to find specific treatment within the array of treatments
       let $treatment = null;
       props.singleTreatmentData.treatments.forEach((treatment)=>{

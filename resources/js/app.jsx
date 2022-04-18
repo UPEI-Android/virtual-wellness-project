@@ -23,6 +23,8 @@ require('./components/Treatment/TreatmentContainer');
 require('./components/pages/Users/UserProfileContainer');
 require('./components/pages/Users/EditProfileContainer');
 require('./components/Treatment/EditTreatmentContainer');
+require('./components/pages/Admin/UserOverviewContainer');
+require('./components/pages/Admin/AssignTreatmentContainer')
 
 /*
 require('./components/Treatment/NoTreatments');
