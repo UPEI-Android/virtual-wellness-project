@@ -19,7 +19,6 @@ export const getAllTreatments = () => {
                 dispatch(fetchTreatmentsFailure(errorMsg))
             })
     }
-
 }
 export const fetchTreatmentsRequest = () => {
     return{
@@ -28,7 +27,6 @@ export const fetchTreatmentsRequest = () => {
 }
 const fetchTreatmentsSuccess = treatments => {
     return{
-
         type:LIST_TREATMENTS_SUCCESS,
         payload: treatments
     }

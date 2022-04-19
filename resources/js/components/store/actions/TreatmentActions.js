@@ -31,7 +31,6 @@ export const getTreatment = (id) => {
                 dispatch(fetchTreatmentFailure(errorMsg))
             })
     }
-
 }
 export const fetchTreatmentRequest = () => {
     return{
@@ -144,17 +143,13 @@ export const createTreatment = (state) =>{
         dispatch(createTreatmentRequest)
         axios.post('/api/treatments/',state)
             .then(response =>{
-
                 dispatch(createTreatmentSuccess(response))
-
             })
             .catch(error =>{
                 const errorMsg = error.message
-
                 dispatch(createTreatmentFailure(errorMsg))
             })
     }
-
 }
 
 const createTreatmentRequest = () =>{
@@ -165,14 +160,12 @@ const createTreatmentRequest = () =>{
 
 const createTreatmentSuccess = response => {
     return{
-
         type:CREATE_TREATMENTS_SUCCESS,
         payload: response
     }
 }
 const createTreatmentFailure = error => {
     return{
-
         type:CREATE_TREATMENTS_FAILURE,
         payload: error
     }
@@ -182,17 +175,13 @@ export const assignTreatment = (state) =>{
         dispatch(assignTreatmentRequest)
         axios.post('/api/assignTreatment/',state)
             .then(response =>{
-
                 dispatch(assignTreatmentSuccess(response))
-
             })
             .catch(error =>{
                 const errorMsg = error.message
-
                 dispatch(assignTreatmentFailure(errorMsg))
             })
     }
-
 }
 
 const assignTreatmentRequest = () =>{
@@ -203,14 +192,12 @@ const assignTreatmentRequest = () =>{
 
 const assignTreatmentSuccess = response => {
     return{
-
         type:CREATE_TREATMENTS_SUCCESS,
         payload: response
     }
 }
 const assignTreatmentFailure = error => {
     return{
-
         type:CREATE_TREATMENTS_FAILURE,
         payload: error
     }

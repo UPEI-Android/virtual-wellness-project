@@ -4,33 +4,11 @@ import {connect} from 'react-redux';
 import {deleteUser, getUser, saveUserData} from '../../store/actions/UserActions'
 import {getAllUsers} from "../../store/actions/AllUsersActions";
 
-function UserIndex(props) {
+function UserList(props) {
     useEffect(()=>{
         props.getAllUsers()
     },[])
 
-    function completeTodo(id){
-
-        // need to find specific treatment within the array of treatments
-        let $treatment = null;
-        let $i=0;
-        for($i;$i<props.singleTreatmentData.treatments.length;$i++){
-            if (props.singleTreatmentData.treatments[$i].id===id){
-
-                $treatment = props.singleTreatmentData.treatments[$i]
-            }
-        }
-
-
-        if ($treatment.id === id){
-            if($treatment.is_completed === 0)
-            {$treatment.is_completed =1}
-            else{$treatment.is_completed=0}
-        }
-
-        props.saveUserData($treatment,id)
-        window.location.reload(false)
-    }
     function assigningTreatment(id)
     {
         if (typeof(Storage) !== "undefined") {
@@ -43,7 +21,6 @@ function UserIndex(props) {
         props.deleteUser(id);
         window.location.reload(false)
     }
-    const userID = "";
 
     return(
         <>
@@ -58,11 +35,6 @@ function UserIndex(props) {
                             <a className="treatment-item treatment-list-item"> {todo.email}</a>
                         </div>
                         <div className="btn-group" style={{"display" : "block"}}>
-                            {/*
-                <button type="button" className="btn" style={{"display" : "inline"}}>
-                Edit
-                </button>
-              */}
                             <button type="button" className="btn btn__danger" onClick={()=> assigningTreatment(todo.id)}  style={{"display" : "inline"}}>
                                 Assign Treatment
                             </button>
@@ -90,4 +62,4 @@ const mapDispatchToProps = dispatch =>{
         deleteUser: (id) => dispatch(deleteUser(id))
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(UserIndex)
+export default connect(mapStateToProps,mapDispatchToProps)(UserList)

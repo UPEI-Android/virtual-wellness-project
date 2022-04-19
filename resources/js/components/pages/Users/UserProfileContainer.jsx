@@ -3,10 +3,7 @@ import store from '../../store/store';
 import {Provider} from 'react-redux';
 import UserProfile from "./UserProfile";
 
-
 export default function UserProfileContainer(props) {
-
-
     return (
         <Provider store={store}>
             <UserProfile userid={props.userid}/>

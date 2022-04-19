@@ -49,12 +49,6 @@ const fetchUserFailure = error => {
 //saving data from user profile
 
 export const saveUserData = (state, id) => {
-
-  /*  state = {
-        "name":"jared",
-        "current_weight":"65",
-        "phone":"9028675309"
-    }*/
     return (dispatch) => {
         dispatch(saveUserRequest)
         //state variable must be properly formatted json object containing user
@@ -94,17 +88,13 @@ export const deleteUser = (userid) =>{
         dispatch(deleteUserRequest)
         axios.delete('/api/userprofile/'+userid)
             .then(response =>{
-
                 dispatch(deleteUserSuccess(response))
-
             })
             .catch(error =>{
                 const errorMsg = error.message
-
                 dispatch(deleteUserFailure(errorMsg))
             })
     }
-
 }
 
 const deleteUserRequest = () => {

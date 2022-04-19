@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
-import UserIndex from './UserIndex';
+import UserIndex from './UserList';
 import {getAllUsers} from '../../store/actions/AllUsersActions';
 
 function UserOverview({usersData, getAllUsers}){
@@ -18,7 +18,7 @@ function UserOverview({usersData, getAllUsers}){
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">All Users</div>
 
-                            <UserIndex
+                            <UserList
                                 todos={usersData.users}
                             />
                     </div>

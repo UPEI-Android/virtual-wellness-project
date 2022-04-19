@@ -16,7 +16,6 @@ export const getAllUsers = () => {
                 dispatch(fetchUsersFailure(errorMsg))
             })
     }
-
 }
 export const fetchUsersRequest = () => {
     return{

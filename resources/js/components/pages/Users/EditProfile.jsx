@@ -100,13 +100,13 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         placeholder= {userState.users.current_weight}
                     />
 
-                <label className="form-input-label">Phone</label>
-                <input
+                    <label className="form-input-label">Phone</label>
+                    <input
                     type="text"
                     className="form-input-block"
                     id='phone'
                     placeholder= {userState.users.phone}
-                />
+                    />
                     <label className="form-input-label">Resting Heart Rate</label>
                     <input
                         type="text"
@@ -115,17 +115,10 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         placeholder= {userState.users.rest_heart_rate}
                     />
                         </div>
-
                 <button className="btn-primary create-treatment-button" type={"submit"} >Submit</button>
-
-
             </form>
         </div>
-
-
-
         </div>
-
     )
 }
 
@@ -139,7 +132,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
     return {
         getUser: (userid) => dispatch(getUser(userid)),
-       saveUserData: (state,userid) => dispatch(saveUserData(state ,userid))
+        saveUserData: (state,userid) => dispatch(saveUserData(state ,userid))
 
     }
 }
