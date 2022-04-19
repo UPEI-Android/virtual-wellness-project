@@ -112,7 +112,7 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                         type="text"
                         className="form-input-block"
                         id='hrate'
-                        placeholder= {userState.users.resting_heart_rate}
+                        placeholder= {userState.users.rest_heart_rate}
                     />
                         </div>
 
