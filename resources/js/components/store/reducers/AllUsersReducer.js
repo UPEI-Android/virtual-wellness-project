@@ -15,7 +15,6 @@ export default function AllUsersReducer (state=initialState,action)
 {
     switch (action.type)
     {
-
         case LIST_USERS:
             return{
                 ...state,
@@ -33,11 +32,7 @@ export default function AllUsersReducer (state=initialState,action)
                 users:[],
                 error: action.payload
             }
-
-
-
         default:
             return state;
     }
-
 }

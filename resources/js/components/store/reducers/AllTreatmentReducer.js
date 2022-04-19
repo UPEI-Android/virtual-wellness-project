@@ -15,7 +15,6 @@ export default function TreatmentReducer (state=initialState,action)
 {
     switch (action.type)
     {
-       
             case LIST_TREATMENTS:
             return{
                 ...state,
@@ -33,9 +32,6 @@ export default function TreatmentReducer (state=initialState,action)
                 treatments:[],
                 error: action.payload
             }
-
-    
-
         default:
             return state;
     }

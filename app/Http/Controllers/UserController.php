@@ -33,7 +33,6 @@ class UserController extends Controller
      */
     public function create()
     {
-
         //$this->middleware("auth:api");
     }
 
@@ -55,26 +54,6 @@ class UserController extends Controller
             'initial_weight'=>$request['initial_weight']
 
         ]);
-
-        /*if(!auth("api")->user()->is_admin) {
-            return response()->json(['message' => 'Unauthorized'], 500);
-        }
-
-        $this->validate($request, [
-            'name' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        if($request->has('is_admin') && $request->is_admin == 1) {
-            $user->is_admin = 1;
-        }
-        //$user->save();
-        return $user; //$response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-        */
     }
 
     /**
@@ -133,15 +112,6 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-    }
-
-    //strictly used for debugging keeping it here for future use
-    function write_to_console($data) {
-        $console = $data;
-        if (is_array($console))
-            $console = implode(',', $console);
-
-        echo "<script>console.log('Console: " . $console . "' );</script>";
     }
     /**
      * Update the specified resource in storage.

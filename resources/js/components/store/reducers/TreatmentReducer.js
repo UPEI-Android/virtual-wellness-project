@@ -98,7 +98,6 @@ export default function TreatmentReducer (state=initialState,action)
                 treatment:'',
                 error:action.payload
             }
-
         default:
             return state;
     }
