@@ -4,33 +4,14 @@ import {connect} from 'react-redux';
 import {deleteUser, getUser, saveUserData} from '../../store/actions/UserActions'
 import {getAllUsers} from "../../store/actions/AllUsersActions";
 
-function UserIndex(props) {
+function UserList(props) {
     useEffect(()=>{
         props.getAllUsers()
     },[])
 
-    function completeTodo(id){
-
-        // need to find specific treatment within the array of treatments
-        let $treatment = null;
-        let $i=0;
-        for($i;$i<props.singleTreatmentData.treatments.length;$i++){
-            if (props.singleTreatmentData.treatments[$i].id===id){
-
-                $treatment = props.singleTreatmentData.treatments[$i]
-            }
-        }
-
-
-        if ($treatment.id === id){
-            if($treatment.is_completed === 0)
-            {$treatment.is_completed =1}
-            else{$treatment.is_completed=0}
-        }
-
-        props.saveUserData($treatment,id)
-        window.location.reload(false)
-    }
+/*
+Need to store the selected userid to pass id to AssignTreatment component
+ */
     function assigningTreatment(id)
     {
         if (typeof(Storage) !== "undefined") {
@@ -43,7 +24,6 @@ function UserIndex(props) {
         props.deleteUser(id);
         window.location.reload(false)
     }
-    const userID = "";
 
     return(
         <>
@@ -90,4 +70,4 @@ const mapDispatchToProps = dispatch =>{
         deleteUser: (id) => dispatch(deleteUser(id))
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(UserIndex)
+export default connect(mapStateToProps,mapDispatchToProps)(UserList)

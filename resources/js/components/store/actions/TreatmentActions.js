@@ -14,9 +14,7 @@ import {
     CREATE_TREATMENTS_SUCCESS,
     CREATE_TREATMENTS_FAILURE,
 } from "../actionTypes/TreatmentTypes";
-/**
- * set treatment defaults
- */
+
 //getting treatments
 export const getTreatment = (id) => {
     return (dispatch) => {

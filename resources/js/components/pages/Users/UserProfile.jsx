@@ -12,33 +12,21 @@ function UserProfile({ userData, getUser, userid}){
         getUser(userid)
     },[])
 
-
-
     return userData.loading?(
         <h2>Loading</h2>
     ): userData.error? (
         <h2>{userData.error}</h2>
     ): (
-
-
-
                 <div className="container sizing-profile">
                     <div className="row">
                         <div className="align-right"><a href="/profileedit" className="btn-primary create-treatment-button">Edit Profile</a>
 
-                            {userid == 1 &&
-
+                            {userid === "1" &&
                                     <a href="/users" className="btn-primary create-treatment-button">Admin</a>
-
                             }
                       </div>
 
                             <div className="card shadow-sm">
-
-
-
-
-
                                 <div className="card-header bg-transparent text-center">
                                     <h3>{userData.users.first_name}</h3>
                                 </div>
@@ -88,7 +76,6 @@ function UserProfile({ userData, getUser, userid}){
                                     </table>
                                 </div>
 
-
                             <div className="card shadow-sm">
                                 <div className="card-header bg-transparent border-0">
                                     <h3 className="mb-0">Additional Information</h3>
@@ -103,8 +90,6 @@ function UserProfile({ userData, getUser, userid}){
                         </div>
                     </div>
                 </div>
-
-
     )
 }
 

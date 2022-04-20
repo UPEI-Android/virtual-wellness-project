@@ -45,7 +45,6 @@ class TreatmentController extends Controller
      */
     public function store(TreatmentRequest $request)
     {
-       // $this->write_to_console($request);
         return auth()->user()
             ->treatments()
             ->create($request->validated());

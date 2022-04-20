@@ -3,8 +3,6 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from './reducers/RootReducer';
 import thunk from 'redux-thunk';
 
-const initialState = {};
-
 
 const store = createStore(
     rootReducer,

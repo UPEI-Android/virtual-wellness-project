@@ -33,11 +33,7 @@ export default function AllUsersReducer (state=initialState,action)
                 users:[],
                 error: action.payload
             }
-
-
-
         default:
             return state;
     }
-
 }

@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
-import UserIndex from './UserIndex';
+import UserList from './UserList';
 import {getAllUsers} from '../../store/actions/AllUsersActions';
 
 function UserOverview({usersData, getAllUsers}){
@@ -11,14 +11,12 @@ function UserOverview({usersData, getAllUsers}){
     },[])
 
     return (
-
         <div className="container background" style={{paddingTop:"2%"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card" style={{"padding": "60px"}}>
                         <div className="card-header">All Users</div>
-
-                            <UserIndex
+                            <UserList
                                 todos={usersData.users}
                             />
                     </div>
@@ -38,7 +36,6 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(UserOverview)
-
 
 if (document.getElementById('useroverview')) {
     const element = document.getElementById('useroverview')

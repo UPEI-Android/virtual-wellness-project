@@ -117,18 +117,13 @@ function EditProfile({ userState, getUser, saveUserData,userid}){
                     <input
                         type="text"
                         id='hrate'
-                        placeholder= {userState.users.resting_heart_rate}
+                        placeholder= {userState.users.rest_heart_rate}
                     />
                         </div>
 
                 <button className="btn-primary create-treatment-button" type={"submit"} >Submit</button>
-
-
             </form>
         </div>
-
-
-
         </div>
 
     )

@@ -55,26 +55,6 @@ class UserController extends Controller
             'initial_weight'=>$request['initial_weight']
 
         ]);
-
-        /*if(!auth("api")->user()->is_admin) {
-            return response()->json(['message' => 'Unauthorized'], 500);
-        }
-
-        $this->validate($request, [
-            'name' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        if($request->has('is_admin') && $request->is_admin == 1) {
-            $user->is_admin = 1;
-        }
-        //$user->save();
-        return $user; //$response()->json(['data' => $user, 'message' => 'Created successfully'], 201);
-        */
     }
 
     /**
@@ -115,6 +95,7 @@ class UserController extends Controller
     }
 
     /**
+     * helper function for update()
      * @param $then
      * @return false|string
      */
@@ -134,36 +115,18 @@ class UserController extends Controller
     {
         //
     }
-
-    //strictly used for debugging keeping it here for future use
-    function write_to_console($data) {
-        $console = $data;
-        if (is_array($console))
-            $console = implode(',', $console);
-
-        echo "<script>console.log('Console: " . $console . "' );</script>";
-    }
     /**
      * Update the specified resource in storage.
-     *a full state must be passed in, otherwise null values will overwrite stored values
+     * Validation is done in the front end
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \App\Models\User
      */
     public function update(Request $request, int $id): JsonResponse
     {
-
         $user = User::find($id);
-
         if($user)
         {
-            if($request->state['email'] == null){
-                //$this->write_to_console($request->state['email']);
-            }
-            else{
-                $user->email =  $request->state['email'];
-            }
-
             $user->treatment_group = $request->state['treatment_group'];
             $user->phone = $request->state['phone'];
             $user->current_weight = $request->state['current_weight'];

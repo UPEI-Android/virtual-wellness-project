@@ -6,7 +6,6 @@ import UserProfile from "./UserProfile";
 
 export default function UserProfileContainer(props) {
 
-
     return (
         <Provider store={store}>
             <UserProfile userid={props.userid}/>
