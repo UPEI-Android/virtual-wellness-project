@@ -5,9 +5,11 @@ namespace App\Services;
 use App\Models\Rule;
 use Illuminate\Support\Carbon;
 use RRule\RRule;
+use function PHPUnit\Framework\isInfinite;
 
 class RulesService
 {
+    const DEFAULT_COUNT = 5;
 
     protected Rule $rule;
 
@@ -46,7 +48,8 @@ class RulesService
             'bymonthday' => $this->rule->day_of_month,
             'bymonth' => $this->rule->month_of_year,
             'dtstart' => $this->rule->treatment->start_date,
-            'until' => $this->rule->treatment->end_date
+            'until' => $this->rule->treatment->end_date,
+            'count' => $this->rule->max_num_of_occurrences
         ]);
 
         return $parsed_rule;
@@ -56,15 +59,36 @@ class RulesService
     private function create_d_rrule(): RRule
     {
 
+        ($this->rule->treatment->end_date != null) ? $parsed_rule = $this->create_d_rrule_until() : $parsed_rule = $this->create_d_rrule_count();
+
+        return $parsed_rule;
+
+    }
+
+    private function create_d_rrule_until(): RRule
+    {
+
         $parsed_rule = new RRule([
             'freq' => $this->rule->freq,
             'interval' => $this->rule->interval,
             'dtstart' => $this->rule->treatment->start_date,
-            'until' => $this->rule->treatment->end_date
+            'until' => $this->rule->treatment->end_date,
         ]);
 
         return $parsed_rule;
+    }
 
+    private function create_d_rrule_count(): RRule
+    {
+
+        $parsed_rule = new RRule([
+            'freq' => $this->rule->freq,
+            'interval' => $this->rule->interval,
+            'dtstart' => $this->rule->treatment->start_date,
+            'count' => $this->rule->max_num_of_occurrences
+        ]);
+
+        return $parsed_rule;
     }
 
     private function create_w_rrule() {
@@ -74,7 +98,8 @@ class RulesService
             'interval' => $this->rule->interval,
             'byday' => $this->rule->day_of_week,
             'dtstart' => $this->rule->treatment->start_date,
-            'until' => $this->rule->treatment->end_date
+            'until' => $this->rule->treatment->end_date,
+            'count' => $this->rule->max_num_of_occurrences
         ]);
 
         return $parsed_rule;
@@ -87,7 +112,8 @@ class RulesService
             'interval' => $this->rule->interval,
             'byweekno' => $this->rule->week_of_month,
             'dtstart' => $this->rule->treatment->start_date,
-            'until' => $this->rule->treatment->end_date
+            'until' => $this->rule->treatment->end_date,
+            'count' => $this->rule->max_num_of_occurrences
         ]);
 
         return $parsed_rule;
@@ -122,7 +148,11 @@ class RulesService
 
     public function getMaxOccurrence() {
 
-        return $this->rrule->count();
+        if(!isInfinite()) {
+            return $this->rrule->count();
+        } else {
+            return 5; // DEFAULT COUNT
+        }
 
     }
 
