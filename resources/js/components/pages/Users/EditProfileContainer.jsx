@@ -10,7 +10,6 @@ export default function EditProfileContainer (props) {
     return (
         <Provider store={store}>
             <EditProfile userid={props.userid}/>
-
         </Provider>
     );
 }

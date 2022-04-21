@@ -8,9 +8,7 @@ import {
     EDIT_USERS_SUCCESS,
     EDIT_USERS_FAILURE, DELETE_USERS, DELETE_USERS_SUCCESS, DELETE_USERS_FAILURE,
 } from "../actionTypes/UserTypes";
-/**
- * set user defaults
- */
+
 //GETTING ONE USER
 export const getUser = (userid) => {
     return (dispatch) => {
@@ -50,11 +48,6 @@ const fetchUserFailure = error => {
 
 export const saveUserData = (state, id) => {
 
-  /*  state = {
-        "name":"jared",
-        "current_weight":"65",
-        "phone":"9028675309"
-    }*/
     return (dispatch) => {
         dispatch(saveUserRequest)
         //state variable must be properly formatted json object containing user
@@ -94,9 +87,7 @@ export const deleteUser = (userid) =>{
         dispatch(deleteUserRequest)
         axios.delete('/api/userprofile/'+userid)
             .then(response =>{
-
                 dispatch(deleteUserSuccess(response))
-
             })
             .catch(error =>{
                 const errorMsg = error.message
@@ -104,7 +95,6 @@ export const deleteUser = (userid) =>{
                 dispatch(deleteUserFailure(errorMsg))
             })
     }
-
 }
 
 const deleteUserRequest = () => {

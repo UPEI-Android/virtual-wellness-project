@@ -11,19 +11,19 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
-function CreateTreatment (props) {  
+function CreateTreatment (props) {
 
   var date = new Date()
   var currentDate = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2)
   var currentTime = ("0" + date.getHours()).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2)
   var endTime = ("0" + (date.getHours() + 1)).slice(-2) + ':' + ("0" + (date.getMinutes() + 1)).slice(-2)
-  
+
   const days= Array.from({length: 31}, (_, i) => i + 1)
   const weeks=Array.from({length: 10}, (_, i) => i + 1)
   const months=Array.from({length: 12}, (_, i) => i + 1)
   const years=Array.from({length: 30}, (_, i) => i + 1)
 
-  
+
   //this is the state for the dropdown for interval dependent on frequency
   const [selected, setSelected] = React.useState("");
   //whether to show day_of_week
@@ -39,7 +39,7 @@ function CreateTreatment (props) {
   let options=null;
   let optionsDates =null;
   let optionsMonths=null;
-  
+
   if (selected === "DAILY") {
     type = days;
   } else if (selected === "WEEKLY") {
@@ -59,7 +59,7 @@ function CreateTreatment (props) {
 
   /*
   What interval to show based on frequency, once daily, weekly, monthly, yearly,
-  it will populate the interval dropdown with the correesponding arrays listed as constants 
+  it will populate the interval dropdown with the corresponding arrays listed as constants
   */
   function changeSelectOptionHandler(event) {
     setSelected(event.target.value)
@@ -107,7 +107,7 @@ function CreateTreatment (props) {
         e.target.reset();
         toast.success("Your Treatment Has Been Submitted")
   }
-    
+
     return props.singleTreatmentData.loading?(
       <h2>Loading</h2>
       ): props.singleTreatmentData.error? (
@@ -204,7 +204,7 @@ function CreateTreatment (props) {
                                         </select>
                                     </td>
                                     </tr>
-                                    : null} 
+                                    : null}
 
                                   { showYearOptions ?
                                   <tr>
@@ -216,14 +216,14 @@ function CreateTreatment (props) {
                                   <select name="day_of_month" className="form-input-tiny">
                                         {optionsDates}
                                   </select>
-                                
+
                                   <label className="form-input-label-tiny">Month</label>
                                   <select name="month_of_year" className="form-input-tiny">
                                         {optionsMonths}
                                       </select>
                                   </td>
                                   </tr>
-                                  : null}   
+                                  : null}
 
                                   <tr className="fixed-height">
                                     <th>
@@ -255,7 +255,7 @@ function CreateTreatment (props) {
                                       className="form-input-sm"
                                       defaultValue={currentDate}
                                       type="date"
-                                      
+
                                     />
                                     </td>
                                   </tr>
@@ -268,19 +268,19 @@ function CreateTreatment (props) {
                                       <option style={{width:"35px"}} value="on">on</option>
                                       <option style={{width:"35px"}}value="after">after</option>
                                     </select>
-                                    { showSeriesOn ? 
+                                    { showSeriesOn ?
                                         <input
                                         name="end_date"
                                         className="form-input-sm"
                                         defaultValue={currentDate}
                                         type="date"
                                       />
-                                    : 
+                                    :
                                       <>
                                       <input
                                         style={{width:"60px"}}
                                         type="integer"
-                                        name="interval" 
+                                        name="interval"
                                         className="form-input-sm"
                                         defaultValue="5"
                                       />
@@ -295,9 +295,9 @@ function CreateTreatment (props) {
                               <div style={{position:"relative",display:"block", float:"left"}}>
                               <button type="submit" className="btn-primary">Create Treatment</button>
                               </div>
-                            
+
                             </form>
-                            
+
                     </div>
                 </div>
             </div>
