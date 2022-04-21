@@ -45,10 +45,10 @@ Front End Design: @etoop, Elizabeth Toop
 
 Front End: @jamqu Jared Quinn, @etoop Elizabeth Toop
 
-Back End: @Shivangi58 Shivangi Sharma
+Back End, API and Backend Testing: @Shivangi58 Shivangi Sharma
 
 Notifications, Email: @Nameless7193 Jiarui Qu
 
-Hosting and Deployment: @The-NinToaster Nikki Babaii
+Hosting, Deployment and Deployment Testing: @The-NinToaster Nikki Babaii
 
-Documentation: @The-NinToaster Nikki Babaii
+Documentation Lead: @The-NinToaster Nikki Babaii
