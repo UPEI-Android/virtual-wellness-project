@@ -14,13 +14,21 @@ class RulesTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected $user;
+    private $treatment;
+
     public function setUp():void{
 
         parent::setUp();
-        $user = User::factory()->create();
-        Sanctum::actingAs($user);
+        $this->user = User::factory()->create();
+
+        Sanctum::actingAs($this->user);
         $this->treatment = $this->createTreatment([
-            'title' => 'Insulin'
+            'title' => 'Insulin',
+            'patient_id' => $this->user->id,
+            'start_date' => '2022-03-28',
+            //'end_date' => '2022-06-28',
+            'start_time' => '12:02:50',
         ]);
 
     }
@@ -107,6 +115,32 @@ class RulesTest extends TestCase
         $rule = Rule::factory()->yearly()->create();
 
         $this->postJson(route('treatments.rules.store', $treatment->id), [
+            'freq' => $rule->freq,
+            'interval' => $rule->interval,
+            'day_of_month' => $rule->day_of_month,
+            'month_of_year'=> $rule->month_of_year,
+        ])->assertCreated();
+
+        $this->assertDatabaseHas('rules', [
+            'treatment_id' => $treatment->id,
+            'freq' => $rule->freq,
+            'interval' => $rule->interval,
+            'day_of_month' => $rule->day_of_month,
+            'month_of_year'=> $rule->month_of_year,
+            'max_num_of_occurrences' => '5'
+        ]);
+
+    }
+
+    /**
+     * @test
+     */
+    public function store_yearly_rules_for_a_treatment()
+    {
+        $treatment = $this->createTreatment();
+        $rule = Rule::factory()->yearly()->create();
+
+        $this->postJson(route('treatments.rules.store', $treatment->id), [
             'treatment_id' => $rule->treatment_id,
             'freq' => $rule->freq,
             'interval' => $rule->interval,
@@ -120,6 +154,7 @@ class RulesTest extends TestCase
             'interval' => $rule->interval,
             'day_of_month' => $rule->day_of_month,
             'month_of_year'=> $rule->month_of_year,
+            'max_num_of_occurrences' => '5'
         ]);
 
     }

@@ -21,6 +21,10 @@ class RulesController extends Controller
 
         $rule = $treatment->rule()->create($request->all());
 
+        if ($request->missing('end_date')) {
+            $rule = $treatment->rule()->create(array_merge($request->all(), ['max_num_of_occurrences' => 5]));
+        }
+
         return $rule;
 
     }
