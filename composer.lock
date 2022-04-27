@@ -5783,16 +5783,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.7",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121"
+                "reference": "453c66fde4109eb49e12299ffe3bf0d667983447"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/2092e1ce6e4ba534bff443de8c3a7bb280aba121",
-                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/453c66fde4109eb49e12299ffe3bf0d667983447",
+                "reference": "453c66fde4109eb49e12299ffe3bf0d667983447",
                 "shasum": ""
             },
             "require": {
@@ -5835,7 +5835,7 @@
                 "docker",
                 "laravel"
             ],
-            "time": "2022-03-11T14:11:15+00:00"
+            "time": "2022-04-27T13:10:22+00:00"
         },
         {
             "name": "mockery/mockery",
