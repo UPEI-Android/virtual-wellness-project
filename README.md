@@ -1,7 +1,7 @@
 
 # Virtual Wellness App - Development Fork
 
-## Visit us at: http://virtualwellness.systems
+~~Visit us at: http://virtualwellness.systems~~ No Longer Deployed, sorry!
 
 ## For Documentation see: https://github.com/UPEI-Android/virtual-wellness-project/wiki 
 
